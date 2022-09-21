@@ -1,0 +1,11 @@
+{
+  "name": "c7g18",
+  "version": "1.0.0",
+  "description": "API del proyecto para No Country",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "author": "c7g18",
+  "license": "ISC"
+}
