@@ -1,0 +1,72 @@
+@use '../../../../styles/colors.scss';
+
+.spacer {
+    flex: 1 1 auto;
+  }
+
+.navbar{
+    background: colors.$alternative-color;
+    padding: 15px 30px;
+    display: flex;
+}
+
+.logo{
+    display: flex;
+}
+
+h3{
+    margin: auto 3px -7px;
+    font-size: 25px;
+}
+
+a{
+    color: colors.$secondary-color;   
+    text-decoration: none;
+}
+
+a:hover{
+    color: colors.$cian-color;
+}
+
+button{
+    
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: colors.$cian-color
+}
+
+p{
+    margin: auto 25px 0;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.links{
+    display: none;
+}
+
+@media (min-width: 850px){
+    .menu{
+        display: none;
+    }
+
+    .links{
+        display: flex;
+    }
+
+   
+} 
+
+::ng-deep .matMenu{
+    background: colors.$alternative-color ;
+}
+
+.lh{
+    line-height: 2;
+}
+
+.point{
+    cursor: pointer;
+}

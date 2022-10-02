@@ -1,1 +1,29 @@
-<p>card-product works!</p>
+
+<div class="d-flex">
+    <div class="col" *ngFor="let card of cards, let i=index">
+        <div class="card">                
+            <img class="img" src={{card.img}} style="width:100%">
+            <h3>{{card.nombre}}</h3>
+            <div class="d-flex">
+                <p class="price">${{card.precio}}</p>
+                <div class="d-flex">
+                    <button class="btn" (click)="like(i)">
+                        <img *ngIf=!card.meGusta src="assets/icons/heartE.svg" alt="">
+                        <img *ngIf="card.meGusta" src="assets/icons/heartF.svg" alt="">
+                    </button>
+                    <button mat-raised-button color="accent">
+                        <img src="assets/icons/cart.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+
+
+  
+  
+
+  

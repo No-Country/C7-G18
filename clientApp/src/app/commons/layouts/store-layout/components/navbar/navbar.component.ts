@@ -9,6 +9,8 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
+  esMas850:boolean=false
+
   ngOnInit(): void {
   }
 
