@@ -1,0 +1,52 @@
+// *{
+//     font-family: "Inter";
+// }
+.container{
+    background-color: rgb(250, 247, 247);
+    border: solid black 2px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subContainer{
+
+    max-width: 300px;
+    width: 100%;  
+    font-family: "Inter"
+}
+
+.titulo, .buttonGoogle {
+    color: #6B42DD;
+}
+
+.borde{
+    border: solid #6B42DD 1px;
+}
+
+p{
+    color: #4B4C4C;
+}
+
+.logoGoogle{
+    width: 15px;
+    height: 15px;
+}
+
+.ancho{
+
+    width: 95%;
+    height: 60px;
+    font-family: "Inter"
+}
+
+.example-section{
+
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+
