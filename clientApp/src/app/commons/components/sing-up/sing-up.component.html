@@ -1,19 +1,54 @@
 <div class="container">
-	<h1>Bienvenido</h1>
-	<h2>Registrar</h2>
+	<div class="subContainer">
+		<h1 class="titulo"><strong>Registro</strong></h1>
+		<p>Ingresa tus datos para date de alta</p>
 
-	<div class="google">
-		<img src="" alt="" />
-		<p><a href="">Crear cuenta con Google</a></p>
+		<button class="button buttonGoogle ancho alto borde" mat-stroked-button color="primary">
+			<img class="logoGoogle" src="../../../../assets/images/googleLogin.png" />
+			Ingresa con tu cuneta Google
+		</button>
+
+		<br />
+		<br />
+
+		<div class="example-container">
+			<p>Nombre</p>
+			<mat-form-field class="ancho alto" appearance="fill">
+				<mat-label>Ingresa tu nombre</mat-label>
+				<input matInput />
+			</mat-form-field>
+		</div>
+
+		<div class="example-container">
+			<p>Email.</p>
+			<mat-form-field class="ancho alto" appearance="fill">
+				<mat-label>Ingresa tu email</mat-label>
+				<input matInput placeholder="email@gmail.com" required />
+				<!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+			</mat-form-field>
+		</div>
+
+		<div class="example-container">
+			<p>Crea tu contraseña</p>
+			<mat-form-field class="ancho alto" appearance="fill">
+				<mat-label>******</mat-label>
+				<input matInput [type]="hide ? 'password' : 'text'" />
+				<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+					<mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+				</button>
+			</mat-form-field>
+		</div>
+
+		<br />
+
+		<button mat-raised-button color="primary" class="button ancho alto">CREAR CUENTA</button>
+
+		<br />
+		<br />
+
+		<section class="example-section">
+			<p>Estas registrado?.</p>
+			<a href="">Iniciar Sesion.</a>
+		</section>
 	</div>
-
-	<form action="">
-		<label for="email">Email</label><br />
-		<input type="text" id="email" name="email" placeholder="Email@gmail.com" /><br />
-		<label for="pass">Contraseña</label><br />
-		<input type="text" id="pass" name="pass" placeholder="******" /><br />
-		<input type="checkbox" />Recuerdame <a href="">Olvide mi contraseña</a><br />
-		<input type="submit" value="ingresar" /><br />
-		Ya estas registrado?. <a href="">Inciar sesion</a>
-	</form>
 </div>
