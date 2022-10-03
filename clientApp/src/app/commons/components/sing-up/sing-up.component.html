@@ -3,7 +3,7 @@
 		<h1 class="titulo"><strong>Registro</strong></h1>
 		<p>Ingresa tus datos para date de alta</p>
 
-		<button class="button buttonGoogle ancho alto borde" mat-stroked-button color="primary">
+		<button class="button buttonGoogle dimenciones borde" mat-stroked-button color="primary">
 			<img class="logoGoogle" src="../../../../assets/images/googleLogin.png" />
 			Ingresa con tu cuneta Google
 		</button>
@@ -13,7 +13,7 @@
 
 		<div class="example-container">
 			<p>Nombre</p>
-			<mat-form-field class="ancho alto" appearance="fill">
+			<mat-form-field class="dimenciones" appearance="fill">
 				<mat-label>Ingresa tu nombre</mat-label>
 				<input matInput />
 			</mat-form-field>
@@ -21,7 +21,7 @@
 
 		<div class="example-container">
 			<p>Email.</p>
-			<mat-form-field class="ancho alto" appearance="fill">
+			<mat-form-field class="dimenciones" appearance="fill">
 				<mat-label>Ingresa tu email</mat-label>
 				<input matInput placeholder="email@gmail.com" required />
 				<!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
@@ -30,7 +30,7 @@
 
 		<div class="example-container">
 			<p>Crea tu contraseña</p>
-			<mat-form-field class="ancho alto" appearance="fill">
+			<mat-form-field class="dimenciones" appearance="fill">
 				<mat-label>******</mat-label>
 				<input matInput [type]="hide ? 'password' : 'text'" />
 				<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -41,7 +41,7 @@
 
 		<br />
 
-		<button mat-raised-button color="primary" class="button ancho alto">CREAR CUENTA</button>
+		<button mat-raised-button color="primary" class="button dimenciones">CREAR CUENTA</button>
 
 		<br />
 		<br />

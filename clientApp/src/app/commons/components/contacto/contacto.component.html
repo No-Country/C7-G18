@@ -1,15 +1,35 @@
+
+
+
 <div class="container">
-	<div class="imagenContactanos">
-		<img src="" alt="imagen de Contactanos" />
+
+	<div class="subContainer">
+
+		<div class="containerIMG">
+			<img src="../../../../assets/images/imgContacto.png" class="imgContacto" alt="imagen de contacto">
+		</div>
+
+		<h1 class="titulo"><strong>Contactanos</strong></h1>
+
+		<br />
+
+		
+		<div class="example-container">
+			<p>Email.</p>
+			<mat-form-field class="dimenciones" appearance="fill">
+				<mat-label>Ingresa tu email</mat-label>
+				<input matInput placeholder="email@gmail.com" required />
+				<!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+			</mat-form-field>
+		</div>
+
+		<br>
+
+		<p>Mensaje</p>
+		<textarea name="" id="" cols="30" rows="10" class="button dimenciones"></textarea>	
+		
+		<button mat-raised-button color="primary" class="button dimenciones">CREAR CUENTA</button>
+
+
 	</div>
-
-	<h1>Contactanos</h1>
-
-	<form action="">
-		<label for="email">Email</label><br />
-		<input type="text" id="email" name="email" placeholder="Email@gmail.com" /><br />
-		<label for="mensajeContacto">
-        <textarea name="mensajeContacto" id="mensajeContacto" cols="30" rows="10"></textarea>
-        </label>
-	</form>
 </div>
