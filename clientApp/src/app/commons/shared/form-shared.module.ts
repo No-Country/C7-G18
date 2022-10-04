@@ -7,7 +7,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
 	exports: [
@@ -19,7 +18,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
 		MatInputModule,
 		MatCheckboxModule,
 		MatDialogModule, 
-		MatGridListModule,
 	]
 })
 export class FormSharedModule {}

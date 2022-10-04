@@ -3,5 +3,8 @@ export interface CardProduct {
     nombre:string,
     img:string,
     precio:number,
-    meGusta:boolean
+    meGusta:boolean,
+    oferta?:number,
+    nuevo?:boolean,
+    vendidos:number
 }

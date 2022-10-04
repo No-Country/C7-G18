@@ -6,7 +6,7 @@
 
 .navbar{
     background: colors.$alternative-color;
-    padding: 15px 30px;
+    padding: 10px;
     display: flex;
 }
 
@@ -14,9 +14,37 @@
     display: flex;
 }
 
+.logo img{
+    width: 30px;
+    height: 24px;
+    margin-top: 5px;
+}
+
 h3{
-    margin: auto 3px -7px;
-    font-size: 25px;
+    margin: auto 3px ;
+    font-size: 15px;
+}
+
+
+@media(min-width:500px){
+
+    .navbar{
+        padding: 15px 30px;
+    }
+
+    .logo img{
+    width: 50px;
+    height: 40px;
+}
+
+    h3{
+        margin: auto 3px -7px;
+        font-size: 25px;
+    }
+
+    .menu{
+        margin-right: 15px;
+    }
 }
 
 a{

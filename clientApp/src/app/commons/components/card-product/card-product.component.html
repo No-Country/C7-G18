@@ -1,25 +1,27 @@
 
-<div class="d-flex">
-    <div class="col" *ngFor="let card of cards, let i=index">
-        <div class="card">                
-            <img class="img" src={{card.img}} style="width:100%">
-            <h3>{{card.nombre}}</h3>
-            <div class="d-flex">
-                <p class="price">${{card.precio}}</p>
-                <div class="d-flex">
-                    <button class="btn" (click)="like(i)">
-                        <img *ngIf=!card.meGusta src="assets/icons/heartE.svg" alt="">
-                        <img *ngIf="card.meGusta" src="assets/icons/heartF.svg" alt="">
-                    </button>
-                    <button mat-raised-button color="accent">
-                        <img src="assets/icons/cart.svg" alt="">
-                    </button>
-                </div>
-            </div>
+<div class="card">  
+    <p *ngIf="card.oferta" class="esOferta">OFERTA</p>  
+    <button class="btn" (click)="like()">
+        <img *ngIf=!card.meGusta src="assets/icons/heartE.svg" alt="">
+        <img *ngIf="card.meGusta" src="assets/icons/heartF.svg" alt="">
+    </button>            
+    <img class="img" src={{card.img}} style="width:100%">
+    <h3>{{card.nombre}}</h3>
+    <div class="d-flex">
+        <div class="d-flex" *ngIf="!card.oferta">
+            <p class="price">${{card.precio}}</p>
         </div>
+        <div class="d-flex" *ngIf="card.oferta">
+            <p class="price">${{card.oferta}}</p>
+            <p class="oferta">${{card.precio}}</p>
+        </div>                
+        <button mat-raised-button color="accent">
+            <img src="assets/icons/cart.svg" alt="">
+        </button>
     </div>
-   
 </div>
+
+
 
 
 
