@@ -1,10 +1,20 @@
 export interface CardProduct {
     id?:number,
+
     nombre:string,
     img:string,
     precio:number,
-    meGusta:boolean,
     oferta?:number,
     nuevo?:boolean,
-    vendidos:number
+    descripcion?:string,
+    meGusta:boolean,
+
+    stock?:number,
+    vendidos:number,
+
+    mascota?:string,
+    categoria?:string,
+    subcategoria?:string,
+    marca?:string,
+    tamaño?:string
 }

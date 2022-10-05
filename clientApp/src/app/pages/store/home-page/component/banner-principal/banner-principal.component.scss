@@ -1,11 +1,45 @@
-.img{
-    max-width: 100%;
-}
 
-.img1{
-    max-width: 103.5%;
-}
 
 .bg{
     background: #5DBADC;
+}
+
+.image1{
+    background-image: url("../../../../../../assets/images/bannercel1.svg");
+background-size: cover;
+height: 75vw;
+}
+
+.image2{
+background-image: url("../../../../../../assets/images/bannercel2.svg");
+background-size: cover;
+height: 75vw;
+}
+
+.image3{
+background-image: url("../../../../../../assets/images/bannercel3.svg");
+background-size: cover;
+height: 75vw;
+}
+
+
+@media(min-width:420px){
+
+    .image1{
+        background-image: url("../../../../../../assets/images/home1.svg");
+    background-size: cover;
+    height: 32vw;
+}
+
+.image2{
+    background-image: url("../../../../../../assets/images/home2.svg");
+    background-size: cover;
+    height: 32vw;
+}
+
+.image3{
+    background-image: url("../../../../../../assets/images/home3.svg");
+    background-size: cover;
+    height: 32vw;
+}
 }
