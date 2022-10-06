@@ -5,7 +5,7 @@
   }
 
 .navbar{
-    background: colors.$alternative-color;
+    background: colors.$light-bg; 
     padding: 10px;
     display: flex;
 }
@@ -21,20 +21,54 @@
 }
 
 h3{
-    margin: auto 3px ;
+    margin: 8px 4px 0 ;
     font-size: 15px;
+    font-weight: 500;
+}
+
+.p1{
+    margin:0;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.user{
+    height: 25px;
+    width: 25px;
+    margin: auto 5px 0;
+}
+
+.cart{
+    display: flex;
+    margin: auto 5px 5px;
+    cursor: pointer;
+}
+
+.contador{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: colors.$primary-color;
+    color:white;
+    margin-left: 5px;
+}
+
+.contador p{
+    text-align: center;
+    margin: 1px auto;
 }
 
 
 @media(min-width:500px){
 
     .navbar{
-        padding: 15px 30px;
+        padding: 15px 50px;
     }
 
     .logo img{
     width: 50px;
     height: 40px;
+    margin-left: 20px;
 }
 
     h3{
@@ -42,8 +76,26 @@ h3{
         font-size: 25px;
     }
 
-    .menu{
-        margin-right: 15px;
+
+    .p1{
+        margin: auto 25px 0;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .user{
+        height: 35px;
+        width: 35px;
+        margin-bottom: -10px;
+    }
+   
+    .contador{
+        height: 28px;
+        width: 28px;
+    }
+
+    .contador p{
+        margin: 5px auto;
     }
 }
 
@@ -58,18 +110,14 @@ a:hover{
 
 button{
     
-    font-weight: 600;
+    font-weight: 500;
 }
 
 button:hover {
     background-color: colors.$cian-color
 }
 
-p{
-    margin: auto 25px 0;
-    font-size: 20px;
-    font-weight: 800;
-}
+
 
 .links{
     display: none;
@@ -87,14 +135,35 @@ p{
    
 } 
 
-::ng-deep .matMenu{
-    background: colors.$alternative-color ;
+.btn2{
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+
+.btn3:hover{
+    background: none;
 }
 
 .lh{
     line-height: 2;
 }
 
-.point{
-    cursor: pointer;
+
+
+.expand{
+    background: colors.$light-bg; 
+}
+
+.btnCuenta{
+    height: 33px;
+    color: colors.$secondary-color; 
+}
+
+span img{
+    margin-right: 5px;
 }
