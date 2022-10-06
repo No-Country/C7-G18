@@ -1,0 +1,134 @@
+@use '../../../commons/styles/colors.scss';
+
+.home{
+  background: #EEEEEE;
+}
+
+.navigation-wrapper {
+    position: relative;
+  }
+  
+  .dots {
+    display: flex;
+    padding: 10px 0;
+    justify-content: center;
+  }
+  
+  .dot {
+    border: none;
+    width: 10px;
+    height: 10px;
+    background: #c5c5c5;
+    border-radius: 50%;
+    margin: 0 5px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .dot:focus {
+    outline: none;
+  }
+  
+  .dot.active {
+    background: #000;
+  }
+  
+  .arrow {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    fill: colors.$secondary-color;
+    cursor: pointer;
+  }
+  
+  .arrow--left {
+    left: 5px;
+  }
+  
+  .arrow--right {
+    left: auto;
+    right: 5px;
+  }
+  
+  .arrow--disabled {
+    fill: rgba(255, 255, 255, 0.5);
+  }
+  
+
+
+  .banner{
+    height: 150px;
+    background: #F9C1A8;
+    display: flex;
+  }
+
+  img{
+    height: 0px;
+  }
+
+
+  
+  .flex{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    flex-wrap: wrap;
+  }
+
+  h3{
+    color:colors.$primary-color;
+    font-size: 25px;
+    margin: 40px 0 0 60px;
+}
+  
+  h2{
+    color: white;
+    margin-right: 15px;
+    font-weight: 500;
+    text-align: center;
+    flex-basis: 80%;
+    font-size:15px;
+  }
+    
+  input{
+    width: 200px;
+    height: 35px;
+    margin: auto 5px;
+    border-radius: 10px;
+    border: none;
+    background-image: url(../../../../assets/icons/envelope.svg);
+    background-repeat: no-repeat;
+    background-position: 190px 11px;
+    padding-left: 20px;
+  }
+
+  button{
+    height: 35px;
+    margin: auto 5px;
+  }
+
+  @media(min-width:680px){
+    h2{
+      font-size: 23px;
+    }
+
+    input{
+      width: 300px;
+      background-position: 290px 11px;
+    }
+
+    img{
+      height: 150px;
+    }
+  }
+
+    @media(min-width:1000px){
+      h2{
+        flex:1;
+        text-align: end;
+      }
+    }
+
