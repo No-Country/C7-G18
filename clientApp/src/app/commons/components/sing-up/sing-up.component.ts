@@ -1,28 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-
+import { FormControl, Validators } from '@angular/forms';
+import { NewUSer } from '../modelos/newUser';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
-  selector: 'app-sing-up',
-  templateUrl: './sing-up.component.html',
-  styleUrls: ['./sing-up.component.scss']
+	selector: 'app-sing-up',
+	templateUrl: './sing-up.component.html',
+	styleUrls: ['./sing-up.component.scss']
 })
-export class SingUpComponent implements OnInit {
+export class SingUpComponent {
+	constructor(public dialogRef: MatDialogRef<SingUpComponent>, private _matDialog: MatDialog) {}
 
-  constructor() { }
+	user: NewUSer[] = [new NewUSer('Alex', 'Alexand@gmail.com', 1234)];
 
-  ngOnInit(): void {
-  }
+	name: string;
+	email: string;
+	password: number;
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-  hide = true;
+	hide = true;
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
+	createUser() {
+		let newUser = new NewUSer(this.name, this.email, this.password);
+		this.user.push(newUser);
+	}
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+	loginUser() {
+		this.dialogRef.close();
+		console.log('se cerro el modal ');
 
+		this._matDialog.open(LoginComponent, {
+			width: '500px',
+			maxHeight: '670px'
+		});
+	}
 }

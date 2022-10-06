@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 
+
 @NgModule({
 	exports: [
 		CommonModule,
@@ -22,5 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 		MatDialogModule, 
 		
 	]
+
+
 })
 export class FormSharedModule {}

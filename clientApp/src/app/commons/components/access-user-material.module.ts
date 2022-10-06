@@ -22,7 +22,6 @@ import { FormSharedModule } from '../shared/form-shared.module';
     
     LoginComponent, SingUpComponent, ResetPassComponent, ContactoComponent,
 
-    // componentes de material
   ]
 
 })

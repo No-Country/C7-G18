@@ -44,3 +44,18 @@ body { margin: 0; font-family: 'Inter', sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-large{
+  width: 100%;
+	height: 60px;
+	font-family: 'Inter';
+}
+
+.buttonGoogle{
+  color: colors.$secondary-color;
+  border: solid colors.$secondary-color 1px;
+}
+
+.texPurple{
+  color:colors.$secondary-color
+}

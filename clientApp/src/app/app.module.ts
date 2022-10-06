@@ -12,9 +12,11 @@ import { PageNotfoundComponent } from './pages/page-notfound/page-notfound.compo
 import { AccessUserMaterialModule } from './commons/components/access-user-material.module';
 
 
+
+
 @NgModule({
 	declarations: [AppComponent, PageNotfoundComponent  ],
-	imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, AccessUserMaterialModule],
+	imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,AccessUserMaterialModule],
 	providers: [],
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
