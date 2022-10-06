@@ -59,3 +59,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .texPurple{
   color:colors.$secondary-color
 }
+
+
+.mat-form-field-appearance-outline .mat-form-field-outline,
+.mat-form-field-appearance-outline .mat-form-field-label,
+.mat-form-field-prefix .mat-icon, .mat-form-field-suffix .mat-icon  {
+	color: colors.$gray-color-2;
+}
+
+.mat-form-field {
+  width: -webkit-fill-available;
+  color: colors.$gray-color-2;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.mat-form-field-wrapper{
+  // padding-bottom:0.7em;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+}
