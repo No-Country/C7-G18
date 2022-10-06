@@ -1,4 +1,42 @@
-<p>home-page works!</p>
-<button mat-raised-button color="primary">Primary home</button>
-<button mat-raised-button color="accent" [routerLink]="'/store'">ir a store</button>
-<app-card-product></app-card-product>
+<div class="home">
+
+    <app-banner-principal></app-banner-principal>
+    
+    <app-banner></app-banner>
+
+    <app-categorias></app-categorias>
+        
+    <h3>Nuevos productos</h3>
+    <div class="navigation-wrapper">
+        <div class="keen-slider" #sliderRef>
+            <div class="keen-slider__slide" *ngFor="let card of cards">
+                <app-card-product [card]="card"></app-card-product>
+            </div>
+        </div>
+        <svg [ngClass]="'arrow arrow--left ' + (currentSlide === 0 ? 'arrow--disabled' : '')" (click)="slider.prev()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>
+        <svg *ngIf="slider" [ngClass]="'arrow arrow--right ' + (slider.track.details.slides.length - 1 === currentSlide ? 'arrow--disabled' : '')" (click)="slider.next()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" /></svg>
+    </div>
+
+    <div class="banner">
+        <img src="assets/images/catBanner.svg" alt="">
+        <div class="flex">
+            <h2>Suscribite para recibir promociones</h2>
+            <input type="email" placeholder="Ingresa tu e-mail">
+            <button mat-raised-button color="warn">Suscribirme</button>
+        </div>
+    </div> 
+
+    <h3>Lo más vendido</h3>
+    <div class="navigation-wrapper">
+        <div class="keen-slider" #sliderRef1>
+            <div class="keen-slider__slide" *ngFor="let card of cardsMasVendidos">
+                    <app-card-product [card]="card"></app-card-product>            
+                </div>
+        </div>
+        <svg [ngClass]="'arrow arrow--left ' + (currentSlide1 === 0 ? 'arrow--disabled' : '')" (click)="slider1.prev()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>
+        <svg *ngIf="slider1" [ngClass]="'arrow arrow--right ' + (slider1.track.details.slides.length - 1 === currentSlide1 ? 'arrow--disabled' : '')" (click)="slider1.next()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" /></svg>
+    </div>
+
+    <app-marcas></app-marcas>
+
+</div>

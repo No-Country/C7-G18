@@ -19,12 +19,15 @@ export class NavbarComponent implements OnInit {
 			});
 		}
 
+
 		this._matDialog.open(LoginComponent, {
 			// maxWidth: '700vw',
 			width: '500px',
 			maxHeight: '670px'
 		});
 	}
+
+  esMas850:boolean=false
 
 	ngOnInit(): void {}
 }

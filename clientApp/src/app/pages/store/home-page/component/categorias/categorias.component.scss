@@ -1,0 +1,71 @@
+@use '../../../../../commons/styles/colors.scss';
+
+.cont{
+    margin: 1rem 2rem;
+}
+
+.categ{
+    display: flex;
+    height: 200px;
+    cursor: pointer;
+}
+
+.fondo{
+    height: 50%;
+    width: 100%;
+    border-radius: 10px;
+    margin: auto;
+    // &-img{
+    //     width: 30px;
+    //     height: 30px;
+    //     background: blue;
+    // }
+}
+
+.f1{
+    background: #FFDABA;
+}
+
+.f2{
+    background: #FEBCCA;
+}
+
+.f3{
+    background: #FCF0B9;
+}
+
+.f4{
+    background: #CFFFEF;
+}
+
+.f5{
+    background: #D9A6FF;
+}
+
+.img2{
+    position: absolute;
+    max-height: 150px;
+}
+
+.img3{
+    position: absolute;
+    max-height: 130px;
+    padding-top: 20px;
+}
+
+.img4{
+    position: absolute;
+    max-height: 100px;
+    padding-top: 50px;
+}
+
+h2{
+    color:colors.$primary-color;
+}
+
+h4{
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+    color: colors.$gray-color;
+}

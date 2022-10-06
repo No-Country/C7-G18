@@ -1,0 +1,63 @@
+@use '../../../../styles/colors.scss';
+
+
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    background: colors.$secondary-color;
+    color: white;
+    padding: 0 2rem;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    padding-top: 7px;
+    display: inline-block;
+}
+
+
+
+h4{
+    font-size: 20px;
+    font-weight: 800;
+    margin: 5px 0;
+}
+
+.col{
+    flex-basis: 90%;
+    margin: 1rem;
+}
+
+@media(min-width:500px){
+.col{
+    flex-basis: 45%;
+    margin: 1rem;
+}
+}
+
+@media(min-width:900px){
+    .col{
+        flex: 1;
+    }
+}
+
+
+
+.logo{
+    height: 25px;
+    margin: 8px;
+}
+
+.foot2{
+    background: colors.$secondary-color900;
+    margin: 0
+}
+
+.foot2 p{
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    color: white;
+}
