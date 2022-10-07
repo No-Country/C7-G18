@@ -1,4 +1,4 @@
-<div mat-dialog-content>
+<div mat-form-field>
 	<div class="container">
 		<div class="subContainer">
 			<form [formGroup]="formGroup" autocomplete="off">
@@ -30,7 +30,7 @@
 
 				<section class="example-section">
 					<mat-checkbox class="example-margin">Recuérdame</mat-checkbox>
-					<a href="">Olvide mi contraseña</a>
+					<a  (click)="openModalResetPass()">Olvide mi contraseña</a>
 				</section>
 
 				<br />
@@ -42,7 +42,7 @@
 
 				<section class="example-section">
 					<p>Aun no estas registrado?.</p>
-					<a (click)="openModalRegister()"> Registrar.</a>
+					<a  (click)="openModalRegister()"> Registrar.</a>
 				</section>
 			</form>
 		</div>

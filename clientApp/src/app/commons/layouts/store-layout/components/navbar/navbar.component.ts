@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/commons/components/login/login.component';
+import { ContactoComponent } from 'src/app/commons/components/contacto/contacto.component';
 
 @Component({
 	selector: 'app-navbar',
@@ -8,7 +9,7 @@ import { LoginComponent } from 'src/app/commons/components/login/login.component
 	styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-	constructor(private _matDialog: MatDialog) {}
+	constructor(private _matDialog: MatDialog, ) {}
 
 	openModalLogin() {
 		if (screen.width < 500) {
@@ -25,6 +26,18 @@ export class NavbarComponent implements OnInit {
 			width: '500px',
 			maxHeight: '670px'
 		});
+	}
+
+	contactanos(){
+
+		// this.matDialogRef.close();
+
+		this._matDialog.open(ContactoComponent, {
+			// maxWidth: '700vw',
+			width: '500px',
+			maxHeight: '670px'
+		});
+
 	}
 
   esMas850:boolean=false
