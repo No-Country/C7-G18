@@ -7,9 +7,6 @@ import { FooterComponent } from './components/footer/footer.component'; //para u
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 
-// modulo alex
-import { AccessUserMaterialModule } from '../../components/access-user-material.module';
-
 @NgModule({
     declarations: [StoreLayoutComponent, NavbarComponent, FooterComponent],
     imports: [CommonModule,  RouterModule, MatButtonModule, MatMenuModule],
