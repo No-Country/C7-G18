@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NewUSer } from '../modelos/newUser';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
@@ -10,19 +10,34 @@ import { LoginComponent } from '../login/login.component';
 	styleUrls: ['./sing-up.component.scss']
 })
 export class SingUpComponent {
-	constructor(public dialogRef: MatDialogRef<SingUpComponent>, private _matDialog: MatDialog) {}
+	constructor(public dialogRef: MatDialogRef<SingUpComponent>, private _matDialog: MatDialog, private _formBuilder: FormBuilder) {
+		this._loadFormGroup();
+	}
+
+	formGroup!: FormGroup;
 
 	user: NewUSer[] = [new NewUSer('Alex', 'Alexand@gmail.com', 1234)];
-
 	name: string;
 	email: string;
 	password: number;
-
 	hide = true;
 
 	createUser() {
 		let newUser = new NewUSer(this.name, this.email, this.password);
 		this.user.push(newUser);
+	}
+
+	private _loadFormGroup(): void {
+		this.formGroup = this._formBuilder.group({
+			email: ['', [Validators.email, Validators.required]],
+			password: ['', Validators.required]
+		});
+	}
+
+	loginByPassword() {
+		if (this.formGroup.valid) {
+			console.log(this.formGroup.value);
+		}
 	}
 
 	loginUser() {

@@ -1,29 +1,29 @@
-<div class="container">
-	<div class="subContainer">
-		<form>
-			<div class="containerIMG">
-				<img src="../../../../assets/images/imgContacto.png" class="imgContacto" alt="imagen de contacto" />
-			</div>
+<div mat-form-field>
+	<div class="container">
+		<div class="subContainer">
+			<form [formGroup]="formGroup" autocomplete="off">
+				<div class="containerIMG">
+					<img src="../../../../assets/images/imgContacto.png" class="imgContacto" alt="imagen de contacto" />
+				</div>
 
-			<h1 class="titulo"><strong>Contactanos</strong></h1>
+				<h1 class="titulo"><strong>Contactanos</strong></h1>
 
-			<br />
+				<br />
 
-			<div class="example-container">
-				<p>Email.</p>
-				<mat-form-field class="dimenciones" appearance="fill">
-					<mat-label>Ingresa tu email</mat-label>
-					<input matInput placeholder="email@gmail.com" required />
-					<!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+				<mat-form-field appearance="outline">
+					<mat-label>Ingresa tu e-mail</mat-label>
+					<input matInput placeholder="email@gmail.com" required formControlName="email" />
+					<mat-error *ngIf="formGroup.get('email')!.hasError('email')">e-mail invalido </mat-error>
+					<mat-error *ngIf="formGroup.get('email')!.hasError('required')">e-mail requerido </mat-error>
 				</mat-form-field>
-			</div>
 
-			<br />
+				<br />
 
-			<p>Mensaje</p>
-			<textarea name="" id="" cols="30" rows="10" class="button dimenciones"></textarea>
+				<p>Mensaje</p>
+				<textarea matInput name="" id="" cols="30" rows="10" class="button dimenciones"></textarea>
 
-			<button mat-raised-button color="primary" class="button dimenciones">CREAR CUENTA</button>
-		</form>
+				<button mat-raised-button color="primary" class="btn-large">CREAR CUENTA</button>
+			</form>
+		</div>
 	</div>
 </div>

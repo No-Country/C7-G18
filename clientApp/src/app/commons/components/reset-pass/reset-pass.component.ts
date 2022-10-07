@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { LoginComponent } from '../login/login.component'; 
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
@@ -10,7 +10,18 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class ResetPassComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _formBuilder: FormBuilder) {
+    this._loadFormGroup();
+   }
+
+   formGroup!: FormGroup;
+   
+   private _loadFormGroup(): void {
+		this.formGroup = this._formBuilder.group({
+			email: ['', [Validators.email, Validators.required]],
+			password: ['', Validators.required]
+		});
+	}
 
   ngOnInit(): void {
   }

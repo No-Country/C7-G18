@@ -1,59 +1,54 @@
 <div mat-form-field>
-<div class="container">
-	<div class="subContainer">
-		<form>
-			<h1 class="titulo"><strong>Registro</strong></h1>
-			<p>Ingresa tus datos para date de alta</p>
+	<div class="container">
+		<div class="subContainer">
+			<form [formGroup]="formGroup" autocomplete="off">
+				<h1 class="texPurple"><strong>Registro</strong></h1>
+				<p>Ingresa tus datos para date de alta</p>
 
-			<button class="button buttonGoogle dimenciones borde" mat-stroked-button color="primary">
-				<img class="logoGoogle" src="../../../../assets/images/googleLogin.png" />
-				Ingresa con tu cuneta Google
-			</button>
+				<button class="buttonGoogle btn-large" mat-stroked-button color="accent">
+					<img class="logoGoogle" src="../../../../assets/images/googleLogin.png" />
+					Ingresa con Google
+				</button>
 
-			<br />
-			<br />
+				<br />
+				<br />
 
-			<div class="example-container">
-				<p>Nombre</p>
-				<mat-form-field class="dimenciones" appearance="fill">
+
+				<mat-form-field appearance="outline">
 					<mat-label>Ingresa tu nombre</mat-label>
-					<input matInput [(ngModel)]="name" name="name" required />
+					<input matInput placeholder="email@gmail.com" required formControlName="email" />
+					<mat-error *ngIf="formGroup.get('email')!.hasError('email')">Nombre invalido </mat-error>
+					<mat-error *ngIf="formGroup.get('email')!.hasError('required')">Mombre requerido </mat-error>
 				</mat-form-field>
-			</div>
 
-			<div class="example-container">
-				<p>Email.</p>
-				<mat-form-field class="dimenciones" appearance="fill">
-					<mat-label>Ingresa tu email</mat-label>
-					<input matInput placeholder="email@gmail.com" [(ngModel)]="email" name="email" required />
-					<!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+
+				<mat-form-field appearance="outline">
+					<mat-label>Ingresa tu e-mail</mat-label>
+					<input matInput placeholder="email@gmail.com" required formControlName="email" />
+					<mat-error *ngIf="formGroup.get('email')!.hasError('email')">e-mail invalido </mat-error>
+					<mat-error *ngIf="formGroup.get('email')!.hasError('required')">e-mail requerido </mat-error>
 				</mat-form-field>
-			</div>
 
-			<div class="example-container">
-				<p>Crea tu contraseña</p>
-				<mat-form-field class="dimenciones" appearance="fill">
-					<mat-label>******</mat-label>
-					<input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password" required />
-					<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-						<mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-					</button>
+
+				<mat-form-field appearance="outline">
+					<mat-label>Ingresa tu contraseña</mat-label>
+					<input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+					<mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"></mat-icon>
+					<mat-error *ngIf="formGroup.get('password')!.hasError('required')">contraseña requerida </mat-error>
 				</mat-form-field>
-			</div>
 
-			<br />
+				<br />
 
-			<button mat-raised-button color="primary" class="button dimenciones" type="submit" (click)="createUser()">CREAR CUENTA</button>
+				<button mat-raised-button color="primary" class="btn-large" (click)="createUser()">CREAR CUENTA</button>
 
-			<br />
-			<br />
+				<br />
+				<br />
 
-			<section class="example-section">
-				<p>Estas registrado?.</p>
-				<a  (click)="loginUser()" >Iniciar Sesion.</a>
-			</section>
-		</form>
+				<section class="example-section">
+					<p>Estas registrado?.</p>
+					<a (click)="loginUser()">Iniciar Sesion.</a>
+				</section>
+			</form>
+		</div>
 	</div>
-</div>
-
 </div>
