@@ -4,11 +4,11 @@ const bcrypt = require('bcryptjs');
 
 // DATABASE CONNECTION
 let conn = new Mysqli( {
-    host:'localhost',
+    host:'85.10.205.173',
     post:3306,
-    user:'root',
-    passwd:'',
-    db:''
+    user:'petshopc7g18',
+    passwd:'tk.9Zy9K7dGY935',
+    db:'petshopc7g18'
 })
 
 let db = conn.emit(false,'');
