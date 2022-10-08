@@ -1,96 +1,169 @@
 @use '../../../../styles/colors.scss';
 
 .spacer {
-	flex: 1 1 auto;
+    flex: 1 1 auto;
+  }
+
+.navbar{
+    background: colors.$light-bg; 
+    padding: 10px;
+    display: flex;
 }
 
-.navbar {
-	background: colors.$alternative-color;
-	padding: 10px;
-	display: flex;
+.logo{
+    display: flex;
 }
 
-.logo {
-	display: flex;
+.logo img{
+    width: 30px;
+    height: 24px;
+    margin-top: 5px;
 }
 
-.logo img {
-	width: 30px;
-	height: 24px;
-	margin-top: 5px;
+h3{
+    margin: 8px 4px 0 ;
+    font-size: 15px;
+    font-weight: 500;
 }
 
-h3 {
-	margin: auto 3px;
-	font-size: 15px;
+.p1{
+    margin:0;
+    font-size: 17px;
+    font-weight: 500;
 }
 
-@media (min-width: 500px) {
-	.navbar {
-		padding: 15px 30px;
-	}
-
-	.logo img {
-		width: 50px;
-		height: 40px;
-	}
-
-	h3 {
-		margin: auto 3px -7px;
-		font-size: 25px;
-	}
-
-	.menu {
-		margin-right: 15px;
-	}
+.user{
+    height: 25px;
+    width: 25px;
+    margin: auto 5px 0;
 }
 
-a {
-	color: colors.$secondary-color;
-	text-decoration: none;
+.cart{
+    display: flex;
+    margin: auto 5px 5px;
+    cursor: pointer;
 }
 
-a:hover {
-	color: colors.$cian-color;
-	cursor: pointer;
+.contador{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: colors.$primary-color;
+    color:white;
+    margin-left: 5px;
 }
 
-button {
-	font-weight: 600;
+.contador p{
+    text-align: center;
+    margin: 1px auto;
+}
+
+
+@media(min-width:500px){
+
+    .navbar{
+        padding: 15px 50px;
+    }
+
+    .logo img{
+    width: 50px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+    h3{
+        margin: auto 3px -7px;
+        font-size: 25px;
+    }
+
+
+    .p1{
+        margin: auto 25px 0;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .user{
+        height: 35px;
+        width: 35px;
+        margin-bottom: -10px;
+    }
+   
+    .contador{
+        height: 28px;
+        width: 28px;
+    }
+
+    .contador p{
+        margin: 5px auto;
+    }
+}
+
+a{
+    color: colors.$secondary-color;   
+    text-decoration: none;
+}
+
+a:hover{
+    color: colors.$cian-color;
+}
+
+button{
+    
+    font-weight: 500;
 }
 
 button:hover {
-	background-color: colors.$cian-color;
+    background-color: colors.$cian-color
 }
 
-p {
-	margin: auto 25px 0;
-	font-size: 20px;
-	font-weight: 800;
+
+
+.links{
+    display: none;
 }
 
-.links {
-	display: none;
+@media (min-width: 850px){
+    .menu{
+        display: none;
+    }
+
+    .links{
+        display: flex;
+    }
+
+   
+} 
+
+.btn2{
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
 }
 
-@media (min-width: 850px) {
-	.menu {
-		display: none;
-	}
 
-	.links {
-		display: flex;
-	}
+
+.btn3:hover{
+    background: none;
 }
 
-::ng-deep .matMenu {
-	background: colors.$alternative-color;
+.lh{
+    line-height: 2;
 }
 
-.lh {
-	line-height: 2;
+
+
+.expand{
+    background: colors.$light-bg; 
 }
 
-.point {
-	cursor: pointer;
+.btnCuenta{
+    height: 33px;
+    color: colors.$secondary-color; 
+}
+
+span img{
+    margin-right: 5px;
 }

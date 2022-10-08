@@ -9,9 +9,13 @@ import { LoginComponent } from '../login/login.component';
 	templateUrl: './sing-up.component.html',
 	styleUrls: ['./sing-up.component.scss']
 })
-export class SingUpComponent {
+export class SingUpComponent implements OnInit {
 	constructor(public dialogRef: MatDialogRef<SingUpComponent>, private _matDialog: MatDialog, private _formBuilder: FormBuilder) {
 		this._loadFormGroup();
+	}
+
+	ngOnInit(): void {
+		console.log('inicio registro')
 	}
 
 	formGroup!: FormGroup;

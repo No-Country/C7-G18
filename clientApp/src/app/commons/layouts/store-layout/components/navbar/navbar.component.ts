@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/commons/components/login/login.component';
 import { ContactoComponent } from 'src/app/commons/components/contacto/contacto.component';
 
+
 @Component({
 	selector: 'app-navbar',
 	templateUrl: './navbar.component.html',
@@ -10,6 +11,12 @@ import { ContactoComponent } from 'src/app/commons/components/contacto/contacto.
 })
 export class NavbarComponent implements OnInit {
 	constructor(private _matDialog: MatDialog) {}
+
+	panelOpenState: boolean = false;
+
+	togglePanel() {
+    	this.panelOpenState = !this.panelOpenState
+	}
 
 	openModalLogin() {
 		if (screen.width < 500) {
