@@ -37,8 +37,11 @@ export class HomePageComponent implements OnInit {
         "(min-width: 700px)": {
           slides: { perView: 2, spacing: 5 },
         },
-        "(min-width: 1000px)": {
-          slides: { perView: 3, spacing: 10 },
+        "(min-width: 1100px)": {
+          slides: { perView: 3, spacing: 0 },
+        },
+        "(min-width: 1300px)": {
+          slides: { perView: 4, spacing: 0 },
         },
       },
       slides: { perView: 1 },
@@ -57,8 +60,11 @@ export class HomePageComponent implements OnInit {
           "(min-width: 700px)": {
             slides: { perView: 2, spacing: 5 },
           },
-          "(min-width: 1000px)": {
-            slides: { perView: 3, spacing: 10 },
+          "(min-width: 1100px)": {
+            slides: { perView: 3, spacing: 0 },
+          },
+          "(min-width: 1300px)": {
+            slides: { perView: 4, spacing: 0 },
           },
         },
         slides: { perView: 1 },

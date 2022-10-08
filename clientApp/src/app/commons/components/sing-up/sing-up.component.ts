@@ -15,7 +15,6 @@ export class SingUpComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		console.log('inicio registro')
 	}
 
 	formGroup!: FormGroup;
@@ -48,9 +47,18 @@ export class SingUpComponent implements OnInit {
 		this.dialogRef.close();
 		console.log('se cerro el modal ');
 
-		this._matDialog.open(LoginComponent, {
-			width: '500px',
-			maxHeight: '670px'
-		});
+		
+		if (screen.width < 500) {
+			this._matDialog.open(LoginComponent, {
+				maxWidth: '100vw',
+				width: '95%',
+				maxHeight: '670px'
+			});
+		}else{			
+			this._matDialog.open(LoginComponent, {
+				width: '500px',
+				maxHeight: '670px'
+			});
+		}
 	}
 }

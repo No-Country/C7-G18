@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		console.log('inicio login')
 	}
 
 	loginByPassword() {
@@ -38,10 +37,18 @@ export class LoginComponent implements OnInit {
 	openModalRegister() {
 		this.dialogRef.close();
 
-		this._matDialog.open(SingUpComponent, {
-			width: '500px',
-			maxHeight: '670px'
-		});
+		if (screen.width < 500) {
+			this._matDialog.open(SingUpComponent, {
+				maxWidth: '100vw',
+				width: '95%',
+				maxHeight: '670px'
+			});
+		}else{			
+			this._matDialog.open(SingUpComponent, {
+				width: '500px',
+				maxHeight: '670px'
+			});
+		}
 	}
 
 	openModalResetPass() {

@@ -5,6 +5,7 @@ export interface CardProduct {
     img:string,
     precio:number,
     oferta?:number,
+    fecha?:string,
     nuevo?:boolean,
     descripcion?:string,
     meGusta:boolean,
@@ -17,4 +18,22 @@ export interface CardProduct {
     subcategoria?:string,
     marca?:string,
     tamaño?:string
+}
+
+export interface Product{
+    id:string,
+    name:string,
+    price:number,
+    img:string,
+    date_create:string,
+    discount:number,
+    stock:number,
+    category: string,
+    subcategory:string,
+    brand:string,
+    pet:string
+}
+
+export interface newPoducts{
+    
 }
