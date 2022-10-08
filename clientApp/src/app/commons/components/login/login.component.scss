@@ -1,6 +1,6 @@
 @use '../../styles/colors.scss';
 
-.container {
+.container{
 	background: white;
 	padding: 10px;
 	height: 100%;
@@ -18,6 +18,11 @@
 	max-width: 500px;
 	width: 100%;
 	font-family: 'Inter';
+}
+
+a:hover{
+	cursor: pointer;
+	 font-size: 1rem
 }
 
 p {

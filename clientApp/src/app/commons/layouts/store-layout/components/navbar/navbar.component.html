@@ -1,30 +1,23 @@
-
 <div class="navbar">
-    <button class="menu" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <img src="assets/icons/menu.svg" alt="">
-    </button>
-      <mat-menu class="matMenu" #menu="matMenu">        
-            <p><a class="lh" href=""> Home</a></p>        
-            <p><a class="lh" href="/store"> Tienda</a></p>          
-            <p><a class="lh" href="#footer"> Contacto</a></p>        
-      </mat-menu>
-    <a class="logo" href="#">
-        <img src="assets/images/Isotipo.png">
-        <h3> PetStore</h3>
-    </a>
-    <div class="spacer"></div>
-    <div class="links">
-        <p><a href=""> Home</a></p>
-        <p><a href="/store"> Tienda</a></p>
-        <p><a (click)="contactanos()"> Contacto</a></p>
-        <!-- <p><a href="#footer"> Contacto</a></p> -->
-    </div>    
-    <p><button mat-raised-button color="accent"  (click)="openModalLogin()" >Ingresar</button></p>
-    <img class="point" src="assets/icons/cart2.svg" alt="">
-    
-    
+	<button class="menu" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+		<img src="assets/icons/menu.svg" alt="" />
+	</button>
+	<mat-menu class="matMenu" #menu="matMenu">
+		<p><a class="lh" href=""> Home</a></p>
+		<p><a class="lh" href="/store"> Tienda</a></p>
+		<p><a class="lh" href="#footer"> Contacto</a></p>
+	</mat-menu>
+	<a class="logo" href="#">
+		<img src="assets/images/Isotipo.png" />
+		<h3>PetStore</h3>
+	</a>
+	<div class="spacer"></div>
+	<div class="links">
+		<p><a href=""> Home</a></p>
+		<p><a href="/store"> Tienda</a></p>
+		<p><a href="#footer"> Contacto</a></p>
+		<p><a (click)="escribenos()" > Escribenos</a></p>
+	</div>
+	<p><button mat-raised-button color="accent" (click)="openModalLogin()">Ingresar</button></p>
+	<img class="point" src="assets/icons/cart2.svg" alt="" />
 </div>
-
-
-
-

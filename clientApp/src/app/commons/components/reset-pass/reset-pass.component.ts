@@ -10,7 +10,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class ResetPassComponent implements OnInit {
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formBuilder: FormBuilder, public dialogRef: MatDialogRef<ResetPassComponent>, private _matDialog: MatDialog,) {
     this._loadFormGroup();
    }
 
@@ -29,12 +29,17 @@ export class ResetPassComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+  loginUser() {
+		this.dialogRef.close();
+		alert('Por favor revise su correo electronico.');
+
+		this._matDialog.open(LoginComponent, {
+			width: '500px',
+			maxHeight: '670px'
+		});
+	}
+
+
   
 }

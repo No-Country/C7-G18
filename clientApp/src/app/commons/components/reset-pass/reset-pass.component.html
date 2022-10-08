@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="subContainer">
 			<form [formGroup]="formGroup" autocomplete="off">
-				<h1 class="titulo"><strong>Olvide mi contraseña</strong></h1>
+				<h1 class="texPurple"><strong>Olvide mi contraseña</strong></h1>
 				<p>Por favor introduce tu correo electronico. Recibiras un enlace para crear una contraseña nueva.</p>
 
 				<br />
@@ -16,7 +16,7 @@
 
 				<br />
 
-				<button mat-raised-button color="primary" class="btn-large">RESTABLECER CONTRASEÑA</button>
+				<button mat-raised-button color="primary" class="btn-large" (click)="loginUser()" >RESTABLECER CONTRASEÑA</button>
 			</form>
 		</div>
 	</div>
