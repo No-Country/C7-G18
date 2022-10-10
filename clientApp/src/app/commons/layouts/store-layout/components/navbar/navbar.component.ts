@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/commons/components/login/login.component';
 import { ContactoComponent } from 'src/app/commons/components/contacto/contacto.component';
+import { ShoppingCartComponent } from '../../../../components/shopping-cart/shopping-cart.component';
 
 
 @Component({
@@ -48,6 +49,26 @@ export class NavbarComponent implements OnInit {
 			});
 		}
 	}
+
+	openModalShoppingCart() {
+		if (screen.width < 500) {
+			this._matDialog.open(ShoppingCartComponent, {
+				maxWidth: '100vw',
+				width: '95%',
+				maxHeight: '670px',
+				
+			});
+		}else{			
+			this._matDialog.open(ShoppingCartComponent, {
+				width: '400px',
+				height: '100vh',
+				position: {
+					top: '0px',
+					right: '0px'
+				  }
+			});
+		}
+		}
 
 	esMas850: boolean = false;
 
