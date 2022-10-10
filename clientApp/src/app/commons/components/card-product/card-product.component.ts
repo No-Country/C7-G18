@@ -7,13 +7,14 @@ import { CardProduct } from '../card-product';
   styleUrls: ['./card-product.component.scss'],
 })
 export class CardProductComponent implements OnInit {
+  
+  @Input() card!:CardProduct
 
   constructor() {  }
 
   ngOnInit(): void {
   }
 
-  @Input() card!:CardProduct
 
   like(){
     this.card.meGusta=!this.card.meGusta

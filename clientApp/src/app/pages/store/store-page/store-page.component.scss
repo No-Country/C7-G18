@@ -1,0 +1,124 @@
+@use '../../../commons/styles/colors.scss';
+
+.banner{
+    width: 100%;
+}
+
+.store{
+    display: flex;
+    margin: 15px 40px;
+    justify-content: space-between;
+}
+
+.side{
+    flex-basis: 20%;
+    
+}
+
+.main{
+    margin-top: 15px;
+    flex-basis: calc(80% - 3rem);
+}
+
+.expand{
+    padding: 0 15px;
+}
+
+.m-24{
+    margin: auto 24px;
+}
+
+.slider {
+    margin: 8px;
+    width: 90%;
+}
+
+.precio{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 34px;
+}
+
+h3{
+    margin: auto 0;
+    font-weight: 500;
+}
+
+.sub{
+    color:colors.$gray-color;
+    cursor: pointer;
+    margin: 0;
+    padding: 5px 10px;
+}
+
+.sub:hover{
+    background: colors.$ligth-bg2;
+    color: colors.$secondary-color;
+}
+
+label{
+    color:colors.$gray-color;
+}
+
+a{
+    text-decoration: none;
+    color:colors.$gray-color;
+}
+
+a:hover{    
+    color: colors.$secondary-color;
+}
+
+.headm{
+    display: flex;
+    justify-content: space-between;
+}
+
+.input{
+    width: 500px;
+    margin: 0 20px;
+    border: none;
+    border-bottom: 1px solid colors.$gray-color;
+    font-size: 17px;
+    padding: 5px 10px;
+    background-image: url(../../../../assets/icons/search.svg);
+    background-repeat: no-repeat;
+    background-position: 490px ;
+    background-size: 16px;
+}
+
+mat-option{
+    height: 80px;
+}
+
+.option{
+    display: flex;
+}
+
+.option img{
+    height: 60px;
+    margin: auto 10px;
+}
+
+h4{
+    color: colors.$secondary-color;
+    margin: 3px;
+}
+
+.price {
+    color: colors.$primary-color900;
+    margin: auto 0;
+  }
+
+  .oferta{
+    margin: auto 10px;
+    color: gray;
+    font-size: 12px;
+    text-decoration: line-through;
+  }
+
+  .grid-card{
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
