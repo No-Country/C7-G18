@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 const path = require('path');
 
+// import individual service aws
+var S3 = require('aws-sdk/clients/s3');
+
 const cors = require('cors');
 const dotenv = require ("dotenv");
 
@@ -27,7 +30,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(fileUpload());
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/temp/',
+    debug: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //ROUTES
