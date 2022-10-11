@@ -3,20 +3,12 @@ const logger = require('morgan');
 const bodyParser = require("body-parser")
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
-const path = require('path');
 
-// import individual service aws
-var S3 = require('aws-sdk/clients/s3');
+require("dotenv").config();
 
-const cors = require('cors');
-const dotenv = require ("dotenv");
-
-dotenv.config()
-
-
-
-
+const cors = require("cors");
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(cors({
     origin:"*",
@@ -25,6 +17,7 @@ app.use(cors({
 }));
 
 app.use(logger('combined'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -35,13 +28,10 @@ app.use(fileUpload({
     tempFileDir: '/temp/',
     debug: true
 }));
-app.use(express.static(path.join(__dirname, 'public')));
 
-//ROUTES
-const productsRoute = require('./routes/products');
-
-//USE ROUTES
-app.use('/products', productsRoute);
-
-
-module.exports = app;
+//Routes:
+//http://localhost/api/....
+app.use("/api",require("./routes"));
+app.listen(port, () => {
+    console.log(`http://localhost:${port}`);
+})

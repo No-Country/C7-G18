@@ -2,13 +2,13 @@ const S3 = require('aws-sdk/clients/s3');
 const fs = require('fs');
 
 const region = process.env.AWS_REGION;
-const accessKey = process.env.AWS_ACCESS_KEY;
-const secretKey = process.env.AWS_SECRET_KEY;
+const accessKeyId = process.env.AWS_ACCESS_KEY;
+const secretKeyId = process.env.AWS_SECRET_KEY;
 
 const storage = new S3({
     region,
-    accessKey,
-    secretKey
+    accessKeyId,
+    secretKeyId
 })
 
 const getBuckets = () =>{

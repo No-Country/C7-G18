@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { database } = require('../controllers/helpers');
+const { database } = require('./helpers');
 
 /* GET ALL PRODUCTS */
 router.get('/', function(req, res) {
