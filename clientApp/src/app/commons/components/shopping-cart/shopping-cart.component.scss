@@ -1,0 +1,22 @@
+@use '../../styles/colors.scss';
+
+.container {
+	color: rgb(155, 155, 155);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card {
+	margin: 3rem 0 1rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.subTotal{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	justify-content: space-between;
+}

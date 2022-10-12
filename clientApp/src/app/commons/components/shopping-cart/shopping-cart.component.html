@@ -1,1 +1,28 @@
-<p>shopping-cart works!</p>
+<div class="container">
+	<div class="subContainer">
+		<h1 class="texPurple"><strong> Carrito de compras </strong></h1>
+
+		<div class="cardVacio" *ngIf="contador <= 0">
+			<div class="card">
+				<img src="assets/icons/cart3.svg" alt="" />
+			</div>
+
+			<h2>NO HAY PRODUCTOS EN EL CARRITO</h2>
+		</div>
+	</div>
+</div>
+
+<div class="contador" [(ngModel)]="contador">
+	<p>Contador : {{ contador }}</p>
+</div>
+
+<button class="btn-large" (click)="anadir()">agregar</button>
+<button class="btn-large" (click)="quitar()">delete</button>
+
+<br />
+<hr />
+<div class="subTotal" *ngIf="contador >= 1">
+	<h2 class="texPurple"><strong> Sub-Total</strong></h2>
+	<h2 color="primary">S/. {{ contador }}</h2>
+</div>
+<button mat-raised-button color="primary" class="btn-large" *ngIf="contador >= 1">VER CARRITO</button>
