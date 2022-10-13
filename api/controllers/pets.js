@@ -58,7 +58,7 @@ const delete_pet = (req,res) => {
 const add_pet = async (req,res) => {
     if(req.method == 'POST'){
         const data = await getBuckets()
-        bucket=data.Buckets[2].Name;
+        bucket=data.Buckets[1].Name;
         image = req.files.images;
         let { name } = req.body;
         if(!req.files || Object.keys(req.files).length === 0){

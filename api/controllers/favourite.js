@@ -1,8 +1,8 @@
 const {database } = require("../config/db");
 
-const get_brands = (req,res) => {
+const get_favourites = (req,res) => {
 
-    database.table('brand as b')
+    database.table('favourite as b')
         .withFields([
             'b.id',
             'b.name',
@@ -16,20 +16,20 @@ const get_brands = (req,res) => {
             if (prods.length > 0) {
                 res.status(200).json({
                     count: prods.length,
-                    brand: prods
+                    favourite: prods
                 })
             } else {
-                res.json({message: 'No brands can be founded'})
+                res.json({message: 'No favourites can be founded'})
             }
         })
         .catch(err => console.log(err));
 }
 
-const get_brand = (req,res) => {
-    let brandId = req.params.id;
-    console.log(brandId)
+const get_favourite = (req,res) => {
+    let favouriteId = req.params.id;
+    console.log(favouriteId)
 
-    database.table('brand as b')
+    database.table('favourite as b')
     .withFields([
         'b.id',
         'b.name',
@@ -37,30 +37,30 @@ const get_brand = (req,res) => {
         'b.observation',
         'b.made_in'
     ])
-    .filter({'b.id' : brandId})
+    .filter({'b.id' : favouriteId})
     .get()
-    .then(brand => {
-        if (brand) {
-            res.status(200).json(brand);
+    .then(favourite => {
+        if (favourite) {
+            res.status(200).json(favourite);
         } else {
-            res.json({message: `No brand can be founded with id ${brandId}`})
+            res.json({message: `No favourite can be founded with id ${favouriteId}`})
         }
     })
     .catch(err => console.log(err));
 }
 
-const update_brand = (req,res) => {
-    console.log("updated brand");
+const update_favourite = (req,res) => {
+    console.log("updated favourite");
 }
 
-const delete_brand = (req,res) => {
-    console.log("deleted brand");
+const delete_favourite = (req,res) => {
+    console.log("deleted favourite");
 }
 
-const add_brand = async (req,res) => {
+const add_favourite = async (req,res) => {
     if(req.method == 'POST'){
     let { name, description, observation, made_in } = req.body;
-    database.table('brand as b')
+    database.table('favourite as b')
     .withFields([
         'b.id',
         'b.name',
@@ -70,19 +70,19 @@ const add_brand = async (req,res) => {
     ])
     .filter({'b.name' : name})
     .get()
-    .then(brand => {
-        if (brand) {
+    .then(favourite => {
+        if (favourite) {
             res.json({message: `${name} is already in the database`})
         } else {
-            database.table('brand')
+            database.table('favourite')
             .insert({
                 name: name,
                 description: description,
                 observation: observation,
                 made_in: made_in
             })
-            .then(newBrand=>{
-                res.json({message:`The brand ${name} was uploaded succesfully`, success: true})
+            .then(newfavourite=>{
+                res.json({message:`The favourite ${name} was uploaded succesfully`, success: true})
             })
             .catch(error=>console.log(error))
         }
@@ -91,4 +91,4 @@ const add_brand = async (req,res) => {
     
     }
 }
-module.exports = {get_brands, get_brand, update_brand, delete_brand, add_brand};
+module.exports = {get_favourites, get_favourite, update_favourite, delete_favourite, add_favourite};
