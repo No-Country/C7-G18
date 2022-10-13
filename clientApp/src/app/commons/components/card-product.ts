@@ -21,17 +21,23 @@ export interface CardProduct {
 }
 
 export interface Product{
-    id:string,
+    id?:string,
     name:string,
     price:number,
     img:string,
-    date_create:string,
-    discount:number,
-    stock:number,
-    category: string,
-    subcategory:string,
-    brand:string,
-    pet:string
+    date_create?:string,
+    discount?:number,
+    stock?:number,
+    category?: string,
+    subcategory?:string,
+    brand?:string,
+    pet?:string,
+
+    description?:string,
+    sold:number,
+
+    meGusta?:boolean,
+    nuevo?:boolean
 }
 
 export interface newPoducts{

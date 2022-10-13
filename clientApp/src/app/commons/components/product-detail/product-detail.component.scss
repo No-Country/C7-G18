@@ -1,0 +1,99 @@
+@use '../../../commons/styles/colors.scss';
+
+
+.detail{
+    display: flex;
+    width: 800px;
+    height: 550px;
+}
+
+.flex{
+    display: flex;
+}
+
+.img{
+    height: 400px;
+    margin: auto;
+}
+
+h2{
+    margin-top: 15px;
+}
+
+
+a{
+    text-decoration: none;
+    color:colors.$gray-color-3;
+}
+
+a:hover{    
+    color: colors.$secondary-color;
+}
+
+h3{
+    margin: auto 0;
+    font-weight: 500;
+}
+
+h3 a:last-of-type{
+    color: colors.$secondary-color;
+}
+
+.cont{
+    margin: auto 5px;
+    width: 30px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.slash{
+    color: colors.$primary-color;
+  }
+
+  button {
+    border: none;
+    outline: 0;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    width: 15px;
+    min-width: 45px;
+    max-height: 40px;
+    margin: auto 0;
+    line-height: 0;
+    padding: 10px 0;
+  }
+
+
+  
+ .btn{
+    background: transparent;
+    color: black;
+    font-size: 25px;
+   }
+
+   .btnm{
+    margin-left: 20px;
+   }
+
+   .price {
+    color: colors.$primary-color900;
+    font-size: 22px;
+    margin: auto 0;
+  }
+  
+  .oferta{
+    color: gray;
+    font-size: 15px;
+    text-decoration: line-through;
+    margin: auto 10px;
+  }
+
+  .margin{
+    margin: 20px 0;
+  }
+
+  p{
+    margin: auto 0;
+  }

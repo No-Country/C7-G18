@@ -1,0 +1,39 @@
+<div class="detail">
+    <img class="img" [src]=product.img alt="">
+
+    <div class="data">
+        <h3><a href="/">Inicio </a><a href="" *ngIf="product.pet"><span class="slash">/</span> {{product.pet}} </a> <a href="" *ngIf="product.category"><span class="slash">/</span> {{product.category}} </a><a href="" *ngIf="product.subcategory"><span class="slash">/</span> {{product.subcategory}}</a></h3>
+
+        <h2>{{product.name}}</h2>
+        <h5>Marca: {{product.brand}}</h5>
+
+        <div class="flex" *ngIf="!product.discount">
+            <h4 class="price">${{product.price}}</h4>
+        </div> 
+        <div class="flex" *ngIf="product.discount">
+            <h4 class="price">${{product.discount}}</h4>
+            <h4 class="oferta">${{product.price}}</h4>
+        </div>  
+
+        <div class="flex margin">
+            <button class="btn" (click)="cartNumber=cartNumber + 1">+</button>
+            <h4 class="cont">{{cartNumber}}</h4>
+            <button class="btn" (click)="cartNumber=cartNumber - 1">-</button>            
+            <button mat-raised-button color="accent" class="btnm">
+                <img src="assets/icons/cart.svg" alt="">
+            </button>
+        </div>
+        <h5>Descripción:</h5>
+        <p>{{product.description}}</p>
+
+        <div class="flex">
+            <button class="btn" (click)="like()">
+                <img *ngIf=!product.meGusta src="assets/icons/heartE.svg" alt=""> 
+                <img *ngIf="product.meGusta" src="assets/icons/heartF.svg" alt="">
+            </button>
+            <p>Agregar a mi lista deseos</p>
+        </div>
+
+    </div>
+
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild  } from '@angular/core';
 import KeenSlider, { KeenSliderInstance } from "keen-slider"
-import { CardProduct } from 'src/app/commons/components/card-product';
+import { Product } from 'src/app/commons/components/card-product';
 
 @Component({
   selector: 'app-home-page',
@@ -14,7 +14,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     for (const card of this.cards) {
-      if(card.vendidos >= 30){
+      if(card.sold >= 30){
         this.cardsMasVendidos.push(card)
       }
     }
@@ -85,87 +85,128 @@ export class HomePageComponent implements OnInit {
   }
 
 
-  cardsMasVendidos:CardProduct[]=[]
+  cardsMasVendidos:Product[]=[]
 
-  cards:CardProduct[]=[
+  cards:Product[]=[
     {
       img:'assets/images/image 17.svg',
-      nombre:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-      precio:19.99,
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:19.99,
       meGusta:false,
-      vendidos:35
+      sold:35
     },
     {
       img:'assets/images/image 65.svg',
-      nombre:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-      precio:15.99,
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:15.99,
       meGusta:true,
-      vendidos:5
+      sold:5
     },
     {
       img:'assets/images/image 17.svg',
-      nombre:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-      precio:9.99,
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:9.99,
       meGusta:false,
-      oferta:5.99,
+      discount:5.99,
       nuevo:true,
-      vendidos:40
+      sold:40
     },
     {
       img:'assets/images/image 17.svg',
-      nombre:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-      precio:19.99,
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:19.99,
       meGusta:false,
       nuevo:true,
-      vendidos:10
+      sold:10
     },
     {
       img:'assets/images/image 65.svg',
-      nombre:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-      precio:15.99,
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:15.99,
       meGusta:false,
-      oferta:12.99,
+      discount:12.99,
       nuevo:true,
-      vendidos:1
+      sold:1
     },
     {
       img:'assets/images/image 17.svg',
-      nombre:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-      precio:9.99,
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:9.99,
       meGusta:false,
-      vendidos:15
+      sold:15
     },
     {
       img:'assets/images/image 17.svg',
-      nombre:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-      precio:9.99,
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:9.99,
       meGusta:false,
-      oferta:5.99,
+      discount:5.99,
       nuevo:true,
-      vendidos:48
+      sold:48
     },
     {
       img:'assets/images/image 17.svg',
-      nombre:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-      precio:19.99,
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:19.99,
       meGusta:false,
-      vendidos:4
+      sold:4
     },
     {
       img:'assets/images/image 65.svg',
-      nombre:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-      precio:15.99,
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:15.99,
       meGusta:false,
-      oferta:12.99,
+      discount:12.99,
       nuevo:true,
-      vendidos:100
+      sold:100
+    },
+    {
+      img:'assets/images/image 65.svg',
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:9.99,
+      meGusta:false,
+      sold:37
+    },
+    {
+      img:'assets/images/image 65.svg',
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:15.99,
+      meGusta:false,
+      discount:12.99,
+      nuevo:true,
+      sold:100
     },
     {
       img:'assets/images/image 17.svg',
-      nombre:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-      precio:9.99,
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:9.99,
       meGusta:false,
-      vendidos:37
-    }
+      sold:37
+    },
+    {
+      img:'assets/images/image 65.svg',
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:15.99,
+      meGusta:false,
+      discount:12.99,
+      nuevo:true,
+      sold:100
+    },
+    {
+      img:'assets/images/image 65.svg',
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:9.99,
+      meGusta:false,
+      sold:37
+    },
+    {
+      img:'assets/images/image 65.svg',
+      name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+      price:15.99,
+      meGusta:false,
+      discount:12.99,
+      nuevo:true,
+      sold:100
+    },
   ]
 }
