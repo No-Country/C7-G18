@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductDetailComponent } from './product-detail.component';
-import { MatButtonModule } from '@angular/material/button';
+import { FormSharedModule } from '../../shared/form-shared.module';
 
 
 
@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
   declarations: [ProductDetailComponent],
   imports: [
     CommonModule,
-    MatButtonModule
+    FormSharedModule
   ], 
   exports:[ProductDetailComponent]
 })

@@ -8,17 +8,27 @@ import { Product } from 'src/app/commons/components/card-product';
 const cards:Product[]=[
   {
     img:'assets/images/image 17.svg',
-    name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
+    name:'MIMASKOT Gato Adulto',
     price:19.99,
     meGusta:false,
-    sold:35
+    sold:35,
+    description:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum ipsum perspiciatis atque laudantium sint nobis laboriosam pariatur eaque facilis saepe nemo quam, placeat optio temporibus ex odio eligendi! Eaque, nisi.',
+    brand:'DogChow',
+    category:'Alimentación',
+    subcategory:'Croquetas',
+    pet:'Gatos'
   },
   {
     img:'assets/images/image 65.svg',
     name:'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
     price:15.99,
     meGusta:true,
-    sold:5
+    sold:5,
+    description:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum ipsum perspiciatis atque laudantium sint nobis laboriosam pariatur eaque facilis saepe nemo quam, placeat optio temporibus ex odio eligendi! Eaque, nisi.',
+    brand:'CatChow',
+    category:'Alimentación',
+    subcategory:'Balanceado',
+    pet:'Gatos'
   },
   {
     img:'assets/images/image 17.svg',
@@ -178,6 +188,13 @@ export class StorePageComponent implements OnInit {
   
 
 
+  openNav() {
+    document.getElementById("sidenav")!.style.width = "250px";
+  }
+  
+  closeNav() {
+    document.getElementById("sidenav")!.style.width = "0";
+  }
 
 
 

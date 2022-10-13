@@ -1,7 +1,8 @@
 <img class="banner" src="assets/images/bannerStore.svg" alt="">
 
 <div class="store">
-    <div class="side">
+    <div class="side" id="sidenav">
+        <button (click)="closeNav()" class="close"><mat-icon>close</mat-icon></button>
         <mat-accordion>
             <mat-expansion-panel expanded class="mat-elevation-z0">
                 <mat-expansion-panel-header>
@@ -78,6 +79,7 @@
     </div>
  
     <div class="main">
+        <button (click)="openNav()" class="open"><< Filtrar</button>
         <div class="headm">
             <h3><a href="/">Inicio </a><a href="" *ngIf="pet"><span class="slash">/</span> {{pet}} </a> <a href="" *ngIf="category"><span class="slash">/</span> {{category}} </a><a href="" *ngIf="subcategory"><span class="slash">/</span> {{subcategory}}</a></h3>
 
