@@ -12,11 +12,11 @@ const get_brands = (req,res) => {
         ])
         .sort({id:1})
         .getAll()
-        .then(prods => {
-            if (prods.length > 0) {
+        .then(results => {
+            if (results.length > 0) {
                 res.status(200).json({
-                    count: prods.length,
-                    brand: prods
+                    count: results.length,
+                    brand: results
                 })
             } else {
                 res.json({message: 'No brands can be founded'})
