@@ -1,0 +1,79 @@
+@use '../../styles/colors.scss';
+
+html {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	display: flex;
+	justify-content: space-evenly;
+	// justify-content: center;
+	// justify-content: space-around;
+}
+
+.envioFacturacion {
+	width: 50%;
+	height: 100%;
+	margin: 0 2rem;
+}
+
+.resumenPedido {
+	width: 50%;
+	height: 100%;
+	margin: 0 2rem;
+	border: solid colors.$secondary-color;
+	border-start-start-radius: 10px;
+	border-start-end-radius: 10px;
+}
+
+.tituloPedido {
+	padding-top: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pedido {
+	display: flex;
+	justify-content: center;
+	justify-content: space-between;
+	border-bottom: 1px solid gray;
+	margin: 1rem;
+}
+
+.pagar {
+	margin: 0.6rem 0;
+}
+
+.total {
+	display: flex;
+	justify-content: center;
+	justify-content: space-between;
+	margin-top: 1rem;
+	background-color: #d3c6f5;
+	padding: 0.5rem;
+	margin: 0;
+}
+
+.imgPaypal {
+	height: 33px;
+	width: 33px;
+	margin: 0 0.5rem;
+}
+
+@media (max-width: 600px) {
+	.container {
+		display: inline-block;
+		margin: 1rem 2rem;
+        padding: 0;
+	}
+
+	.envioFacturacion {
+		width: 100%;
+	}
+
+	.resumenPedido {
+		width: 100%;
+	}
+}

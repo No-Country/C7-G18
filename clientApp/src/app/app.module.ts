@@ -7,8 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotfoundComponent } from './pages/page-notfound/page-notfound.component';
 
 
+
 @NgModule({
-	declarations: [AppComponent, PageNotfoundComponent  ],
+	declarations: [AppComponent, PageNotfoundComponent ],
 	imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
 	providers: [],
 	bootstrap: [AppComponent],

@@ -16,8 +16,8 @@
 	<p>Contador : {{ contador }}</p>
 </div>
 
-<button class="btn-large" (click)="anadir()">agregar</button>
-<button class="btn-large" (click)="quitar()">delete</button>
+<button class="btn-large" (click)="anadir()">Agregar</button>
+<button class="btn-large" (click)="quitar()">Delete</button>
 
 <br />
 <hr />
@@ -25,4 +25,4 @@
 	<h2 class="texPurple"><strong> Sub-Total</strong></h2>
 	<h2 color="primary">S/. {{ contador }}</h2>
 </div>
-<button mat-raised-button color="primary" class="btn-large" *ngIf="contador >= 1">VER CARRITO</button>
+<button mat-raised-button color="primary" class="btn-large" *ngIf="contador >= 1" (click)="abrirCarrito()">VER CARRITO</button>

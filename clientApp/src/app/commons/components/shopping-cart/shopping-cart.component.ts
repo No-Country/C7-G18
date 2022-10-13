@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PagoComponent } from '../pago/pago.component';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
 	selector: 'app-shopping-cart',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ShoppingCartComponent implements OnInit {
 	contador: number = 0;
 
-	constructor() {}
+	constructor(public dialogRef: MatDialogRef<ShoppingCartComponent>, private _matDialog: MatDialog) {}
 
 	ngOnInit(): void {}
 
@@ -18,5 +20,14 @@ export class ShoppingCartComponent implements OnInit {
 
 	quitar() {
 		this.contador -= 1;
+	}
+
+	abrirCarrito() {
+		this.dialogRef.close();
+
+		this._matDialog.open(PagoComponent, {
+			maxWidth: '800px',
+			maxHeight: '500px'
+		});
 	}
 }
