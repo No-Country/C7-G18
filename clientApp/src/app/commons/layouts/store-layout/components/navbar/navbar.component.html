@@ -1,43 +1,40 @@
 <div class="navbar">
-    <button class="menu btn2" (click)="togglePanel()"><img src="assets/icons/menu.svg" alt=""></button>       
-    
-    <a class="logo" href="#">
-        <img src="assets/images/Isotipo.png">
-        <h3> PetStore</h3>
-    </a>
-    <div class="spacer"></div>
-    <div class="links">
-        <p class="p1"><a href=""> Home</a></p>
-        <p class="p1"><a href="/store"> Tienda</a></p>
-        <p class="p1"><a (click)="escribenos()"> Contacto</a></p>
-    </div>    
-    <p class="p1 links"><button mat-raised-button color="accent"  (click)="openModalLogin()" >Ingresar</button></p>
-    
+	<button class="menu btn2" (click)="togglePanel()"><img src="assets/icons/menu.svg" alt="" /></button>
 
-    <button class="btn2 btn3" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"><img class="user" src="assets/images/noname.svg" alt="">
-      </button>
-      <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item class="btnCuenta">
-          <span><img src="assets/icons/person.svg" alt=""> Mi Cuenta</span>
-        </button>        
-        <button mat-menu-item class="btnCuenta">
-          <span><img src="assets/icons/out.svg" alt=""> Salir</span>
-        </button>
-      </mat-menu>
+	<a class="logo" href="#">
+		<img src="assets/images/Isotipo.png" />
+		<h3>PetStore</h3>
+	</a>
+	<div class="spacer"></div>
+	<div class="links">
+		<p class="p1"><a href=""> Home</a></p>
+		<p class="p1"><a href="/store"> Tienda</a></p>
+		<p class="p1"><a (click)="escribenos()"> Contacto</a></p>
+	</div>
+	<p class="p1 links" *ngIf="!_authService.isLogin"><button mat-raised-button color="accent" (click)="openModalLogin()">Ingresar</button></p>
 
-    <div class="cart" (click)="openModalShoppingCart()">
-        <img src="assets/icons/cart2.svg" alt="">   
-        <div class="contador"><p>10</p></div>
-    </div>
+	<button *ngIf="_authService.isLogin" class="btn2 btn3" [matMenuTriggerFor]="menu">
+		<img class="user" [src]="!_authService.userPhotoUrl ? 'assets/images/noname.svg':_authService.userPhotoUrl" />
+	</button>
 
+	<mat-menu #menu="matMenu" xPosition="before">
+		<button mat-menu-item class="btnCuenta">
+			<span><img src="assets/icons/person.svg" alt="" /> Mi Cuenta</span>
+		</button>
+		<button mat-menu-item class="btnCuenta" (click)="logout()">
+			<span><img src="assets/icons/out.svg" alt=""/> Salir</span>
+		</button>
+	</mat-menu>
+
+	<div class="cart" (click)="openModalShoppingCart()">
+		<img src="assets/icons/cart2.svg" alt="" />
+		<div class="contador"><p>10</p></div>
+	</div>
 </div>
 
 <mat-expansion-panel [expanded]="panelOpenState" class="expand menu">
-    <p class="p1"><a class="lh" href=""> Home</a></p>        
-    <p class="p1"><a class="lh" href="/store"> Tienda</a></p>          
-    <p class="p1"><a class="lh" (click)="escribenos()"> Contacto</a></p>
-    <p class="p1"><button mat-raised-button color="accent"  (click)="openModalLogin()" >Ingresar</button></p>
+	<p class="p1"><a class="lh" href=""> Home</a></p>
+	<p class="p1"><a class="lh" href="/store"> Tienda</a></p>
+	<p class="p1"><a class="lh" (click)="escribenos()"> Contacto</a></p>
+	<p class="p1" *ngIf="!_authService.isLogin" ><button mat-raised-button color="accent" (click)="openModalLogin()">Ingresar</button></p>
 </mat-expansion-panel>
-
-
-
