@@ -3,7 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/commons/components/login/login.component';
 import { ContactoComponent } from 'src/app/commons/components/contacto/contacto.component';
 import { ShoppingCartComponent } from '../../../../components/shopping-cart/shopping-cart.component';
-
+import { AuthService } from 'src/app/commons/services/auth.service';
+import { AlertifyService } from 'src/app/commons/services/alertify.service';
 
 @Component({
 	selector: 'app-navbar',
@@ -11,12 +12,19 @@ import { ShoppingCartComponent } from '../../../../components/shopping-cart/shop
 	styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-	constructor(private _matDialog: MatDialog) {}
+	constructor(
+		private _matDialog: MatDialog, 
+		public _authService: AuthService,
+		private _alertify: AlertifyService,
+		) {}
 
 	panelOpenState: boolean = false;
+	
+	ngOnInit() {
+	}
 
 	togglePanel() {
-    	this.panelOpenState = !this.panelOpenState
+		this.panelOpenState = !this.panelOpenState;
 	}
 
 	openModalLogin() {
@@ -26,23 +34,22 @@ export class NavbarComponent implements OnInit {
 				width: '95%',
 				maxHeight: '670px'
 			});
-		}else{			
+		} else {
 			this._matDialog.open(LoginComponent, {
 				width: '500px',
 				maxHeight: '670px'
 			});
 		}
-		}
+	}
 
 	escribenos() {
-		
 		if (screen.width < 500) {
 			this._matDialog.open(ContactoComponent, {
 				maxWidth: '100vw',
 				width: '95%',
 				maxHeight: '670px'
 			});
-		}else{			
+		} else {
 			this._matDialog.open(ContactoComponent, {
 				width: '500px',
 				maxHeight: '670px'
@@ -55,22 +62,30 @@ export class NavbarComponent implements OnInit {
 			this._matDialog.open(ShoppingCartComponent, {
 				maxWidth: '100vw',
 				width: '95%',
-				maxHeight: '670px',
-				
+				maxHeight: '670px'
 			});
-		}else{			
+		} else {
 			this._matDialog.open(ShoppingCartComponent, {
 				width: '400px',
 				height: '100vh',
 				position: {
 					top: '0px',
 					right: '0px'
-				  }
+				}
 			});
 		}
-		}
+	}
+
+	logout(): void {
+		this._authService
+			.signOut()
+			.then(() => {
+				localStorage.removeItem('userLogin');
+			})
+			.catch(() =>
+				this._alertify.error('Error al Salir')
+			);
+	}
 
 	esMas850: boolean = false;
-
-	ngOnInit(): void {}
 }
