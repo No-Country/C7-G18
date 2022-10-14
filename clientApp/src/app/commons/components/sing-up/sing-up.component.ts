@@ -3,6 +3,8 @@ import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { NewUSer } from '../modelos/newUser';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { AuthService } from '../../services/auth.service';
+import { AlertifyService } from '../../services/alertify.service';
 
 @Component({
 	selector: 'app-sing-up',
@@ -10,7 +12,13 @@ import { LoginComponent } from '../login/login.component';
 	styleUrls: ['./sing-up.component.scss']
 })
 export class SingUpComponent implements OnInit {
-	constructor(public dialogRef: MatDialogRef<SingUpComponent>, private _matDialog: MatDialog, private _formBuilder: FormBuilder) {
+	constructor(
+		public dialogRef: MatDialogRef<SingUpComponent>, 
+		private _matDialog: MatDialog, 
+		private _formBuilder: FormBuilder,
+		private _authService: AuthService,
+		private _alertify: AlertifyService,
+		) {
 		this._loadFormGroup();
 	}
 
@@ -18,17 +26,7 @@ export class SingUpComponent implements OnInit {
 	}
 
 	formGroup!: FormGroup;
-
-	user: NewUSer[] = [new NewUSer('Alex', 'Alexand@gmail.com', 1234)];
-	name: string;
-	email: string;
-	password: number;
 	hide = true;
-
-	createUser() {
-		let newUser = new NewUSer(this.name, this.email, this.password);
-		this.user.push(newUser);
-	}
 
 	private _loadFormGroup(): void {
 		this.formGroup = this._formBuilder.group({
@@ -37,11 +35,31 @@ export class SingUpComponent implements OnInit {
 		});
 	}
 
-	loginByPassword() {
+	createUser() {
 		if (this.formGroup.valid) {
-			console.log(this.formGroup.value);
+			
 		}
+		
 	}
+
+	registerWithGoogle(){
+		this._authService
+			.googleAuth()
+			.then((res) => this.dialogRef.close({ isLogin: true }))
+			.catch((e) => this._alertify.error(e.code));
+	}
+
+	/*setPerfilUser(fullName: string): void {
+		this._authService
+			.getCurrentUser()
+			.then((res) => {
+				res?.updateProfile({ displayName: fullName });
+				res?.sendEmailVerification();
+			})
+			.then(() => this.openDialogVerificationEmail())
+			.catch((e) => this._toast.error({ detail: 'Error', summary: e.code, duration: 5000 }))
+			.finally(() => (this.disableButton = false));
+	}*/
 
 	loginUser() {
 		this.dialogRef.close();

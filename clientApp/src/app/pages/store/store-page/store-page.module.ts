@@ -5,6 +5,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { FormSharedModule } from '../../../commons/shared/form-shared.module';
 import { StorePageComponent } from './store-page.component';
@@ -23,7 +24,8 @@ export const routes: Routes = [{ path: '', component: StorePageComponent }];
         MatAutocompleteModule,
         MatPaginatorModule,
         CardProductModule,
-        MatTableModule
+        MatTableModule,
+        MatSidenavModule
     ]
     
 })
