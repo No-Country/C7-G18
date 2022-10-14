@@ -10,7 +10,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 import { environment } from '../environments/environment';
 import { FirebaseModule } from './commons/shared/firebase-shared.module';
-
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 
 @NgModule({
 
@@ -21,6 +22,8 @@ import { FirebaseModule } from './commons/shared/firebase-shared.module';
 		BrowserAnimationsModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		FirebaseModule,
+		provideFirebaseApp(() => initializeApp(environment.firebase)),
+		provideFirestore(()=>getFirestore())
 	],
 	providers: [],
 	bootstrap: [AppComponent],
