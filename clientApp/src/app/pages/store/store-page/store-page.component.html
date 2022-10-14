@@ -1,7 +1,8 @@
 <img class="banner" src="assets/images/bannerStore.svg" alt="">
 
 <div class="store">
-    <div class="side">
+    <div class="side" id="sidenav">
+        <button (click)="closeNav()" class="close"><mat-icon>close</mat-icon></button>
         <mat-accordion>
             <mat-expansion-panel expanded class="mat-elevation-z0">
                 <mat-expansion-panel-header>
@@ -76,10 +77,11 @@
     </mat-accordion>
 
     </div>
-
+ 
     <div class="main">
+        <button (click)="openNav()" class="open"><< Filtrar</button>
         <div class="headm">
-            <h3><a href="/">Inicio </a><a href="" *ngIf="pet">/ {{pet}} </a> <span *ngIf="category"><a href="" >/ {{category}}</a></span> <span *ngIf="subcategory"><a href="">/ {{subcategory}}</a></span></h3>
+            <h3><a href="/">Inicio </a><a href="" *ngIf="pet"><span class="slash">/</span> {{pet}} </a> <a href="" *ngIf="category"><span class="slash">/</span> {{category}} </a><a href="" *ngIf="subcategory"><span class="slash">/</span> {{subcategory}}</a></h3>
 
             
             <form class="example-form">                
@@ -93,13 +95,13 @@
                         <div class="option">
                             <img src="{{card.img}}" alt=""> 
                             <div>
-                                <h4>{{card.nombre}}</h4>
-                                <div class="option" *ngIf="!card.oferta">
-                                    <p class="price">${{card.precio}}</p>
+                                <h4>{{card.name}}</h4>
+                                <div class="option" *ngIf="!card.discount">
+                                    <p class="price">${{card.price}}</p>
                                 </div> 
-                                <div class="option" *ngIf="card.oferta">
-                                    <p class="price">${{card.oferta}}</p>
-                                    <p class="oferta">${{card.precio}}</p>
+                                <div class="option" *ngIf="card.discount">
+                                    <p class="price">${{card.discount}}</p>
+                                    <p class="oferta">${{card.price}}</p>
                                 </div> 
                             </div>
                         </div>
@@ -121,3 +123,4 @@
         </mat-paginator>
     </div>
 </div>
+

@@ -13,6 +13,7 @@ import { FirebaseModule } from './commons/shared/firebase-shared.module';
 
 
 @NgModule({
+
 	declarations: [AppComponent, PageNotfoundComponent  ],
 	imports: [
 		BrowserModule, 
