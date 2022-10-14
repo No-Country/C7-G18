@@ -1,5 +1,6 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import KeenSlider, { KeenSliderInstance } from "keen-slider"
+import { BrandService } from 'src/app/commons/services/brand.service';
 
 @Component({
   selector: 'app-marcas',
@@ -9,10 +10,13 @@ import KeenSlider, { KeenSliderInstance } from "keen-slider"
 })
 export class MarcasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private brandService:BrandService) { }
 
   ngOnInit(): void {
+   this.brandService.getBrand().subscribe(brands=>console.log(brands))
+   console.log('iniciando componente')
   }
+
 
   
   @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>
