@@ -1,1 +1,19 @@
-<p>subcategory-page works!</p>
+<div class="subs">
+
+    <div class="flex">
+        <h1>{{product.name}}</h1>
+        <mat-icon class="add">add_circle</mat-icon>
+    </div>
+    <h4>LISTADO DE SUBCATEGORÍAS</h4>
+
+    <mat-chip-list #chipList>
+        <mat-chip
+          *ngFor="let sub of product.subcategories"
+          (removed)="remove(sub)">
+          {{sub}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>    
+    </mat-chip-list>
+</div>

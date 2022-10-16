@@ -1,1 +1,18 @@
-<p>card-dashboard works!</p>
+<div class="card">
+    <div class="title">
+        <h2>{{cardDashboard.name|uppercase}}</h2>
+        <mat-icon class="icon" 
+                  *ngIf="cardDashboard.class=='Category'" 
+                  matTooltip="Subcategorías"
+                  matTooltipPosition="above"
+                  matTooltipClass="tip"
+                  (click)="openModalSubcategories()">
+                  menu
+        </mat-icon>
+    </div>
+    <h4>Fecha Creación: {{cardDashboard.created}}</h4>
+    <div class="buttons">
+        <button mat-flat-button color="accent">Editar</button>
+        <button mat-stroked-button color="accent" *ngIf="!cardDashboard.default">Eliminar</button>
+    </div>
+</div>

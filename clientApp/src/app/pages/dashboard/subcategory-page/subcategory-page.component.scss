@@ -1,0 +1,26 @@
+@use '../../../commons/styles/colors.scss';
+
+
+.subs{
+    padding: 15px;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.add{
+    font-size: 35px;
+    color: colors.$primary-color;
+    cursor: pointer;
+}
+
+h1{
+    font-size: 30px;
+    font-weight: 700;
+    margin:auto 0;
+    color: colors.$secondary-color;
+}
+

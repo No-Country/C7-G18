@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardDashboardComponent } from './card-dashboard.component';
-
+import { FormSharedModule } from '../../shared/form-shared.module';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -9,7 +10,10 @@ import { CardDashboardComponent } from './card-dashboard.component';
     CardDashboardComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    FormSharedModule,
+    MatTooltipModule
+  ],
+  exports:[CardDashboardComponent]
 })
 export class CardDashboardModule { }
