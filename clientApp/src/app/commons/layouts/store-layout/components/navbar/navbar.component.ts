@@ -13,7 +13,7 @@ import { AlertifyService } from 'src/app/commons/services/alertify.service';
 })
 export class NavbarComponent implements OnInit {
 	constructor(
-		private _matDialog: MatDialog, 
+		private _matDialog: MatDialog,  
 		public _authService: AuthService,
 		private _alertify: AlertifyService,
 		) {}

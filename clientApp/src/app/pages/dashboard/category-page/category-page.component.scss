@@ -1,0 +1,26 @@
+.cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);    
+}
+
+.card1{
+    margin: 0 auto;
+}
+
+h1{
+    font-size: 30px;
+    font-weight: 800;
+    margin:auto 0;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
+    padding: 20px 40px;
+    button{
+        margin: auto 0;
+        width: 200px;
+    }
+}
+

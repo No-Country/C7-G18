@@ -1,0 +1,55 @@
+@use '../../../commons/styles/colors.scss';
+
+
+table {
+    width: 100%;
+  }
+
+  .img{
+    height: 80px;
+  }
+
+  .flex{
+    display: flex;
+    justify-content: space-between;
+    height: 45px;
+    padding: 20px 40px;
+    button{
+        margin: auto 0;
+        width: 200px;
+    }
+}
+
+h1{
+    font-size: 30px;
+    font-weight: 800;
+    margin:auto 0;
+}
+
+th{
+    background: colors.$ligth-bg2;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center !important
+}
+
+td{
+    font-weight: 500;
+    color: colors.$gray-color;
+    text-align: center;
+}
+
+mat-icon{
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.icon1{
+    color: colors.$secondary-color900;
+}
+.icon2{
+    color: colors.$secondary-color;
+}
+.icon3{
+    color: colors.$red-color;
+}
