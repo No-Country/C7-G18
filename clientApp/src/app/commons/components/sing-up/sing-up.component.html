@@ -16,7 +16,7 @@
 
 				<mat-form-field appearance="outline">
 					<mat-label>Ingresa tu nombre</mat-label>
-					<input matInput placeholder="email@gmail.com" required formControlName="email" />
+					<input matInput placeholder="nombre" required formControlName="nombre" />
 					<mat-error *ngIf="formGroup.get('email')!.hasError('email')">Nombre invalido </mat-error>
 					<mat-error *ngIf="formGroup.get('email')!.hasError('required')">Mombre requerido </mat-error>
 				</mat-form-field>
