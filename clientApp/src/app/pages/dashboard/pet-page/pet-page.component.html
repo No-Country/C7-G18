@@ -1,6 +1,6 @@
 <div class="flex">
     <h1>Listado de Mascotas</h1>
-    <button mat-flat-button color="primary">Agregar Mascota</button>
+    <button mat-flat-button color="primary" (click)="openModalNew('Mascota','add')">Agregar Mascota</button>
 </div>
 <div class="cards">    
     <div *ngFor="let card of cards" class="card1">

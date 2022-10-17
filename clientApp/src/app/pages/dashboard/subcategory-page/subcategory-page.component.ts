@@ -17,14 +17,20 @@ export class SubcategoryPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  remove(sub: string): void {
-    const index = this.product.subcategories!.indexOf(sub);
+  modeAdd=false
+  modeEdit=false
+  modeDelete=false
 
-    if (index >= 0) {
-      this.product.subcategories!.splice(index, 1);
-    }
+  thisSub:string
+
+  add(){this.modeAdd=!this.modeAdd}
+  edit(s:string){
+    this.modeEdit=!this.modeEdit;
+    this.thisSub=s
   }
-
-
+  delete(s:string){
+    this.modeDelete=!this.modeDelete;
+    this.thisSub=s
+  }
 
 }
