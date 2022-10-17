@@ -11,17 +11,17 @@ import { IBrand } from '../../../../../commons/interfaces/front.interface';
 })
 export class MarcasComponent implements OnInit {
 
-  brands:IBrand[]=[]
+  brands:IBrand[]
 
   constructor(private brandService:BrandService) {
-     this.brandService.getBrand().subscribe({
-    next: brands=>this.brands=brands,
-    complete:()=>{console.log(this.brands)}
-   })
+     
    }
 
   ngOnInit(): void {
-    
+    this.brandService.getBrand().subscribe({
+    next: brands=>this.brands=brands,
+    complete:()=>{console.log(this.brands)}
+   })
   }
 
 
