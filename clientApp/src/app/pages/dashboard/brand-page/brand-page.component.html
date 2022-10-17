@@ -1,1 +1,9 @@
-<p>brand-page works!</p>
+<div class="flex">
+    <h1>Listado de Marcas</h1>
+    <button mat-flat-button color="primary" (click)="openModalNew('Marca','add')">Agregar Marca</button>
+</div>
+<div class="cards">    
+    <div *ngFor="let card of cards" class="card1">
+        <app-card-dashboard [cardDashboard]="card"></app-card-dashboard>
+    </div>
+</div>

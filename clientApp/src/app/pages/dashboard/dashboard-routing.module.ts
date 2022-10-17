@@ -32,7 +32,7 @@ const routes: Routes = [
                 path:'subcategory',
                 loadChildren: () => import('./subcategory-page/subcategory-page.module').then((m) => m.SubcategoryModule)
             },
-            {
+            { 
                 path:'',
                 loadChildren: () => import('./login-page/login-page.module').then((m) => m.LoginPageModule)
             }

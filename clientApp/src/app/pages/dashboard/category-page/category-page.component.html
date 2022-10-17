@@ -1,1 +1,9 @@
-<p>category-page works!</p>
+<div class="flex">
+    <h1>Listado de Categorías</h1>
+    <button mat-flat-button color="primary" (click)="openModalNew('Categoría','add')">Agregar Categoría</button>
+</div>
+<div class="cards">    
+    <div *ngFor="let card of cards" class="card1">
+        <app-card-dashboard [cardDashboard]="card"></app-card-dashboard>
+    </div>
+</div>

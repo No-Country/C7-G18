@@ -1,6 +1,7 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import KeenSlider, { KeenSliderInstance } from "keen-slider"
 import { BrandService } from 'src/app/commons/services/brand.service';
+import { IBrand } from '../../../../../commons/interfaces/front.interface';
 
 @Component({
   selector: 'app-marcas',
@@ -10,11 +11,17 @@ import { BrandService } from 'src/app/commons/services/brand.service';
 })
 export class MarcasComponent implements OnInit {
 
-  constructor(private brandService:BrandService) { }
+  brands:IBrand[]
+
+  constructor(private brandService:BrandService) {
+     
+   }
 
   ngOnInit(): void {
-   this.brandService.getBrand().subscribe(brands=>console.log(brands))
-   console.log('iniciando componente')
+    this.brandService.getBrand().subscribe({
+    next: brands=>this.brands=brands,
+    complete:()=>{console.log(this.brands)}
+   })
   }
 
 
@@ -24,6 +31,7 @@ export class MarcasComponent implements OnInit {
   slider!: KeenSliderInstance
 
   ngAfterViewInit() {
+    console.log('slider iniciado')
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
       breakpoints: {
         "(min-width: 400px)": {

@@ -1,1 +1,52 @@
-<p>subcategory-page works!</p>
+<div class="subs">
+  <div *ngIf="!modeAdd && !modeEdit && !modeDelete">
+    <div class="flex">
+      <h1>{{product.name}}</h1>
+        <mat-icon class="add" (click)="add()">add_circle</mat-icon>
+      </div>
+    <h4>LISTADO DE SUBCATEGORÍAS</h4>
+
+    <mat-chip-list #chipList>
+        <mat-chip
+          *ngFor="let sub of product.subcategories">
+          {{sub}}
+          <button matChipRemove (click)="edit(sub)">
+            <mat-icon color="accent">edit</mat-icon>            
+          </button>
+          <button matChipRemove (click)="delete(sub)">
+            <mat-icon color="warn">cancel</mat-icon>            
+          </button>
+        </mat-chip>    
+    </mat-chip-list>
+  </div>
+
+  <div *ngIf="modeAdd">
+    <h1 class="flex">{{product.name}}</h1>
+    <h4>NUEVA SUBCATEGORÍA</h4>
+    <input type="text" placeholder="Nonbre Subcategoría">
+    <div class="buttons">
+      <button mat-flat-button color="primary">Guardar</button>
+      <button mat-stroked-button color="primary" (click)="add()">Cancelar</button>
+    </div>
+  </div>
+
+  <div *ngIf="modeEdit">
+    <h1 class="flex">{{product.name}}</h1>
+    <h4>EDITAR SUBCATEGORÍA</h4>
+    <input type="text" [value]=thisSub>
+    <div class="buttons">
+      <button mat-flat-button color="primary">Guardar</button>
+      <button mat-stroked-button color="primary" (click)="edit('')">Cancelar</button>
+    </div>
+  </div>
+
+  <div *ngIf="modeDelete">
+    <h1 class="flex">{{product.name}}</h1>
+    <h3>¿Está seguro de eliminar la subcategoría <span class="span">{{thisSub}}</span>? Esta puede ser una acción irreversible.</h3>
+    <div class="buttons">
+      <button mat-flat-button color="primary">Guardar</button>
+      <button mat-stroked-button color="primary" (click)="delete('')">Cancelar</button>
+    </div>
+  </div>
+
+</div>

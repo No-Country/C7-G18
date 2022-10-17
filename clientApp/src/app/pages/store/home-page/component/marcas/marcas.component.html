@@ -1,41 +1,9 @@
 <div class="marcas">
 
     <div class="keen-slider" #sliderRef>
-        <div class="keen-slider__slide">
-        <img src="assets/marcas/marca1.svg" alt="">
+        <div *ngFor="let brand of brands" class="keen-slider__slide">
+            <img src={{brand.url}} alt={{brand.name}}>
+        </div>
+    
     </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca2.svg" alt="">
-    </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca3.svg" alt="">
-    </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca4.svg" alt="">
-    </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca5.svg" alt="">
-    </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca6.svg" alt="">
-    </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca7.svg" alt="">
-    </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca8.svg" alt="">
-    </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca9.svg" alt="">
-    </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca10.svg" alt="">
-    </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca11.svg" alt="">
-    </div>
-    <div class="keen-slider__slide">
-        <img src="assets/marcas/marca12.svg" alt="">
-    </div>
-</div>
 </div>
