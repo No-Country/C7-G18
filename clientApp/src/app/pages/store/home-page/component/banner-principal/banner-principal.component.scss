@@ -1,45 +1,47 @@
-
-
-.bg{
-    background: #5DBADC;
+.bg {
+	background: #5dbadc;
 }
 
-.image1{
-    background-image: url("../../../../../../assets/images/bannercel1.svg");
-background-size: cover;
-height: 75vw;
+.image1 {
+	// background-image: url('../../../../../../assets/images/bannercel1.svg');
+	background-image: url('https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/bannerPrincipal%2Fbannercel1.svg?alt=media&token=9e9a0de2-f535-4270-b37a-3989839e3ddb');
+	background-size: cover;
+	height: 75vw;
 }
 
-.image2{
-background-image: url("../../../../../../assets/images/bannercel2.svg");
-background-size: cover;
-height: 75vw;
+.image2 {
+	// background-image: url('../../../../../../assets/images/bannercel2.svg');
+	background-image: url('https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/bannerPrincipal%2Fbannercel2.svg?alt=media&token=11ac2457-b46d-4039-a39d-b8d87fd4ffb3');
+	background-size: cover;
+	height: 75vw;
 }
 
-.image3{
-background-image: url("../../../../../../assets/images/bannercel3.svg");
-background-size: cover;
-height: 75vw;
+.image3 {
+	// background-image: url('../../../../../../assets/images/bannercel3.svg');
+	background-image: url('https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/bannerPrincipal%2Fbannercel3.svg?alt=media&token=290bb69b-7fbd-49d1-9e50-efad42398db6');
+	background-size: cover;
+	height: 75vw;
 }
 
+@media (min-width: 420px) {
+	.image1 {
+		// background-image: url("../../../../../../assets/images/home1.svg");
+		background-image: url('https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/bannerPrincipal%2Fhome1.svg?alt=media&token=738db873-6bc1-482c-a47a-816ca6badfc9');
+		background-size: cover;
+		height: 32vw;
+	}
 
-@media(min-width:420px){
+	.image2 {
+		// background-image: url("../../../../../../assets/images/home2.svg");
+		background-image: url('https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/bannerPrincipal%2Fhome2.svg?alt=media&token=1326a900-41e5-417e-8dab-e25fd56e8fae');
+		background-size: cover;
+		height: 32vw;
+	}
 
-    .image1{
-        background-image: url("../../../../../../assets/images/home1.svg");
-    background-size: cover;
-    height: 32vw;
-}
-
-.image2{
-    background-image: url("../../../../../../assets/images/home2.svg");
-    background-size: cover;
-    height: 32vw;
-}
-
-.image3{
-    background-image: url("../../../../../../assets/images/home3.svg");
-    background-size: cover;
-    height: 32vw;
-}
+	.image3 {
+		// background-image: url("../../../../../../assets/images/home3.svg");
+		background-image: url('https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/bannerPrincipal%2Fhome3.svg?alt=media&token=4d0a2f96-69c2-47f3-a154-690015941536');
+		background-size: cover;
+		height: 32vw;
+	}
 }
