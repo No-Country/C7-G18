@@ -1,7 +1,10 @@
 export interface CardDashboard {
-    class:string,
+    id?:string,
+    class?:string,
+    tipo?:string,
     name:string,
-    created:string,
+    created?:string,
     subcategories?:string[],
-    default?:boolean
+    default?:boolean,
+    url?:string
 }

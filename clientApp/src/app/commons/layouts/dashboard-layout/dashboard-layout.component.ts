@@ -24,7 +24,7 @@ export class DashboardLayoutComponent implements OnInit {
   isExpanded = false;
 	indexPrevious = 0;
 	objMenu = [
-		{ title: 'Productos', active: true, icon: 'inventory_2', link:'/admin/products' },
+		{ title: 'Productos', active: false, icon: 'inventory_2', link:'/admin/products' },
 		{ title: 'Pedidos', active: false, icon: 'storefront', link: '/admin/order' },
 		{ title: 'Mascotas', active: false, icon: 'pets', link: '/admin/pet' },
 		{ title: 'Categorías', active: false, icon: 'widgets', link: '/admin/category' },

@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormSharedModule } from '../../../commons/shared/form-shared.module';
 import { BrandPageComponent } from './brand-page.component';
 import { CardDashboardModule } from '../../../commons/components/card-dashboard/card-dashboard.module';
+import { DialogBrandModule } from '../mat-dialogs/dialog-brand/dialog-brand.module';
 
 export const routes: Routes = [{ path: '', component: BrandPageComponent }];
 
 @NgModule({
     declarations: [BrandPageComponent],
-    imports: [RouterModule.forChild(routes), FormSharedModule, CardDashboardModule]
+    imports: [RouterModule.forChild(routes), FormSharedModule, CardDashboardModule, DialogBrandModule],
+    exports:[BrandPageComponent]
 })
 export class BrandModule { }
