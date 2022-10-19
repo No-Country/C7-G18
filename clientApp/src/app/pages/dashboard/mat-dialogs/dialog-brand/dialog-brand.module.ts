@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { DialogComponent } from './dialog.component';
+import { DialogBrandComponent } from './dialog-brand.component';
 import { FormSharedModule } from 'src/app/commons/shared/form-shared.module';
 
 
 
 @NgModule({
   declarations: [
-    DialogComponent
+    DialogBrandComponent
   ],
   imports: [
     FormSharedModule
   ],
-  exports:[DialogComponent]
+  exports:[DialogBrandComponent]
 })
-export class DialogModule { }
+export class DialogBrandModule { }

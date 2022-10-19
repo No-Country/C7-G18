@@ -1,4 +1,4 @@
-@use '../../../commons/styles/colors.scss';
+@use '../../../../commons/styles/colors.scss';
 
 
 .subs{
@@ -45,7 +45,23 @@ input{
     padding: 0 15px;
 }
 
+input::file-selector-button{    
+    height: 40px;
+    margin-left: -15px;
+    border-radius: 10px 0 0;
+    border: none;
+    border-right: 1px solid colors.$gray-color-3;
+    cursor: pointer;
+    color: colors.$gray-color;
+}
+
 .span{
     color: colors.$secondary-color;
     font-weight: 500;
+}
+
+.imgBrand{
+    display: block;
+    margin: 15px auto;
+    width: 150px;
 }

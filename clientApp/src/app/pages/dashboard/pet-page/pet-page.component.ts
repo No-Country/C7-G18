@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardDashboard } from 'src/app/commons/components/card-dashboard/card-dashboard';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogPetComponent } from '../mat-dialogs/dialog-pet/dialog-pet.component';
 
 @Component({
   selector: 'app-pet-page',
@@ -9,6 +9,8 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./pet-page.component.scss']
 })
 export class PetPageComponent implements OnInit {
+
+  clase='Mascota'
 
   constructor(private _matDialog: MatDialog) { }
 
@@ -18,7 +20,7 @@ export class PetPageComponent implements OnInit {
 
   openModalNew(tipo:string, modo:string, nombre?:string) {
 		if (screen.width < 500) {
-			this._matDialog.open(DialogComponent, {
+			this._matDialog.open(DialogPetComponent, {
 				maxWidth: '100vw',
 				width: '95%',
 				maxHeight: '670px',
@@ -29,7 +31,7 @@ export class PetPageComponent implements OnInit {
         }
 			});
 		} else {
-			this._matDialog.open(DialogComponent, {
+			this._matDialog.open(DialogPetComponent, {
 				width: '500px',
         data:{
           tipo,
