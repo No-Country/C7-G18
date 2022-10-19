@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardDashboard } from 'src/app/commons/components/card-dashboard/card-dashboard';
-<<<<<<< HEAD
 import { DialogComponent } from '../dialog/dialog.component';
 import { FormGroup } from '@angular/forms';
 import { MascotasService } from 'src/app/commons/services/mascotas.service';
 import { Mascotas } from 'src/app/commons/interfaces/mascotas.interface';
-=======
-import { DialogPetComponent } from '../mat-dialogs/dialog-pet/dialog-pet.component';
->>>>>>> de1f4a1eaf399b9ccb0e163b189a156daf7bca3b
 
 @Component({
 	selector: 'app-pet-page',
@@ -29,12 +25,6 @@ export class PetPageComponent implements OnInit {
       console.log(mascotas);
     })
 
-<<<<<<< HEAD
-=======
-  clase='Mascota'
-
-  constructor(private _matDialog: MatDialog) { }
->>>>>>> de1f4a1eaf399b9ccb0e163b189a156daf7bca3b
 
   }
 
