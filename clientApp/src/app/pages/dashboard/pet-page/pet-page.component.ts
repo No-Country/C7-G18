@@ -5,6 +5,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { FormGroup } from '@angular/forms';
 import { MascotasService } from 'src/app/commons/services/mascotas.service';
 import { Mascotas } from 'src/app/commons/interfaces/mascotas.interface';
+import { DialogPetComponent } from '../mat-dialogs/dialog-pet/dialog-pet.component';
 
 @Component({
 	selector: 'app-pet-page',
