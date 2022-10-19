@@ -1,0 +1,35 @@
+<div class="subs" *ngIf="dialog.modo=='add'">
+    <h1 class="flex">Agregar Marca</h1>
+    <form [formGroup]="formGroup" autocomplete="off">
+      <input type="text" placeholder="Nombre Marca" formControlName="name">
+      <input type="file" (change)="uploadImage($event)">
+      <img class="imgBrand" *ngIf="url" [src]="url" alt="">
+      <div class="buttons">
+        <button mat-flat-button color="primary" (click)="add()">Guardar</button>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+      </div>
+    </form>
+</div> 
+
+<div class="subs" *ngIf="dialog.modo=='edit'">
+    <h1 class="flex">Editar Marca</h1>
+    <form [formGroup]="formGroup" autocomplete="off">
+    <input type="text" formControlName="name" >
+    <input type="file" (change)="uploadImage($event)">    
+    <img class="imgBrand" *ngIf="url" [src]="url" alt="">    
+    <div class="buttons">
+      <button mat-flat-button color="primary" (click)="edit()">Editar</button>
+      <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+    </div>
+  </form>
+</div> 
+
+
+<div class="subs" *ngIf="dialog.modo=='delete'">
+    <h1 class="flex">Eliminar Marca</h1>
+    <h3>¿Está seguro de eliminar la marca <span class="span">{{dialog.nombre}}</span>? Esta puede ser una acción irreversible.</h3>
+    <div class="buttons">
+        <button mat-flat-button color="primary" (click)="delete()">Eliminar</button>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+      </div>
+  </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import KeenSlider, { KeenSliderInstance } from "keen-slider"
 import { BrandService } from 'src/app/commons/services/brand.service';
-import { IBrand } from '../../../../../commons/interfaces/front.interface';
+import { CardDashboard } from '../../../../../commons/components/card-dashboard/card-dashboard';
 
 @Component({
   selector: 'app-marcas',
@@ -11,7 +11,7 @@ import { IBrand } from '../../../../../commons/interfaces/front.interface';
 })
 export class MarcasComponent implements OnInit {
 
-  brands:IBrand[]
+  brands:CardDashboard[]
 
   constructor(private brandService:BrandService) {
      
