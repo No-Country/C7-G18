@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardDashboard } from '../../../commons/components/card-dashboard/card-dashboard';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogCategoryComponent } from '../mat-dialogs/dialog-category/dialog-category.component';
 
 @Component({
   selector: 'app-category-page',
@@ -10,7 +10,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class CategoryPageComponent implements OnInit {
 
-
+  clase='Categoría'
 
   constructor(private _matDialog: MatDialog) { }
 
@@ -20,7 +20,7 @@ export class CategoryPageComponent implements OnInit {
 
   openModalNew(tipo:string, modo:string, nombre?:string) {
 		if (screen.width < 500) {
-			this._matDialog.open(DialogComponent, {
+			this._matDialog.open(DialogCategoryComponent, {
 				maxWidth: '100vw',
 				width: '95%',
 				maxHeight: '670px',
@@ -31,7 +31,7 @@ export class CategoryPageComponent implements OnInit {
         }
 			});
 		} else {
-			this._matDialog.open(DialogComponent, {
+			this._matDialog.open(DialogCategoryComponent, {
 				width: '500px',
         data:{
           tipo,

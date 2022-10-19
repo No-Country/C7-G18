@@ -1,6 +1,6 @@
 @use '../../styles/colors.scss';
 
-.card{
+.cardD{
     height: 135px;
     width: 270px;
     border: 1px solid colors.$secondary-color-2;
@@ -31,4 +31,8 @@
     font-size: 17px;
     background: colors.$primary-color;
     
+}
+
+.img{
+    width: 60px;
 }
