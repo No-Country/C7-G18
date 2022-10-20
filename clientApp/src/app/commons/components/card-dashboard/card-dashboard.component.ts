@@ -47,4 +47,7 @@ export class CardDashboardComponent implements OnInit {
 		}
 	}
 
+
+
+
 }
