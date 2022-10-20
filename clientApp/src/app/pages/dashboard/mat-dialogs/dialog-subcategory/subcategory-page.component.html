@@ -1,0 +1,61 @@
+<div class="subs">
+  <div *ngIf="!modeAdd && !modeEdit && !modeDelete">
+    <div class="flex">
+      <h1>{{product.name}}</h1>
+        <mat-icon class="add" (click)="add()">add_circle</mat-icon>
+      </div>
+    <h4>LISTADO DE SUBCATEGORÍAS</h4>
+
+    <mat-chip-list #chipList>
+        <mat-chip (click)=edit(sub)
+          *ngFor="let sub of product.subcategories, let i=index">
+          {{sub}}          
+          <button matChipRemove (click)="delete(sub)">
+            <mat-icon color="warn">cancel</mat-icon>            
+          </button>
+        </mat-chip>    
+    </mat-chip-list>
+  </div>
+
+  <div *ngIf="modeAdd">
+    <h1 class="flex">{{product.name}}</h1>
+    <h4>NUEVA SUBCATEGORÍA</h4>
+    <form [formGroup]="formGroup" autocomplete="off">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre de la subcategoría</mat-label>
+      <input  matInput required formControlName="name" />					
+      <mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
+  </mat-form-field>  
+      <div class="buttons">
+        <button mat-flat-button color="primary" (click)="addSub()">Guardar</button>
+        <button mat-stroked-button color="primary" (click)="add()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="modeEdit">
+    <h1 class="flex">{{product.name}}</h1>
+    <h4>EDITAR SUBCATEGORÍA</h4>    
+    <form [formGroup]="formGroup" autocomplete="off">
+      <mat-form-field appearance="outline">
+        <mat-label>Nuevo nombre de la subcategoría</mat-label>
+        <input  matInput required formControlName="name" />					
+        <mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
+    </mat-form-field>
+    <div class="buttons">
+      <button mat-flat-button color="primary" (click)="editSub()">Editar</button>
+      <button mat-stroked-button color="primary" (click)="edit('')">Cancelar</button>
+    </div>
+    </form>
+  </div>
+
+  <div *ngIf="modeDelete">
+    <h1 class="flex">{{product.name}}</h1>
+    <h3>¿Está seguro de eliminar la subcategoría <span class="span">{{thisSub}}</span>? Esta puede ser una acción irreversible.</h3>
+    <div class="buttons">
+      <button mat-flat-button color="primary" (click)="deleteSub()">Eliminar</button>
+      <button mat-stroked-button color="primary" (click)="delete('')">Cancelar</button>
+    </div>
+  </div>
+
+</div>

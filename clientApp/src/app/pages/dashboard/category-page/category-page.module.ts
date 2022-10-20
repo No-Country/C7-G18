@@ -3,11 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormSharedModule } from '../../../commons/shared/form-shared.module';
 import { CategoryPageComponent } from './category-page.component';
 import { CardDashboardModule } from '../../../commons/components/card-dashboard/card-dashboard.module';
+import { DialogCategoryModule } from '../mat-dialogs/dialog-category/dialog-category.module';
 
 export const routes: Routes = [{ path: '', component: CategoryPageComponent }];
 
 @NgModule({
     declarations: [CategoryPageComponent],
-    imports: [RouterModule.forChild(routes), FormSharedModule, CardDashboardModule]
+    imports: [
+        RouterModule.forChild(routes), 
+        FormSharedModule, 
+        CardDashboardModule,
+        DialogCategoryModule
+    ]
 })
 export class CategoryModule { }

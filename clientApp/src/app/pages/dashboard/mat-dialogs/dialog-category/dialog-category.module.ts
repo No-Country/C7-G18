@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { DialogCategoryComponent } from './dialog-category.component';
+import { FormSharedModule } from '../../../../commons/shared/form-shared.module';
 
 
 
@@ -9,7 +9,8 @@ import { DialogCategoryComponent } from './dialog-category.component';
     DialogCategoryComponent
   ],
   imports: [
-    CommonModule
-  ]
+    FormSharedModule
+  ],
+  exports:[DialogCategoryComponent]
 })
 export class DialogCategoryModule { }

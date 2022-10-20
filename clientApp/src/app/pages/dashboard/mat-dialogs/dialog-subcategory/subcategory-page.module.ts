@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormSharedModule } from '../../../commons/shared/form-shared.module';
+import { FormSharedModule } from '../../../../commons/shared/form-shared.module';
 import { SubcategoryPageComponent } from './subcategory-page.component';
 import {MatChipsModule} from '@angular/material/chips';
 

@@ -1,4 +1,4 @@
-import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import KeenSlider, { KeenSliderInstance } from "keen-slider"
 import { BrandService } from 'src/app/commons/services/brand.service';
 import { CardDashboard } from '../../../../../commons/components/card-dashboard/card-dashboard';
@@ -9,7 +9,7 @@ import { CardDashboard } from '../../../../../commons/components/card-dashboard/
   styleUrls: ['../../../../../../../node_modules/keen-slider/keen-slider.min.css',
   './marcas.component.scss']
 })
-export class MarcasComponent implements OnInit {
+export class MarcasComponent implements OnInit , AfterViewInit{
 
   brands:CardDashboard[]
 

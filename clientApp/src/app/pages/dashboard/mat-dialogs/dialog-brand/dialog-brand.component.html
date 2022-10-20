@@ -1,8 +1,13 @@
 <div class="subs" *ngIf="dialog.modo=='add'">
     <h1 class="flex">Agregar Marca</h1>
     <form [formGroup]="formGroup" autocomplete="off">
-      <input type="text" placeholder="Nombre Marca" formControlName="name">
-      <input type="file" (change)="uploadImage($event)">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre de la marca</mat-label>
+        <input  matInput required formControlName="name" />					
+        <mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
+    </mat-form-field>
+      <input class="inputf" type="file" (change)="uploadImage($event)">
+      
       <img class="imgBrand" *ngIf="url" [src]="url" alt="">
       <div class="buttons">
         <button mat-flat-button color="primary" (click)="add()">Guardar</button>
@@ -14,8 +19,12 @@
 <div class="subs" *ngIf="dialog.modo=='edit'">
     <h1 class="flex">Editar Marca</h1>
     <form [formGroup]="formGroup" autocomplete="off">
-    <input type="text" formControlName="name" >
-    <input type="file" (change)="uploadImage($event)">    
+      <mat-form-field appearance="outline">
+        <mat-label>Nuevo nombre de la marca</mat-label>
+        <input  matInput required formControlName="name" />					
+        <mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
+    </mat-form-field>
+    <input class="inputf" type="file" (change)="uploadImage($event)">    
     <img class="imgBrand" *ngIf="url" [src]="url" alt="">    
     <div class="buttons">
       <button mat-flat-button color="primary" (click)="edit()">Editar</button>

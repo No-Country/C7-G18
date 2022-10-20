@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BrandService } from '../../../../commons/services/brand.service';
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
+
+import { BrandService } from '../../../../commons/services/brand.service';
 import { AlertifyService } from 'src/app/commons/services/alertify.service';
 import { Dialog } from '../dialog';
 
@@ -72,15 +72,11 @@ export class DialogBrandComponent implements OnInit {
 
   uploadImage($event: any) {
     const file = $event.target.files[0];
-    console.log(file);
-
     const imgRef = ref(this._storage, `brands/${file.name}`);
 
     uploadBytes(imgRef, file)
       .then(async response => {
-        console.log(response);
         const url= await getDownloadURL(imgRef)
-        console.log(url)
         this.url=url
       })
       .catch(error => console.log(error));
