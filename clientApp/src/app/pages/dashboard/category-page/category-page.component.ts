@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardDashboard } from '../../../commons/components/card-dashboard/card-dashboard';
 import { DialogCategoryComponent } from '../mat-dialogs/dialog-category/dialog-category.component';
+import { CategoryService } from '../../../commons/services/category.service';
+import { SubcategoryPageComponent } from '../mat-dialogs/dialog-subcategory/subcategory-page.component';
+
 
 @Component({
   selector: 'app-category-page',
@@ -11,61 +14,62 @@ import { DialogCategoryComponent } from '../mat-dialogs/dialog-category/dialog-c
 export class CategoryPageComponent implements OnInit {
 
   clase='Categoría'
+  categories:CardDashboard[]
 
-  constructor(private _matDialog: MatDialog) { }
+  constructor(
+        private _matDialog: MatDialog,
+        private _categoryService:CategoryService
+    ) { }
 
   ngOnInit(): void {
+    this.listarCategorias()
+	console.log(this._categoryService.obtenerCategory('WaaLybFSBeJ3xPaSmFNJ'))
   }
 
+  listarCategorias(){this._categoryService.getCategory().subscribe(categories=>this.categories=categories)}
 
-  openModalNew(tipo:string, modo:string, nombre?:string) {
+  openModalNew(modo:string, category?:CardDashboard) {
+		let dialog;
+    let data={
+        modo:modo,
+        id:category?.id,
+        nombre:category?.name
+    }
 		if (screen.width < 500) {
-			this._matDialog.open(DialogCategoryComponent, {
+			dialog=this._matDialog.open(DialogCategoryComponent, {
 				maxWidth: '100vw',
 				width: '95%',
 				maxHeight: '670px',
-        data:{
-          tipo,
-          modo,
-          nombre
-        }
-			});
+        data:data
+			})
 		} else {
-			this._matDialog.open(DialogCategoryComponent, {
+			dialog=this._matDialog.open(DialogCategoryComponent, {
 				width: '500px',
-        data:{
-          tipo,
-          modo,
-          nombre
-        }
-			});
+        data:data
+			})
 		}
+    dialog.afterClosed().subscribe(()=>this.listarCategorias())
 	}
 
 
-  cards:CardDashboard[]=[
-    {
-      class:'Categoría',
-      name:'Alimentación',
-      created:'13/05/2022',
-      subcategories:['Secos', 'Semi-húmedos','Enlatados'],
-      default:true
-    },
-    {
-      class:'Categoría',
-      name:'Farmacia',
-      created:'13/04/2022',
-      default:true
-    },
-    {
-      class:'Categoría',
-      name:'Higiene',
-      created:'23/05/2022'
-    },
-    {
-      class:'Categoría',
-      name:'Muebles',
-      created:'13/11/2021'
-    }
-  ]
+
+
+  openModalSubcategories(cat:CardDashboard) {
+    let dialog;
+		if (screen.width < 500) {
+			dialog=this._matDialog.open(SubcategoryPageComponent, {
+				maxWidth: '100vw',
+				width: '95%',
+				maxHeight: '670px',
+				data: cat
+			});
+		} else {
+			dialog=this._matDialog.open(SubcategoryPageComponent, {
+				width: '500px',
+				data: cat
+			});
+		}
+    dialog.afterClosed().subscribe(()=>this.listarCategorias())
+	}
+
 }

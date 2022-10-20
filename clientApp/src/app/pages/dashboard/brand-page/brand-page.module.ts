@@ -9,7 +9,12 @@ export const routes: Routes = [{ path: '', component: BrandPageComponent }];
 
 @NgModule({
     declarations: [BrandPageComponent],
-    imports: [RouterModule.forChild(routes), FormSharedModule, CardDashboardModule, DialogBrandModule],
+    imports: [
+        RouterModule.forChild(routes), 
+        FormSharedModule, 
+        CardDashboardModule, 
+        DialogBrandModule
+    ],
     exports:[BrandPageComponent]
 })
 export class BrandModule { }

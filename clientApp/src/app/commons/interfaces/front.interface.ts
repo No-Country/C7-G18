@@ -8,9 +8,10 @@ export interface IBrand{
 
 export interface IProductClass{
     id?:string,
-    class:string,
-    name:string,
-    created:string,
+    name?:string,
+    created?:string,
+    category?:string,
+    nameCategory?:string,
     subcategories?:string[],
     default?:boolean
 }

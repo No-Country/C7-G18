@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore , collection, collectionData, addDoc, deleteDoc, doc, updateDoc} from '@angular/fire/firestore';
+import { Firestore , collection, collectionData, addDoc, deleteDoc, doc, updateDoc, onSnapshot} from '@angular/fire/firestore';
 import { first, Observable } from 'rxjs';
 import { CardDashboard } from '../components/card-dashboard/card-dashboard';
 
@@ -34,5 +34,17 @@ export class BrandService {
     return updateDoc(brandDocRef,edit)
   }
 
+ 
 
+
+  obtenerBrand():CardDashboard[]{
+    const brandsRef=collection(this.firestore,'brand');
+    let data:CardDashboard[]=[];
+    onSnapshot(brandsRef,(snap=>{
+      snap.forEach(snapHijo=>data.push(snapHijo.data()))
+    }))
+    return data
+  } 
+
+  
 }
