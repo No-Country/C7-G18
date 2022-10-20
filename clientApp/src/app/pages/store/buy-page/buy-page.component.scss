@@ -6,7 +6,7 @@ html {
 }
 
 .container {
-	padding: 2rem  0;
+	padding: 2rem ;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -66,18 +66,21 @@ html {
 	margin: 0 0.5rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 	.container {
 		display: inline-block;
-		margin: 1rem 2rem;
+		margin: 1rem 2rem 1rem 0;
         padding: 0;
 	}
 
 	.envioFacturacion {
 		width: 100%;
+		margin: 1rem;
 	}
 
 	.resumenPedido {
 		width: 100%;
+		margin: 1rem;
+		
 	}
 }
