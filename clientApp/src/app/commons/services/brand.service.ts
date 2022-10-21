@@ -33,18 +33,5 @@ export class BrandService {
     const edit={name:data.name,url:data.url}
     return updateDoc(brandDocRef,edit)
   }
-
- 
-
-
-  obtenerBrand():CardDashboard[]{
-    const brandsRef=collection(this.firestore,'brand');
-    let data:CardDashboard[]=[];
-    onSnapshot(brandsRef,(snap=>{
-      snap.forEach(snapHijo=>data.push(snapHijo.data()))
-    }))
-    return data
-  } 
-
   
 }
