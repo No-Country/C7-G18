@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore , collection, collectionData, addDoc, deleteDoc, doc, updateDoc} from '@angular/fire/firestore';
+import { Firestore , collection, collectionData, addDoc, deleteDoc, doc, updateDoc, onSnapshot} from '@angular/fire/firestore';
 import { first, Observable } from 'rxjs';
 import { CardDashboard } from '../components/card-dashboard/card-dashboard';
 import { IProductClass } from '../interfaces/front.interface';
@@ -35,13 +35,14 @@ export class BrandService {
     return updateDoc(brandDocRef,edit)
   }
 
- /* getDataProducts(): Observable<IProductClass[]> {
-    return collectionData(collection(this.firestore, 'productos' ), { idField: 'id' }) as Observable<IProductClass[]>
-  }
+  obtenerBrand():CardDashboard[]{
+    const brandsRef=collection(this.firestore,'brand');
+    let data:CardDashboard[]=[];
+    onSnapshot(brandsRef,(snap=>{
+      snap.forEach(snapHijo=>data.push(snapHijo.data()))
+    }))
+    return data
+  } 
 
-  getprueba(): Observable<IProductClass[]>{
-    return this.firestore2.collection('productos').valueChanges({ idField: 'id', ref: 'category' }) as Observable<IProductClass[]>;
-  }*/
-
-
+  
 }

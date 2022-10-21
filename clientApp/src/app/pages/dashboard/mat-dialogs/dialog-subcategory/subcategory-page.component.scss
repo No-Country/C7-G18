@@ -1,4 +1,4 @@
-@use '../../../commons/styles/colors.scss';
+@use '../../../../commons/styles/colors.scss';
 
 
 .subs{
@@ -36,14 +36,14 @@ h1{
     }
 }
 
-input{
-    width: 385px;
-    height: 40px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: 1px solid colors.$gray-color-3;
-    padding: 0 15px;
-}
+// input{
+//     width: 385px;
+//     height: 40px;
+//     margin-bottom: 20px;
+//     border-radius: 10px;
+//     border: 1px solid colors.$gray-color-3;
+//     padding: 0 15px;
+// }
 
 .span{
     color: colors.$secondary-color;
