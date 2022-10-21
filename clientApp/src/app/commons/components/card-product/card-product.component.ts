@@ -45,13 +45,13 @@ export class CardProductComponent implements OnInit {
 			this._matDialog.open(ProductDetailComponent, {
 				maxWidth: '100vw',
 				width: '95%',
-				height: '750px',
+				maxHeight: '750px',
 				data: this.card
 			});
 		}else{			
 			this._matDialog.open(ProductDetailComponent, {
 				maxWidth: '95%',
-				height: '600px',
+				maxHeight: '600px',
 				data: this.card
 			});
 		}

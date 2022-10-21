@@ -57,13 +57,13 @@
             color:rgb(233, 92, 92);
             cursor: pointer;
         }
-
-        .total{
-            margin-top: calc(100% - 50px);
-            display:flex;
-            justify-content: space-between;
-            color:colors.$secondary-color;
-            font-size: 20px;
-        }
     }
+}
+
+.total{
+    margin-top: 20px;
+    display:flex;
+    justify-content: space-between;
+    color:colors.$secondary-color;
+    font-size: 20px;
 }

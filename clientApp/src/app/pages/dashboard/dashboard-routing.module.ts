@@ -9,7 +9,7 @@ const routes: Routes = [
 		component: DashboardLayoutComponent,
 		children: [
 			{
-				path: 'products',
+				path: '',
 				loadChildren: () => import('./product-page/product-page.module').then((m) => m.ProductModule)
 			},
             {
@@ -33,7 +33,7 @@ const routes: Routes = [
                 loadChildren: () => import('./mat-dialogs/dialog-subcategory/subcategory-page.module').then((m) => m.SubcategoryModule)
             },
             { 
-                path:'',
+                path:'login',
                 loadChildren: () => import('./login-page/login-page.module').then((m) => m.LoginPageModule)
             }
 		]

@@ -3,7 +3,10 @@
     <button mat-flat-button color="primary" (click)="openModalNew('add')">Agregar Marca</button>
 </div>
 <div class="cards">    
+    <mat-spinner  *ngIf="brands.length==0"></mat-spinner>  
+        <ng-container *ngIf="brands.length!==0">
     <div *ngFor="let brand of brands" class="card1">
         <app-card-dashboard [cardDashboard]="brand" [clase]="clase" (onEdit)="openModalNew('edit',brand)" (onDelete)="openModalNew('delete',brand)"></app-card-dashboard>
     </div>
+        </ng-container>
 </div>

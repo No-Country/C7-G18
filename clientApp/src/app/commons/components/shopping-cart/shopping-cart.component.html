@@ -20,7 +20,7 @@
         </div>
        <div class="total" *ngIf="itemsCart.length!==0">
             <span>Total</span>
-            <span>{{_cartService.getTotal()}}</span>
+            <span>{{_cartService.getTotal() | currency:'symbol': '$ '}}</span>
        </div>
     </section>
 </div>

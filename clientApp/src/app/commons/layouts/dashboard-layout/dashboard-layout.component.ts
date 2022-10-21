@@ -24,12 +24,12 @@ export class DashboardLayoutComponent implements OnInit {
   isExpanded = false;
 	indexPrevious = 0;
 	objMenu = [
-		{ title: 'Productos', active: false, icon: 'inventory_2', link:'/admin/products' },
+		{ title: 'Productos', active: false, icon: 'inventory_2', link:'/admin' },
 		{ title: 'Pedidos', active: false, icon: 'storefront', link: '/admin/order' },
 		{ title: 'Mascotas', active: false, icon: 'pets', link: '/admin/pet' },
 		{ title: 'Categorías', active: false, icon: 'widgets', link: '/admin/category' },
 		{ title: 'Marcas', active: false, icon: 'content_paste', link: '/admin/brand' },
-		{ title: 'Cuenta', active: false, icon: 'account_circle', link: '/admin' },
+		{ title: 'Cuenta', active: false, icon: 'account_circle', link: '/admin/login' },
 		{ title: 'Salir', active: false, icon: 'logout', link: '/' }
 	];
 
