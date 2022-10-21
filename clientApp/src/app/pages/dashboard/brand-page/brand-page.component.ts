@@ -14,6 +14,8 @@ export class BrandPageComponent implements OnInit {
   brands:CardDashboard[]
   clase='Marca'
 
+  databrand:CardDashboard[]
+
   constructor(
         private _matDialog: MatDialog,
         private brandService:BrandService
@@ -21,10 +23,10 @@ export class BrandPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.listBrands()
+    console.log(this.databrand)
   }
 
-  listBrands(){this.brandService.getBrand().subscribe(brands=>this.brands=brands);
-  console.log(this.brands)}
+  listBrands(){this.brandService.getBrand().subscribe(brands=>this.brands=brands)}
 
 
   openModalNew(modo:string, brand?:CardDashboard) {

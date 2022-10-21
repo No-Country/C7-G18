@@ -1,16 +1,79 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProductTable } from './product';
+import { ProductService } from '../../../commons/services/product.service';
+import { CategoryService } from '../../../commons/services/category.service';
+import { CardDashboard } from '../../../commons/components/card-dashboard/card-dashboard';
+import { IProductClass } from '../../../commons/interfaces/front.interface';
+import { BrandService } from '../../../commons/services/brand.service';
+import { PetService } from '../../../commons/services/pet.service';
+import { DialogProductComponent } from '../mat-dialogs/dialog-product/dialog-product.component';
+import { MatDialog } from '@angular/material/dialog';
+
+
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.scss']
 })
-export class ProductPageComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'Nombre', 'Imagen', 'Precio Unitario','Mascota', 'Categoría', 'Subcategoría', 'Fecha','Acciones'];
+export class ProductPageComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = [ 'Nombre', 'Imagen', 'Precio Unitario','Mascota', 'Categoría', 'Fecha','Stock', 'Acciones'];
   
+  constructor(
+    private _matDialog: MatDialog,
+    private _productService:ProductService,
+    private _categoryService:CategoryService,
+    private _brandService:BrandService,
+    private _petService:PetService,
+    ){}
+
+    id:number=0
+
+    pets:CardDashboard[]=[]
+  brands:CardDashboard[]=[]
+  categories:CardDashboard[]=[]
+  products:IProductClass[]=[]
+
+  ngOnInit(): void {
+     this._categoryService.getCategory().subscribe({
+       next: data=>this.categories=data,
+       complete:()=>{}})
+    this._brandService.getBrand().subscribe({
+      next: data=>this.brands=data,
+      complete:()=>console.log('brands')})
+    this._petService.getPet().subscribe({
+      next: data=>this.pets=data,
+      complete:()=>console.log('pets')})
+
+    this._productService.getProds().subscribe({
+      next:data=>this.products=data,
+      complete:()=>this.getProducts()
+    })
+    
+}
+
+
+dataSource = new MatTableDataSource<IProductClass>();
+
+
+
+  getProducts(){       
+    this.products.forEach(product=> {
+         const dataCategory=this.categories.find(category=>category.id==product.category)
+         const dataBrand= this.brands.find(brand=>brand.id==product.brand)
+         const dataPet= this.pets.find(pet=>pet.id==product.pet)
+         
+        product.nameCategory=dataCategory?.name;
+        product.nameBrand=dataBrand?.name;
+        product.namePet=dataPet?.name
+
+      });
+      this.dataSource = new MatTableDataSource<IProductClass>(this.products);
+  }
+    
+  
+
   
   @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
   
@@ -36,69 +99,29 @@ export class ProductPageComponent implements AfterViewInit {
 
 
 
-  table:ProductTable[]=[
-    {
-      id:1,
-      name:'Purina gato adulto',
-      price:500,
-      img:'assets/images/image 17.svg',
-      pet:'Gato',
-      category:'Alimentación',
-      subcategory:'Secos',
-      created:'15/06/2022'
-    },
-    {
-      id:2,
-      name:'Purina gato adulto',
-      price:500,
-      img:'assets/images/image 17.svg',
-      pet:'Gato',
-      category:'Alimentación',
-      subcategory:'Secos',
-      created:'15/06/2022'
-    },
-    {
-      id:3,
-      name:'Purina gato adulto',
-      price:500,
-      img:'assets/images/image 17.svg',
-      pet:'Gato',
-      category:'Alimentación',
-      subcategory:'Secos',
-      created:'15/06/2022'
-    },
-    {
-      id:1,
-      name:'Purina gato adulto',
-      price:500,
-      img:'assets/images/image 17.svg',
-      pet:'Gato',
-      category:'Alimentación',
-      subcategory:'Secos',
-      created:'15/06/2022'
-    },
-    {
-      id:2,
-      name:'Purina gato adulto',
-      price:500,
-      img:'assets/images/image 17.svg',
-      pet:'Gato',
-      category:'Alimentación',
-      subcategory:'Secos',
-      created:'15/06/2022'
-    },
-    {
-      id:3,
-      name:'Purina gato adulto',
-      price:500,
-      img:'assets/images/image 17.svg',
-      pet:'Gato',
-      category:'Alimentación',
-      subcategory:'Secos',
-      created:'15/06/2022'
+  openModal(modo:string, product?:IProductClass) {
+		let dialog;
+    let data={
+        modo:modo,
+        categories:this.categories,
+        brands:this.brands,
+        pets:this.pets,
+        product
     }
-  ]
+		if (screen.width < 500) {
+			dialog=this._matDialog.open(DialogProductComponent, {
+				maxWidth: '100vw',
+				width: '95%',
+        data:data
+			})
+		} else {
+			dialog=this._matDialog.open(DialogProductComponent, {
+				width: '500px',
+        data:data
+			})
+		}
+    dialog.afterClosed().subscribe(()=>this.getProducts())
+	}
 
-
-  dataSource = new MatTableDataSource<ProductTable>(this.table);
+  
 }

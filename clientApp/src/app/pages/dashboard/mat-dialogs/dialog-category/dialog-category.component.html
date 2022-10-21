@@ -1,1 +1,39 @@
-<p>dialog-category works!</p>
+<div class="subs" *ngIf="dialog.modo=='add'">
+    <h1 class="flex">Agregar Categoría</h1>
+    <form [formGroup]="formGroup" autocomplete="off">
+     <mat-form-field appearance="outline">
+        <mat-label>Nombre de la categoría</mat-label>
+        <input  matInput required formControlName="name" />					
+        <mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
+    </mat-form-field>
+      <div class="buttons">
+        <button mat-flat-button color="primary" (click)="add()">Guardar</button>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+      </div>
+    </form>
+</div> 
+
+<div class="subs" *ngIf="dialog.modo=='edit'">
+    <h1 class="flex">Editar Categoría</h1>
+    <form [formGroup]="formGroup" autocomplete="off">
+    <mat-form-field appearance="outline">
+        <mat-label>Nuevo nombre de la categoría</mat-label>
+        <input  matInput required formControlName="name" />					
+        <mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
+    </mat-form-field>
+    <div class="buttons">
+      <button mat-flat-button color="primary" (click)="edit()">Editar</button>
+      <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+    </div>
+  </form>
+</div> 
+
+
+<div class="subs" *ngIf="dialog.modo=='delete'">
+    <h1 class="flex">Eliminar Categoría</h1>
+    <h3>¿Está seguro de eliminar la categoría <span class="span">{{dialog.nombre}}</span>? Esta puede ser una acción irreversible.</h3>
+    <div class="buttons">
+        <button mat-flat-button color="primary" (click)="delete()">Eliminar</button>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+      </div>
+  </div>

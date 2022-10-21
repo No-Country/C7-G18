@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, ViewEncapsulation,EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SubcategoryPageComponent } from 'src/app/pages/dashboard/mat-dialogs/dialog-subcategory/subcategory-page.component';
 import { CardDashboard } from './card-dashboard';
-import { SubcategoryPageComponent } from '../../../pages/dashboard/subcategory-page/subcategory-page.component';
 
 
 @Component({
@@ -16,6 +16,7 @@ export class CardDashboardComponent implements OnInit {
 
 	@Output() onEdit:EventEmitter<any>=new EventEmitter()
 	@Output() onDelete:EventEmitter<any>=new EventEmitter()
+	@Output() onSub:EventEmitter<any>=new EventEmitter()
 
 	constructor(private _matDialog: MatDialog) {}
 
@@ -29,6 +30,9 @@ export class CardDashboardComponent implements OnInit {
 		this.onDelete.emit()
 	}
 
+	sub(){
+		this.onSub.emit()
+	}
 
 
 	openModalSubcategories() {

@@ -30,7 +30,7 @@ const routes: Routes = [
             },
             {
                 path:'subcategory',
-                loadChildren: () => import('./subcategory-page/subcategory-page.module').then((m) => m.SubcategoryModule)
+                loadChildren: () => import('./mat-dialogs/dialog-subcategory/subcategory-page.module').then((m) => m.SubcategoryModule)
             },
             { 
                 path:'',

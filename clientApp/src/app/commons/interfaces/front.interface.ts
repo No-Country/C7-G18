@@ -1,3 +1,6 @@
+
+
+
 export interface IBrand{
     id?:string,
     name:string,
@@ -8,9 +11,19 @@ export interface IBrand{
 
 export interface IProductClass{
     id?:string,
-    class:string,
-    name:string,
-    created:string,
-    subcategories?:string[],
-    default?:boolean
+    name?:string,
+    created?:string,
+    price?:number,
+    description?:string,
+    category?:string,
+    nameCategory?:string,
+    subcategory?:string,
+    nameSubcategory?:string,
+    brand?:string
+    nameBrand?:string,
+    pet?:string,
+    namePet?:string,
+    default?:boolean,
+    img?:string,
+    stock?:number
 }
