@@ -51,9 +51,32 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
       complete:()=>this.getProducts()
     })
     
+<<<<<<< HEAD
+    //   complete:()=> this.getProducts()
+    // })   
+    this._productService.getProducts().subscribe({
+      next:response=>{console.log(response, 'vell')}
+    })
+      //   complete:()=> this.getProducts()
+      // })
+=======
+>>>>>>> 86141b95e0956bad3829e9b5aca76d18a1554544
 }
 
 
+<<<<<<< HEAD
+   //console.log(this._productService.getProducts())
+    // this._productService.getProducts().subscribe({
+    //   next:response=>{
+    //     console.log(response, 'original')
+    //     response.forEach(product => {
+    //       const dataCategory=this.categories.find(category=>category.id==product.category)
+    //       product.dataCategory=dataCategory
+    //     })
+    //     console.log(response, 'data productos');
+    //   },
+    // })
+=======
 dataSource = new MatTableDataSource<IProductClass>();
 
 
@@ -70,6 +93,7 @@ dataSource = new MatTableDataSource<IProductClass>();
 
       });
       this.dataSource = new MatTableDataSource<IProductClass>(this.products);
+>>>>>>> 86141b95e0956bad3829e9b5aca76d18a1554544
   }
     
   

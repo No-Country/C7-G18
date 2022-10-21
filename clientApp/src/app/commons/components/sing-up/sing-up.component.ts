@@ -6,12 +6,17 @@ import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../../services/auth.service';
 import { AlertifyService } from '../../services/alertify.service';
 
+
+
 @Component({
 	selector: 'app-sing-up',
 	templateUrl: './sing-up.component.html',
 	styleUrls: ['./sing-up.component.scss']
 })
 export class SingUpComponent implements OnInit {
+	
+	usurio:FormGroup;
+
 	constructor(
 		public dialogRef: MatDialogRef<SingUpComponent>, 
 		private _matDialog: MatDialog, 
@@ -20,6 +25,13 @@ export class SingUpComponent implements OnInit {
 		private _alertify: AlertifyService,
 		) {
 		this._loadFormGroup();
+
+		this.usurio = new FormGroup({
+			nombre: new FormControl(),
+			email:new FormControl(),
+			password:new FormControl()
+		})
+
 	}
 
 	ngOnInit(): void {
@@ -38,6 +50,8 @@ export class SingUpComponent implements OnInit {
 	createUser() {
 		if (this.formGroup.valid) {
 			
+			console.log(this.usurio.value)
+
 		}
 		
 	}
@@ -79,4 +93,11 @@ export class SingUpComponent implements OnInit {
 			});
 		}
 	}
+
+
+
+	onSubmit(){
+		console.log(this.usurio.value)
+	}
+
 }

@@ -2,9 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MascotasService } from 'src/app/commons/services/mascotas.service';
 import { AlertifyService } from 'src/app/commons/services/alertify.service';
 import { Dialog } from '../dialog';
-import { PetService } from 'src/app/commons/services/pet.service';
 
 @Component({
 	selector: 'app-dialog-pet',
@@ -15,8 +15,9 @@ export class DialogPetComponent implements OnInit {
 	constructor(
 		@Inject(MAT_DIALOG_DATA) public dialog: Dialog,
 		public dialogRef: MatDialogRef<DialogPetComponent>,
-		private _mascotasService: PetService,
+		private _mascotasService: MascotasService,
 		private _formBuilder: FormBuilder,
+		// private _storage: Storage,
 		private _alertify: AlertifyService
 	) {}
 

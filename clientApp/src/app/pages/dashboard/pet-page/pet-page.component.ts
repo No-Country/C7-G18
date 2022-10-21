@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardDashboard } from 'src/app/commons/components/card-dashboard/card-dashboard';
-import { PetService } from 'src/app/commons/services/pet.service';
+import { MascotasService } from 'src/app/commons/services/mascotas.service';
 import { DialogPetComponent } from '../mat-dialogs/dialog-pet/dialog-pet.component';
 
 @Component({
@@ -13,7 +13,7 @@ export class PetPageComponent implements OnInit {
 	mascotas: CardDashboard[];
 	clase = 'Mascota';
 
-	constructor(private _matDialog: MatDialog, private mascotasService: PetService) {}
+	constructor(private _matDialog: MatDialog, private mascotasService: MascotasService) {}
 
 	ngOnInit(): void {
 		this.listPet();

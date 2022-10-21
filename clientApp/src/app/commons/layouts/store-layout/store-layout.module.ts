@@ -10,8 +10,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { SingUpModule } from '../../components/sing-up/sing-up.module';
 import { LoginModule } from '../../components/login/login.module';
 import { ResetPassModule } from '../../components/reset-pass/reset-pass.module';
-import { ContactoModule } from '../../components/contacto/contacto.module';
+import { ContactoModule } from '../../components/contacto/contacto.module'; 
 import { ShoppingCartModule } from '../../components/shopping-cart/shopping-cart.module';
+
 
 @NgModule({
     declarations: [StoreLayoutComponent, NavbarComponent, FooterComponent],

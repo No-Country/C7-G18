@@ -6,7 +6,7 @@ import { BuyPageComponent } from './buy-page.component';
 export const routes: Routes = [{ path: '', component: BuyPageComponent }];
 
 @NgModule({
-    declarations: [],
+    declarations: [BuyPageComponent],
     imports: [RouterModule.forChild(routes), FormSharedModule]
 })
 export class BuyModule { }

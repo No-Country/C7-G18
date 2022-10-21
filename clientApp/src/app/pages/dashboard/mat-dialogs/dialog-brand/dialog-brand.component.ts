@@ -13,7 +13,6 @@ import { Dialog } from '../dialog';
   styleUrls: ['./dialog-brand.component.scss']
 })
 export class DialogBrandComponent implements OnInit {
-
   constructor( 
     @Inject(MAT_DIALOG_DATA) public dialog:Dialog,
     public dialogRef: MatDialogRef<DialogBrandComponent>,
