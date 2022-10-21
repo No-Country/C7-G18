@@ -32,21 +32,23 @@
             <mat-option *ngFor="let brand of dialog.brands" value={{brand.id}}  >{{brand.name}}</mat-option>
         </mat-select>	
     </mat-form-field> 
-    <div class="flex">
+    <div class="flex2">
         <mat-form-field appearance="outline">
-            <mat-label>Precio unitario del producto</mat-label>
+            <mat-label>Precio unitario</mat-label>
             <input  matInput required formControlName="price"/>					
             <mat-error *ngIf="formGroup.invalid">precio requerido </mat-error>
         </mat-form-field> 
         <div class="sep"></div> 
         <mat-form-field appearance="outline">
+            <mat-label>Precio oferta</mat-label>
+            <input  matInput formControlName="discount"/>	            
+        </mat-form-field> 
+    </div>
+        <mat-form-field appearance="outline">
             <mat-label>Stock del producto</mat-label>
             <input  matInput required formControlName="stock"/>					
             <mat-error *ngIf="formGroup.invalid">stock requerido </mat-error>
         </mat-form-field>  
-    </div>
-    <br>
-    <br>
     <mat-form-field appearance="outline">
         <mat-label>Descripción del producto</mat-label>				
         <textarea matInput formControlName="description" ></textarea>

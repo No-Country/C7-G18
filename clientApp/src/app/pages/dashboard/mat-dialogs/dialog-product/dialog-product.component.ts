@@ -41,6 +41,7 @@ export class DialogProductComponent implements OnInit {
     stock:'',
     price: ['', Validators.required],
     description:['', Validators.required],
+    discount:''
   });
 
   subs:CardDashboard[]
@@ -63,6 +64,7 @@ export class DialogProductComponent implements OnInit {
         stock: this.formGroup.value.stock,
         price: this.formGroup.value.price,
         description: this.formGroup.value.description,
+        discount: this.formGroup.value.discount,
         img:this.url,
         created:this.date.toLocaleString("en-GB",{day: "numeric",month: "2-digit",year: "numeric"})
       }
@@ -82,7 +84,8 @@ export class DialogProductComponent implements OnInit {
         pet: this.formGroup.value.pet,
         brand: this.formGroup.value.brand,
         price: this.formGroup.value.price,
-        description: this.formGroup.value.description,
+        description: this.formGroup.value.description,        
+        discount: this.formGroup.value.discount,
         img:this.url,
         stock:this.dialog.product?.stock
       }      
@@ -100,6 +103,7 @@ export class DialogProductComponent implements OnInit {
       brand: this.dialog.product?.brand,
       price: this.dialog.product?.price,
       description: this.dialog.product?.description,
+      discount: this.dialog.product?.discount,
       img:this.dialog.product?.img,
       stock:this.formGroup.value.stock
     }      

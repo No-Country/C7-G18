@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Product } from '../card-product';
+import { IProductClass } from '../../interfaces/front.interface';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,7 +10,7 @@ import { Product } from '../card-product';
 export class ProductDetailComponent implements OnInit {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public product: Product
+    @Inject(MAT_DIALOG_DATA) public product: IProductClass
   ) { }
 
 
@@ -20,7 +20,7 @@ export class ProductDetailComponent implements OnInit {
   cartNumber=0
 
   like(){
-    this.product.meGusta=!this.product.meGusta
+    this.product.like=!this.product.like
   }
 
 }
