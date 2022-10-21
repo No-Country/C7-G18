@@ -109,12 +109,14 @@
                 </mat-autocomplete>
             </form>
         </div>
+        <mat-spinner  *ngIf="products.length==0"></mat-spinner>  
+        <ng-container *ngIf="products.length!==0">
         <div class="grid-card">
             <div *ngFor="let card of obs|async">
                 <app-card-product [card]="card"></app-card-product>
             </div>
         </div>
-        
+        </ng-container>
         <mat-paginator [length]="products.length"
               [pageSize]="6"
               [pageSizeOptions]="[6, 9, 12]"

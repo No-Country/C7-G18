@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
 	exports: [
@@ -19,7 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
 		MatInputModule,
 		MatCheckboxModule,
 		MatDialogModule, 
-		MatIconModule
+		MatIconModule,
+		MatProgressSpinnerModule
 	]
 
 
