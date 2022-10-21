@@ -1,4 +1,5 @@
 <div class="marcas">
+  <mat-spinner  *ngIf="brands.length==0"></mat-spinner>
   <ng-container *ngIf="brands.length!==0">
     <ngx-wrapper-tiny-slider #tinySlider [config]="tinySliderConfig" class="items">
          <div class="item" *ngFor="let brand of brands">

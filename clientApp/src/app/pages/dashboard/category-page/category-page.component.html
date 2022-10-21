@@ -2,8 +2,11 @@
     <h1>Listado de Categorías</h1>
     <button mat-flat-button color="primary" (click)="openModalNew('add')">Agregar Categoría</button>
 </div>
-<div class="cards">    
+<div class="cards">   
+    <mat-spinner  *ngIf="categories.length==0"></mat-spinner>  
+        <ng-container *ngIf="categories.length!==0"> 
     <div *ngFor="let category of categories" class="card1">
         <app-card-dashboard [cardDashboard]="category" [clase]="clase" (onEdit)="openModalNew('edit',category)" (onDelete)="openModalNew('delete',category)" (onSub)="openModalSubcategories(category)"></app-card-dashboard>
     </div>
+        </ng-container>
 </div>
