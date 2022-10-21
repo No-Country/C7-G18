@@ -14,6 +14,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 
+
 @NgModule({
 
 	declarations: [AppComponent, PageNotfoundComponent  ],
@@ -22,7 +23,6 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 		AppRoutingModule, 
 		BrowserAnimationsModule,
 		AngularFireModule.initializeApp(environment.firebase),
-		FirebaseModule,
 		provideFirebaseApp(() => initializeApp(environment.firebase)),
 		provideFirestore(()=>getFirestore()),
 		provideStorage(() => getStorage())

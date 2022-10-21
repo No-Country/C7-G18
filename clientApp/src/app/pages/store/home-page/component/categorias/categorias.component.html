@@ -1,36 +1,10 @@
-
-
 <div class="cont">
-    <div class="keen-slider" #sliderRef>
-        <div class="keen-slider__slide categ">
-            <div class="fondo f1"></div>
-            <img class="img2" src="assets/images/cat2.svg" alt="">
-            <h4>GATOS</h4>
-        </div>
-        <div class="keen-slider__slide categ">
-            <div class="fondo f2"></div>
-            <img class="img2" src="assets/images/dog2.svg" alt="">
-            <h4>PERROS</h4>
-        </div>
-        <div class="keen-slider__slide categ">
-            <div class="fondo f3"></div>
-            <img class="img3" src="assets/images/bird2.svg" alt="">
-            <h4>AVES</h4>
-        </div>
-        <div class="keen-slider__slide categ">
-            <div class="fondo f4"></div>
-            <img class="img4" src="assets/images/fish2.svg" alt="">
-            <h4>PECES</h4>
-        </div>
-        <div class="keen-slider__slide categ">
-            <div class="fondo f5"></div>
-            <img class="img2" src="assets/images/rabbit2.svg" alt="">
-            <h4>CONEJOS</h4>
-        </div>
-    </div>
+    <ngx-wrapper-tiny-slider #tinySlider [config]="tinySliderConfig" class="items">
+        <div class="item" *ngFor="let item of data">
+            <div class="flex">
+                <img  src={{item.url}} />
+                <h4>{{item.title}}</h4>
+            </div>
+         </div>
+   </ngx-wrapper-tiny-slider>
 </div>
-
-
-<!-- <div class="fondo">
-    <div class="fondo-img"></div>
-</div> -->

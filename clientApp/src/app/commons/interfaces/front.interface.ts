@@ -12,5 +12,6 @@ export interface IProductClass{
     name:string,
     created:string,
     subcategories?:string[],
-    default?:boolean
+    default?:boolean,
+    category?:any
 }

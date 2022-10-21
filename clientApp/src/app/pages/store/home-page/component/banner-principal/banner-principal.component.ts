@@ -1,64 +1,21 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import KeenSlider, { KeenSliderInstance } from "keen-slider"
+import { TinySliderInstance, TinySliderSettings } from 'tiny-slider';
 
 @Component({
-  selector: 'app-banner-principal',
-  templateUrl: './banner-principal.component.html',
-  styleUrls: ['../../../../../../../node_modules/keen-slider/keen-slider.min.css',
-  './banner-principal.component.scss']
+	selector: 'app-banner-principal',
+	templateUrl: './banner-principal.component.html',
+	styleUrls: ['./banner-principal.component.scss']
 })
 export class BannerPrincipalComponent implements OnInit {
+	@ViewChild('tinySlider', { static: false }) tinySlider: TinySliderInstance;
+	constructor() {}
+	
+	tinySliderConfig: TinySliderSettings = {
+		items: 1,
+		mouseDrag: true,
+		autoplay: true,
+		speed: 400,
+	};
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>
-
-  slider!: KeenSliderInstance
- 
-  ngAfterViewInit() {
-    this.slider = new KeenSlider(
-      this.sliderRef.nativeElement,
-      {
-        loop: true,
-      },
-      [
-        (slider) => {
-          let timeout:any
-          let mouseOver = false
-          function clearNextTimeout() {
-            clearTimeout(timeout)
-          }
-          function nextTimeout() {
-            clearTimeout(timeout)
-            if (mouseOver) return
-            timeout = setTimeout(() => {
-              slider.next()
-            }, 2000)
-          }
-          slider.on("created", () => {
-            slider.container.addEventListener("mouseover", () => {
-              mouseOver = true
-              clearNextTimeout()
-            })
-            slider.container.addEventListener("mouseout", () => {
-              mouseOver = false
-              nextTimeout()
-            })
-            nextTimeout()
-          })
-          slider.on("dragStarted", clearNextTimeout)
-          slider.on("animationEnded", nextTimeout)
-          slider.on("updated", nextTimeout)
-        },
-      ]
-    )
-  }
-
-  ngOnDestroy() {
-    if (this.slider) this.slider.destroy()
-  }
-
+	ngOnInit(): void {}
 }

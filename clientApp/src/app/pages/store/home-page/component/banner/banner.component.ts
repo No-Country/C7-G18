@@ -1,43 +1,37 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
-import KeenSlider, { KeenSliderInstance } from "keen-slider"
-
+import { offerData } from 'src/app/commons/mockups/offer';
+import { TinySliderInstance, TinySliderSettings } from 'tiny-slider';
 
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
-  styleUrls: ['../../../../../../../node_modules/keen-slider/keen-slider.min.css',
-  './banner.component.scss']
+  styleUrls: [  './banner.component.scss']
 })
 export class BannerComponent implements OnInit {
+	@ViewChild('tinySlider', { static: false }) tinySlider: TinySliderInstance;
 
-  constructor() { }
-
-  ngOnInit(): void { 
-  }
-
-  @ViewChild("sliderRef") sliderRef!: ElementRef<HTMLElement>
-
-  slider!: KeenSliderInstance
-
-  ngAfterViewInit() {
-    this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      breakpoints: {
-        "(min-width: 400px)": {
-          slides: { perView: 2, spacing: 5 },
-        },
-        "(min-width: 700px)": {
-          slides: { perView: 3, spacing: 10 },
-        },
-        "(min-width: 1000px)": {
-          slides: { perView: 4, spacing: 10 },
-        },
+	tinySliderConfig: TinySliderSettings = {
+		gutter: 10,
+		items: 4,
+		mouseDrag: true,
+    responsive: {
+      "900": {
+        "items": 4,
       },
-      slides: { perView: 1 },
-    })
-  }
-
-  ngOnDestroy() {
-    if (this.slider) this.slider.destroy()
+      "610": {
+        "items": 3,
+      },
+      "300": {
+        "items": 2,
+      },
+      "200": {
+        "items": 1,
+      }
+    },
+	};
+  constructor() { }
+  data=offerData; 
+  ngOnInit(): void { 
   }
 
 }
