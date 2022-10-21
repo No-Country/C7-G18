@@ -36,19 +36,19 @@ h1{
     }
 }
 
-input{
+.inputf{
     width: 385px;
-    height: 40px;
+    height: 50px;
     margin-bottom: 20px;
-    border-radius: 10px;
-    border: 1px solid colors.$gray-color-3;
+    border-radius: 5px;
+    border: 2px solid colors.$primary-color;
     padding: 0 15px;
 }
 
 input::file-selector-button{    
-    height: 40px;
+    height: 50px;
     margin-left: -15px;
-    border-radius: 10px 0 0;
+    border-radius: 5px 0 0;
     border: none;
     border-right: 1px solid colors.$gray-color-3;
     cursor: pointer;
@@ -65,3 +65,15 @@ input::file-selector-button{
     margin: 15px auto;
     width: 150px;
 }
+
+
+
+.flex{
+    display:flex;
+}
+
+.sep{
+    width: 30px;
+}
+
+

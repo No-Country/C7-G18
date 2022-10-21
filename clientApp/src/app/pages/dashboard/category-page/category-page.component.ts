@@ -23,7 +23,6 @@ export class CategoryPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarCategorias()
-	console.log(this._categoryService.obtenerCategory('WaaLybFSBeJ3xPaSmFNJ'))
   }
 
   listarCategorias(){this._categoryService.getCategory().subscribe(categories=>this.categories=categories)}

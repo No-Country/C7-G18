@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Firestore , collection, collectionData, addDoc, deleteDoc, doc, updateDoc, onSnapshot} from '@angular/fire/firestore';
-import * as console from 'console';
+import { Firestore , collection, collectionData, addDoc, deleteDoc, doc, updateDoc} from '@angular/fire/firestore';
 import { first, Observable } from 'rxjs';
 import { CardDashboard } from '../components/card-dashboard/card-dashboard';
+
 
 
 @Injectable({
@@ -16,7 +16,9 @@ export class CategoryService {
   getCategory():Observable<CardDashboard[]>{
     const categorysRef=collection(this.firestore,'category');
     return collectionData(categorysRef,{idField:'id'}).pipe(first()) as Observable<CardDashboard[]>
-  }
+  }  
+
+  
 
 
   addCategory(category: CardDashboard) {
@@ -35,18 +37,5 @@ export class CategoryService {
     return updateDoc(categoryDocRef,edit)
   }
 
-
-
   
-  obtenerCategory(id:string):CardDashboard[]{
-    const categoryRef=collection(this.firestore,'category');
-    let data:CardDashboard[]=[];
-    onSnapshot(categoryRef,(snap=>{
-      snap.forEach(snapHijo=>{     
-        if (snapHijo.id===id){ data.push(snapHijo.data())}
-      })
-    }))
-    
-    return data
-  } 
 }
