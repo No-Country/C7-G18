@@ -2,6 +2,8 @@ import { Component, OnInit, Input  } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Product } from '../card-product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
+import { IProductClass } from '../../interfaces/front.interface';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-card-product',
@@ -10,17 +12,33 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
 })
 export class CardProductComponent implements OnInit {
   
-  @Input() card!:Product
-
-  constructor(private _matDialog: MatDialog) {  }
+  @Input() card!:IProductClass
+  constructor(private _matDialog: MatDialog, private _cartService:CartService) {  }
+  itemsCart = this._cartService.getItems();
 
   ngOnInit(): void {
   }
 
 
   like(){
-    this.card.meGusta=!this.card.meGusta
+    this.card.like=!this.card.like
   }
+
+  modifyProducts(dataProduct:IProductClass){
+	if(this.itemsCart.length === 0) {
+		this._cartService.addToCart(dataProduct);
+	  } else {
+		  // agrega el producto si el id es diferente a los agregados
+		if(!this.itemsCart.find( (item: any) => item.id === dataProduct.id)) {
+		  this._cartService.addToCart(dataProduct);
+		  // si encuentra al id actualiza su cantidad
+		} else {
+		  this._cartService.updateCart(dataProduct,'+');
+		}
+	}
+	console.log('veamos todos', this._cartService.getItems())
+  }
+ 
 
   openModalDetail() {
 		if (screen.width < 500) {

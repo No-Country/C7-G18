@@ -10,6 +10,7 @@
     section .item-product{
         display:grid;
         grid-template-columns: 1fr 5fr;
+        column-gap: 10px;
         border-bottom: 1px solid colors.$gray-color-4;
         padding: 15px 0px;
         img{
@@ -52,5 +53,17 @@
             }
         }
 
+        .cancel{
+            color:rgb(233, 92, 92);
+            cursor: pointer;
+        }
+
+        .total{
+            margin-top: calc(100% - 50px);
+            display:flex;
+            justify-content: space-between;
+            color:colors.$secondary-color;
+            font-size: 20px;
+        }
     }
 }

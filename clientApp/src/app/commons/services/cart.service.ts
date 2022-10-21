@@ -1,72 +1,70 @@
 import { Injectable } from '@angular/core';
+import { IProductClass } from '../interfaces/front.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class DataProductsSelectedService {
+export class CartService {
+  itemsCart: any[] = []; //para carrito
 
   constructor() { }
-  private arraySeletectProducts: any = [];
 
-  total: number = 0;
-  
-  getIdSelectProducts(){
-    return this.arraySeletectProducts.map((elm: { _id: any; })=>elm._id);
-  }
-  getDataSelectProducts() {
-    console.log(this.arraySeletectProducts, 'aqui servis');
-    return this.arraySeletectProducts;
+  /****************Funciones*************** */
+
+  //agregar a carrito (sale de templates-products)
+  addToCart(product: any) {
+    product.quantity = 1;
+    product.subtotal = product.price;
+    this.itemsCart.push(product);
   }
 
-  getTotal() {
-    return this.total.toFixed(2);
-  }
-
-  cleanOrder() {
-    this.arraySeletectProducts = [];
-    this.total = 0;
-  }
-  
-   //se encarga de eleminar o agregar productos en el sumary
-  updateDataSelectProducts(data: any, action: string) {
-    if (action == 'add') {
-      this.arraySeletectProducts = [...this.arraySeletectProducts, data];
-    } else { //entonces eliminamos el producto de la Tabla
-      this.arraySeletectProducts = this.arraySeletectProducts.filter((product: { _id: any; }) => product._id !== data);
-    }
-  }
-
-  updateTotal() {
-    if (this.arraySeletectProducts.length == 0) {
-      this.total = 0;
-    }else {
-      this.total = 0;
-      this.arraySeletectProducts.forEach((product: { price: any; quantity: any }) => {
-        this.total = this.total + Number(product.price) * Number(product.quantity);
-      })
-    }
-  }
-
-  //donde action puede aumentar la cantidad o disminuir
-  updateQuantity(id: string, action: string) {
-
-    const objIndex = this.arraySeletectProducts.findIndex(((obj: { _id: string; }) => obj._id == id));
-    const quantityBefore = this.arraySeletectProducts[objIndex].quantity;
-    const price = this.arraySeletectProducts[objIndex].price;
-
-    let newQuantity = Number(quantityBefore);
-    
-    if (action == 'add') {
-      newQuantity = newQuantity + 1;
-    } else {
-      if (quantityBefore > 1) {
-        newQuantity = newQuantity - 1;
+  // actualiza contenido del carrito
+  updateCart(product: any, operator: string) {
+    for (let j = 0; j < this.itemsCart.length; j++) {
+      if(this.itemsCart[j].id === product.id) {
+        switch(operator) {
+          case '+':
+            this.itemsCart[j].quantity++;
+            this.itemsCart[j].subtotal =  Number(this.itemsCart[j].subtotal) + Number(product.price);
+          break;
+          case '-':
+            if(this.itemsCart[j].quantity>1){
+              this.itemsCart[j].quantity--;
+              this.itemsCart[j].subtotal =  Number(this.itemsCart[j].subtotal) - Number(product.price);
+            }
+          break;
+        }
+        break;
       }
     }
-    const newSubTotal=newQuantity*Number(price)
-    this.arraySeletectProducts[objIndex].quantity = newQuantity;
-    this.arraySeletectProducts[objIndex].subTotal =  newSubTotal.toFixed(2);
+  }
+
+  // elimina contenido del carrito
+  deleteItem(product: any) {
+    const index = this.itemsCart.indexOf(product);
+    if(index !== -1) {
+      this.itemsCart.splice(index,1);
+    }
+  }
+
+  //Calcula el total de totales
+  getTotal() {
+    let total = 0;
+    this.itemsCart.forEach( item => {
+        total = total + Number(item.subtotal);
+    });
+    return total;
+  }
+
+  //obtener items de carrito
+  getItems() {
+    return this.itemsCart;
+  }
+
+  //limpiar el carrito
+  clearCart() {
+    this.itemsCart = [];
+    return this.itemsCart;
   }
 
 }

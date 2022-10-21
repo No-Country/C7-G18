@@ -28,12 +28,12 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     private _petService:PetService,
     ){}
 
-    id:number=0
+   
 
-    pets:CardDashboard[]=[]
-    brands:CardDashboard[]=[]
-    categories:CardDashboard[]=[]
-    products:IProductClass[]=[]
+  pets:CardDashboard[]=[]
+  brands:CardDashboard[]=[]
+  categories:CardDashboard[]=[]
+  products:IProductClass[]=[]
 
   ngOnInit(): void {
      this._categoryService.getCategory().subscribe({

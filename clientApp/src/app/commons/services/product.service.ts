@@ -41,7 +41,8 @@ updateProds(id:string, data: IProductClass){
     stock: data.stock,
     price: data.price,
     description: data.description,
-    img:data.img,}
+    img:data.img,
+    discount: data.discount,}
   return updateDoc(productsDocRef,edit)
 }
 

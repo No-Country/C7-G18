@@ -1,39 +1,26 @@
 <div class="container">
     <h4 class="title">Carrito  de Compras</h4>
     <section>
-        <div class="item-product">
-            <img src="assets/images/image 17.svg" alt="gt">
+        <div class="item-product" *ngFor="let product of itemsCart">
+            <img src={{product.img}} alt="gt">
             <div class="info-product">
-                <p class="name-product">Raza Medical Shampoo Hipoalergénico con Avena para perros 300 ml</p>
+                <p class="name-product">{{product.name}}</p>
                 <div class="actions">
                     <span class="price">
-                        S/. 30.00
+                        {{product.subtotal | currency:'symbol': '$ '}}
                     </span>
                     <div class="count">
-                        <mat-icon class="plus">add</mat-icon>
-                        <div><span class="number-count">2</span></div>
-                        <mat-icon class="minus">remove</mat-icon>
+                        <span (click)="add(product)"><mat-icon class="plus">add</mat-icon></span>
+                        <div><span class="number-count">  {{product.quantity}}</span></div>
+                        <span (click)="minus(product)"><mat-icon class="minus">remove</mat-icon></span>
+                        <span (click)="delete(product)"><mat-icon class="cancel">delete</mat-icon></span>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="item-product">
-            <img src="assets/images/image 17.svg" alt="gt">
-            <div class="info-product">
-                <p class="name-product">Raza Medical Shampoo Hipoalergénico con Avena para perros 300 ml</p>
-                <div class="actions">
-                    <span class="price">
-                        S/. 30.00
-                    </span>
-                    <div class="count">
-                        <mat-icon class="plus">add</mat-icon>
-                        <div><span class="number-count">2</span></div>
-                        <mat-icon class="minus">remove</mat-icon>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+       <div class="total" *ngIf="itemsCart.length!==0">
+            <span>Total</span>
+            <span>{{_cartService.getTotal()}}</span>
+       </div>
     </section>
 </div>

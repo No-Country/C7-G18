@@ -5,10 +5,10 @@
     <img class="img" [src]=product.img alt="">
 
     <div class="data1">
-        <h3><a href="/">Inicio </a><a href="" *ngIf="product.pet"><span class="slash">/</span> {{product.pet}} </a> <a href="" *ngIf="product.category"><span class="slash">/</span> {{product.category}} </a><a href="" *ngIf="product.subcategory"><span class="slash">/</span> {{product.subcategory}}</a></h3>
+        <h3><a href="/">Inicio </a><a href="" *ngIf="product.pet"><span class="slash">/</span> {{product.namePet}} </a> <a href="" *ngIf="product.category"><span class="slash">/</span> {{product.nameCategory}} </a><a href="" *ngIf="product.subcategory"><span class="slash">/</span> {{product.nameSubcategory}}</a></h3>
 
         <h2>{{product.name}}</h2>
-        <h5>Marca: {{product.brand}}</h5>
+        <h5>Marca: {{product.nameBrand}}</h5>
 
         <div class="flex2">
 
@@ -40,8 +40,8 @@
         
         <div class="flex margin">
             <button class="btn" (click)="like()">
-                <img *ngIf=!product.meGusta src="assets/icons/heartE.svg" alt=""> 
-                <img *ngIf="product.meGusta" src="assets/icons/heartF.svg" alt="">
+                <img *ngIf=!product.like src="assets/icons/heartE.svg" alt=""> 
+                <img *ngIf="product.like" src="assets/icons/heartF.svg" alt="">
             </button>
             <p class="margin">Agregar a mi lista deseos</p>
         </div>    
