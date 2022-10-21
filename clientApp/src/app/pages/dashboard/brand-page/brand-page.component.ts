@@ -23,7 +23,6 @@ export class BrandPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.listBrands()
-    console.log(this.databrand)
   }
 
   listBrands(){this.brandService.getBrand().subscribe(brands=>this.brands=brands)}
