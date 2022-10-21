@@ -1,0 +1,21 @@
+@use '../../../../../commons/styles/colors.scss';
+
+.cont{
+    margin: 1rem 2rem;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:15px;
+    img{
+        height: 200px;
+        cursor: pointer;
+    }
+}
+h4{
+    color: colors.$gray-color;
+    font-weight: 500;
+}

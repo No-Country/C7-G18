@@ -1,0 +1,23 @@
+<div mat-form-field>
+	<div class="container">
+		<div class="subContainer">
+			<form [formGroup]="formGroup" autocomplete="off">
+				<h1 class="texPurple"><strong>Olvide mi contraseña</strong></h1>
+				<p>Por favor introduce tu correo electronico. Recibiras un enlace para crear una contraseña nueva.</p>
+
+				<br />
+
+				<mat-form-field appearance="outline">
+					<mat-label>Ingresa tu e-mail</mat-label>
+					<input matInput placeholder="email@gmail.com" required formControlName="email" />
+					<mat-error *ngIf="formGroup.get('email')!.hasError('email')">e-mail invalido </mat-error>
+					<mat-error *ngIf="formGroup.get('email')!.hasError('required')">e-mail requerido </mat-error>
+				</mat-form-field>
+
+				<br />
+
+				<button mat-raised-button color="primary" class="btn-large" (click)="loginUser()" >RESTABLECER CONTRASEÑA</button>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+export const pets = [
+    {
+        title:"GATOS",
+        url:"assets/pets/cat.svg",
+        cl:'f1'
+    },
+    {
+        title:"PERROS",
+        url:"assets/pets/dogs.svg",
+        cl:'f2'
+    },
+    {
+        title:"AVES",
+        url:"assets/pets/birds.svg",
+        cl:'f3'
+    },
+    {
+        title:'PECES',
+        url:'assets/pets/fish.svg',
+        cl:'f4'
+    },
+    {
+        title:'CONEJOS',
+        url:'assets/pets/conejo.svg',
+        cl:'f5'
+    }
+]

@@ -4,6 +4,8 @@
 @use '@angular/material' as mat;
 @use '../src/app/commons/styles/colors.scss';
 @use '../src/app/commons/styles/my-theme.scss';
+@import "~alertifyjs/build/css/alertify.min.css";
+@import "~alertifyjs/build/css/themes/bootstrap.rtl.min.css";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -41,3 +43,116 @@ $appAngular-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Inter', sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-large{
+  width: 100%;
+	height: 60px;
+	font-family: 'Inter';
+}
+
+.buttonGoogle{
+  color: colors.$secondary-color;
+  border: solid colors.$secondary-color 1px;
+}
+
+.texPurple{
+  color:colors.$secondary-color
+}
+
+
+.mat-form-field-appearance-outline .mat-form-field-outline
+ {
+	  color: colors.$border-input;
+ }
+
+ .mat-form-field-suffix .mat-icon {
+   color:  colors.$gray-color-3;
+ }
+
+.mat-form-field-appearance-outline .mat-form-field-label{
+  color:colors.$gray-color-2
+}
+
+.mat-form-field {
+  width: -webkit-fill-available;
+  color: colors.$gray-color-2;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+/*.mat-form-field-wrapper{
+  padding-bottom:0.7em;
+}*/
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+}
+
+
+//Spinner
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner .8s linear infinite;
+}
+
+
+//Scroll 
+
+::-webkit-scrollbar-thumb
+{
+    background: rgb(94, 94, 94) !important;
+    opacity: 0.3;
+    border-radius: 4px;
+}
+::-webkit-scrollbar {
+    height: 4px;
+    width: 5px;
+  }
+  
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.26) !important;
+  }
+
+//slider libreria 
+  .tns-horizontal.tns-subpixel{
+    display:flex;
+    align-items: center;
+}
+
+.tns-nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3%;
+  button{
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    margin: 0 3px;
+    border-radius: 50%;
+    background: #ddd;
+    border: 0;
+  }
+}
+

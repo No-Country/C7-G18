@@ -1,0 +1,144 @@
+<mat-dialog-content>
+    
+    <div class="subs" *ngIf="dialog.modo=='add'">
+        <h1 class="flex">Nuevo Producto</h1>
+    <form [formGroup]="formGroup" autocomplete="off">
+     <mat-form-field appearance="outline">
+        <mat-label>Nombre del producto</mat-label>
+        <input  matInput required formControlName="name" />					
+        <mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
+    </mat-form-field>   
+    <mat-form-field appearance="fill">
+        <mat-label for="categ">Categoría</mat-label>
+        <mat-select formControlName="category" id="categ" >
+            <mat-option *ngFor="let cat of dialog.categories" value={{cat.id}}  >{{cat.name}}</mat-option>
+        </mat-select>	
+    </mat-form-field> 
+    <mat-form-field appearance="fill">
+        <mat-label for="sub">Subcategoría</mat-label>
+        <mat-select formControlName="subcategory" id="sub" >
+            <mat-option *ngFor="let sub of subs" value={{sub.id}}>{{sub.name}}</mat-option>
+        </mat-select>	
+    </mat-form-field>     
+    <mat-form-field appearance="fill">
+        <mat-label for="pet">Mascota</mat-label>
+        <mat-select formControlName="pet" id="pet" >
+            <mat-option *ngFor="let pet of dialog.pets" value={{pet.id}}  >{{pet.name}}</mat-option>
+        </mat-select>	
+    </mat-form-field> 
+    <mat-form-field appearance="fill">
+        <mat-label for="brand">Marca</mat-label>
+        <mat-select formControlName="brand" id="brand" >
+            <mat-option *ngFor="let brand of dialog.brands" value={{brand.id}}  >{{brand.name}}</mat-option>
+        </mat-select>	
+    </mat-form-field> 
+    <div class="flex">
+        <mat-form-field appearance="outline">
+            <mat-label>Precio unitario del producto</mat-label>
+            <input  matInput required formControlName="price"/>					
+            <mat-error *ngIf="formGroup.invalid">precio requerido </mat-error>
+        </mat-form-field> 
+        <div class="sep"></div> 
+        <mat-form-field appearance="outline">
+            <mat-label>Stock del producto</mat-label>
+            <input  matInput required formControlName="stock"/>					
+            <mat-error *ngIf="formGroup.invalid">stock requerido </mat-error>
+        </mat-form-field>  
+    </div>
+    <br>
+    <br>
+    <mat-form-field appearance="outline">
+        <mat-label>Descripción del producto</mat-label>				
+        <textarea matInput formControlName="description" ></textarea>
+        <mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
+    </mat-form-field> 
+    <input class="inputf" type="file" (change)="uploadImage($event)">      
+      <img class="imgBrand" *ngIf="url" [src]="url" alt="">
+      <div class="buttons">
+        <button mat-flat-button color="primary" (click)="add()">Guardar</button>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+      </div>
+    </form>
+</div> 
+
+
+<div class="subs" *ngIf="dialog.modo=='edit'">
+    <h1 class="flex">Editar Producto</h1>
+<form [formGroup]="formGroup" autocomplete="off">
+ <mat-form-field appearance="outline">
+    <mat-label>Nombre del producto</mat-label>
+    <input  matInput required formControlName="name" [(ngModel)]=dialog.product!.name/>					
+    <mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
+</mat-form-field>   
+<mat-form-field appearance="fill">
+    <mat-label for="categ">Categoría</mat-label>
+    <mat-select formControlName="category" id="categ" >
+        <mat-option *ngFor="let cat of dialog.categories" value={{cat.id}}  >{{cat.name}}</mat-option>
+    </mat-select>	
+</mat-form-field> 
+<mat-form-field appearance="fill">
+    <mat-label for="sub">Subcategoría</mat-label>
+    <mat-select formControlName="subcategory" id="sub" >
+        <mat-option *ngFor="let sub of subs" value={{sub.id}}>{{sub.name}}</mat-option>
+    </mat-select>	
+</mat-form-field>     
+<mat-form-field appearance="fill">
+    <mat-label for="pet">Mascota</mat-label>
+    <mat-select formControlName="pet" id="pet" >
+        <mat-option *ngFor="let pet of dialog.pets" value={{pet.id}}  >{{pet.name}}</mat-option>
+    </mat-select>	
+</mat-form-field> 
+<mat-form-field appearance="fill">
+    <mat-label for="brand">Marca</mat-label>
+    <mat-select formControlName="brand" id="brand" >
+        <mat-option *ngFor="let brand of dialog.brands" value={{brand.id}}  >{{brand.name}}</mat-option>
+    </mat-select>	
+</mat-form-field> 
+    <mat-form-field appearance="outline">
+        <mat-label>Precio unitario del producto</mat-label>
+        <input  matInput required formControlName="price" [(ngModel)]=dialog.product!.price/>					
+        <mat-error *ngIf="formGroup.invalid">precio requerido </mat-error>
+    </mat-form-field>    
+<br>
+<br>
+<mat-form-field appearance="outline">
+    <mat-label>Descripción del producto</mat-label>				
+    <textarea matInput formControlName="description" [(ngModel)]=dialog.product!.description></textarea>
+    <mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
+</mat-form-field> 
+<input class="inputf" type="file" (change)="uploadImage($event)">      
+  <img class="imgBrand" *ngIf="url" [src]="url" alt="">
+  <div class="buttons">
+    <button mat-flat-button color="primary" (click)="edit()">Guardar</button>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+  </div>
+</form>
+</div> 
+
+
+<div class="subs" *ngIf="dialog.modo=='delete'">
+    <h1 class="flex">Eliminar Marca</h1>
+    <h3>¿Está seguro de eliminar el producto <span class="span">{{dialog.product!.name}}</span>? Esta puede ser una acción irreversible.</h3>
+    <div class="buttons">
+        <button mat-flat-button color="primary" (click)="delete()">Eliminar</button>
+        <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+      </div>
+  </div>
+
+
+  <div class="subs" *ngIf="dialog.modo=='stock'">
+    <h1 class="flex">Stock Producto</h1>
+<form [formGroup]="formGroup" autocomplete="off"> 
+    <mat-form-field appearance="outline">
+        <mat-label>Stock del producto</mat-label>
+        <input  matInput required formControlName="stock" [(ngModel)]=dialog.product!.stock/>					
+        <mat-error *ngIf="formGroup.invalid">stock requerido </mat-error>
+    </mat-form-field>  
+  <div class="buttons">
+    <button mat-flat-button color="primary" (click)="editStock()">Guardar</button>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+  </div>
+</form>
+</div> 
+
+    </mat-dialog-content>

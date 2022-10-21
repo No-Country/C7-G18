@@ -1,0 +1,9 @@
+<div class="marcas">
+  <ng-container *ngIf="brands.length!==0">
+    <ngx-wrapper-tiny-slider #tinySlider [config]="tinySliderConfig" class="items">
+         <div class="item" *ngFor="let brand of brands">
+            <img src={{brand.url}} alt={{brand.name}}>
+          </div>
+    </ngx-wrapper-tiny-slider>
+  </ng-container>
+</div>

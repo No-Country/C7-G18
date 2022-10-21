@@ -1,1 +1,29 @@
-<p>card-product works!</p>
+
+<div class="card">  
+    <p *ngIf="card.discount" class="esOferta">OFERTA</p>  
+    <button class="btn" (click)="like()">
+        <img *ngIf=!card.meGusta src="assets/icons/heartE.svg" alt="">
+        <img *ngIf="card.meGusta" src="assets/icons/heartF.svg" alt="">
+    </button>   
+    <div class="detail" (click)="openModalDetail()">
+        <img class="img" src={{card.img}} style="width:100%">
+        <h3>{{card.name}}</h3>
+    </div>
+    <div class="actions">
+       <span class="price">${{card.price}}</span>
+       <div><span class="oferta"  *ngIf="card.discount">${{card.discount}}</span></div>
+       <button mat-raised-button color="accent">
+         <img src="assets/icons/cart.svg" alt="">
+        </button>
+    </div>         
+  
+</div> 
+
+
+
+
+
+  
+  
+
+  

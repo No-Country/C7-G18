@@ -1,0 +1,14 @@
+<div class="flex">
+	<h1>Listado de Mascotas</h1>
+	<button mat-flat-button color="primary" (click)="openModalNew('add')">Agregar Mascota</button>
+</div>
+<div class="cards">
+	<div *ngFor="let mascota of mascotas" class="card1">
+		<app-card-dashboard
+			[cardDashboard]="mascota"
+			[clase]="clase"
+			(onEdit)="openModalNew('edit', mascota)"
+			(onDelete)="openModalNew('delete', mascota)"
+		></app-card-dashboard>
+	</div>
+</div>

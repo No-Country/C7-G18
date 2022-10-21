@@ -1,0 +1,30 @@
+<div mat-form-field>
+	<div class="container">
+		<div class="subContainer">
+			<form [formGroup]="formGroup" autocomplete="off">
+				<div class="containerIMG">
+					<img src="../../../../assets/images/imgContacto.png" class="imgContacto" alt="imagen de contacto" />
+				</div>
+
+				<h1 class="texPurple"><strong>Escribenos</strong></h1>
+
+				<br />
+
+				<mat-form-field appearance="outline">
+					<mat-label>Ingresa tu e-mail</mat-label>
+					<input matInput placeholder="email@gmail.com" required formControlName="email" />
+					<mat-error *ngIf="formGroup.get('email')!.hasError('email')">e-mail invalido </mat-error>
+					<mat-error *ngIf="formGroup.get('email')!.hasError('required')">e-mail requerido </mat-error>
+				</mat-form-field>
+
+				<br />
+				<mat-form-field appearance="outline">
+					<mat-label>Mensaje</mat-label>
+					<textarea matInput placeholder="Escribe aqui tu mensaje." cols="1" rows="4"></textarea>
+				</mat-form-field>
+
+				<button mat-raised-button color="primary" class="btn-large">ENVIAR</button>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,73 @@
+@use '../../../commons/styles/colors.scss';
+
+.navigation-wrapper {
+  position: relative;
+  padding: 0px 25px;
+}
+
+.banner {
+  height: 150px;
+  background: #f9c1a8;
+  display: flex;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+h3 {
+  color: colors.$primary-color;
+  font-size: 25px;
+  margin: 40px 0 0 60px;
+}
+
+h2 {
+  color: white;
+  margin: auto 15px;
+  font-weight: 500;
+  text-align: center;
+  flex-basis: 80%;
+  font-size: 18px;
+}
+
+input {
+  width: 200px;
+  height: 35px;
+  margin: auto 5px;
+  border-radius: 10px;
+  border: none;
+  background-image: url(../../../../assets/icons/envelope.svg);
+  background-repeat: no-repeat;
+  background-position: 190px 11px;
+  padding-left: 20px;
+}
+
+button {
+  height: 35px;
+  margin: auto 5px;
+}
+
+@media (min-width: 680px) {
+  h2 {
+    font-size: 23px;
+  }
+
+  input {
+    width: 300px;
+    background-position: 290px 11px;
+  }
+
+  img {
+    height: 150px;
+  }
+}
+
+@media (min-width: 1000px) {
+  h2 {
+    flex: 1;
+    text-align: end;
+  }
+}

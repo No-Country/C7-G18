@@ -1,0 +1,51 @@
+@use '../../../../commons/styles/colors.scss';
+
+
+.subs{
+    padding: 15px;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.add{
+    font-size: 35px;
+    color: colors.$primary-color;
+    cursor: pointer;
+}
+
+h1{
+    font-size: 30px;
+    font-weight: 700;
+    margin:auto 0;
+    color: colors.$secondary-color;
+}
+
+.flex2{
+    display: flex;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    button{
+        width: 150px;
+    }
+}
+
+// input{
+//     width: 385px;
+//     height: 40px;
+//     margin-bottom: 20px;
+//     border-radius: 10px;
+//     border: 1px solid colors.$gray-color-3;
+//     padding: 0 15px;
+// }
+
+.span{
+    color: colors.$secondary-color;
+    font-weight: 500;
+}

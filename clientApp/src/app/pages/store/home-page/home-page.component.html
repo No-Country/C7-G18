@@ -1,4 +1,40 @@
-<p>home-page works!</p>
-<button mat-raised-button color="primary">Primary home</button>
-<button mat-raised-button color="accent" [routerLink]="'/store'">ir a store</button>
-<app-card-product></app-card-product>
+<div class="home">
+
+    <app-banner-principal></app-banner-principal>
+    
+    <app-banner></app-banner>
+
+    <app-categorias></app-categorias>
+        
+    <h3>Nuevos productos</h3>
+
+    <div class="navigation-wrapper">
+        <ngx-wrapper-tiny-slider #tinySlider [config]="tinySliderConfig" class="items">
+            <div class="item" *ngFor="let card of cards">
+                <app-card-product [card]="card"></app-card-product>
+             </div>
+       </ngx-wrapper-tiny-slider>
+    </div>
+
+    <div class="banner">
+        <img src="assets/images/catBanner.svg" alt="">
+        <div class="flex">
+            <h2>Suscribite para recibir promociones</h2>
+            <input type="email" placeholder="Ingresa tu e-mail">
+            <button mat-raised-button color="warn">Suscribirme</button>
+        </div>
+    </div> 
+
+    <h3>Lo más vendido</h3>
+
+    <div class="navigation-wrapper">
+        <ngx-wrapper-tiny-slider #tinySlider2 [config]="tinySliderConfig" class="items">
+            <div class="item" *ngFor="let card of cards">
+                <app-card-product [card]="card"></app-card-product>
+             </div>
+       </ngx-wrapper-tiny-slider>
+    </div>
+
+    <app-marcas></app-marcas>
+
+</div>

@@ -1,2 +1,126 @@
-<p>store-page works!</p>
-<button mat-raised-button color="accent" [routerLink]="'/'">ir a home</button>
+<img class="banner" src="assets/images/bannerStore.svg" alt="">
+
+<div class="store">
+    <div class="side" id="sidenav">
+        <button (click)="closeNav()" class="close"><mat-icon>close</mat-icon></button>
+        <mat-accordion>
+            <mat-expansion-panel expanded class="mat-elevation-z0">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                       <h3>Tipo de Mascota</h3> 
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="expand" *ngFor="let pet of pets">
+                    <p class="sub">{{pet}}</p>
+                </div>
+            </mat-expansion-panel>  
+        </mat-accordion>
+        <hr>
+
+        <h3 class="m-24">Precio</h3>
+    <br>
+
+    <div class="precio">
+      <label id="example-name-label">Precio máximo: </label>
+      <label>${{value}}</label>
+    </div>
+    <mat-slider
+        class="slider"
+        [max]="max"
+        [min]="min"
+        [step]="step"
+        [thumbLabel]="thumbLabel"
+        [(ngModel)]="value"
+        aria-labelledby="example-name-label">
+    </mat-slider>
+    <hr>
+
+    <mat-accordion>
+        <mat-expansion-panel expanded class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                   <h3>Categorías</h3> 
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="expand" *ngFor="let cat of categories">
+                <p class="sub">{{cat}}</p>
+            </div>
+        </mat-expansion-panel>  
+    </mat-accordion>
+    <hr>
+
+    <mat-accordion>
+        <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                   <h3>Subcategorías</h3> 
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="expand" *ngFor="let sub of subcategories">
+                <p class="sub">{{sub}}</p>
+            </div>
+        </mat-expansion-panel>  
+    </mat-accordion>
+    <hr>
+
+    <mat-accordion>
+        <mat-expansion-panel class="mat-elevation-z0">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                   <h3>Marcas</h3> 
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="expand" *ngFor="let marca of marcas">
+                <p class="sub">{{marca}}</p>
+            </div>
+        </mat-expansion-panel>  
+    </mat-accordion>
+
+    </div>
+ 
+    <div class="main">
+        <button (click)="openNav()" class="open"><< Filtrar</button>
+        <div class="headm">
+            <h3><a href="/">Inicio </a><a href="" *ngIf="pet"><span class="slash">/</span> {{pet}} </a> <a href="" *ngIf="category"><span class="slash">/</span> {{category}} </a><a href="" *ngIf="subcategory"><span class="slash">/</span> {{subcategory}}</a></h3>
+
+            
+            <form class="example-form">                
+                <input  class="input"
+                        type="text"
+                        placeholder="Buscar producto"
+                        matInput
+                        [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let card of cards, let i=index" [value]="card.id">
+                        <div class="option">
+                            <img src="{{card.img}}" alt=""> 
+                            <div>
+                                <h4>{{card.name}}</h4>
+                                <div class="option" *ngIf="!card.discount">
+                                    <p class="price">${{card.price}}</p>
+                                </div> 
+                                <div class="option" *ngIf="card.discount">
+                                    <p class="price">${{card.discount}}</p>
+                                    <p class="oferta">${{card.price}}</p>
+                                </div> 
+                            </div>
+                        </div>
+                    </mat-option>
+                </mat-autocomplete>
+            </form>
+        </div>
+        <div class="grid-card">
+            <div *ngFor="let card of obs | async">
+                <app-card-product [card]="card"></app-card-product>
+            </div>
+        </div>
+        
+        <mat-paginator [length]="cards.length"
+              [pageSize]="6"
+              [pageSizeOptions]="[6, 9, 12]"
+              aria-label="Select page">
+              
+        </mat-paginator>
+    </div>
+</div>
+
