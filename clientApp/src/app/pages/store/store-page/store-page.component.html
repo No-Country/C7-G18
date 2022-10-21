@@ -81,7 +81,7 @@
     <div class="main">
         <button (click)="openNav()" class="open"><< Filtrar</button>
         <div class="headm">
-            <!-- <h3><a href="/">Inicio </a><a href="" *ngIf="pet"><span class="slash">/</span> {{pet}} </a> <a href="" *ngIf="category"><span class="slash">/</span> {{category}} </a><a href="" *ngIf="subcategory"><span class="slash">/</span> {{subcategory}}</a></h3> -->
+            <h3><a href="/">Inicio </a><!-- <a href="" *ngIf="pet"><span class="slash">/</span> {{pet}} </a> <a href="" *ngIf="category"><span class="slash">/</span> {{category}} </a><a href="" *ngIf="subcategory"><span class="slash">/</span> {{subcategory}}</a> --></h3>
 
             
             <form class="example-form">                
@@ -110,7 +110,7 @@
             </form>
         </div>
         <div class="grid-card">
-            <div *ngFor="let card of products">
+            <div *ngFor="let card of obs|async">
                 <app-card-product [card]="card"></app-card-product>
             </div>
         </div>

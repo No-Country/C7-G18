@@ -54,7 +54,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
 }
 
 
-dataSource = new MatTableDataSource<IProductClass>();
+dataSource:MatTableDataSource<IProductClass>
 
 
 
@@ -69,18 +69,17 @@ dataSource = new MatTableDataSource<IProductClass>();
         product.namePet=dataPet?.name
 
       });
-      this.dataSource = new MatTableDataSource<IProductClass>(this.products);
+        this.dataSource = new MatTableDataSource<IProductClass>(this.products);
+        this.dataSource.paginator = this.paginator;
+        this.paginator._intl.itemsPerPageLabel="Productos por página";
+        this.paginator._intl.getRangeLabel = this.getRangeDisplayText;
   }
     
-  
-
-  
+    
   @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
   
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.paginator._intl.itemsPerPageLabel="Productos por página";
-    this.paginator._intl.getRangeLabel = this.getRangeDisplayText;
+    
   }
 
 
