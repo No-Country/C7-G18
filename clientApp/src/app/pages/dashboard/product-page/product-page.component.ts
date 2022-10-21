@@ -21,7 +21,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     ){}
 
   categories:CardDashboard[]=[]
-  products:IProductClass[]=this._productService.getProducts()
+  products:IProductClass[]=[]
 
   ngOnInit(): void {
         // this._categoryService.getCategory().subscribe({
@@ -29,11 +29,16 @@ export class ProductPageComponent implements OnInit, AfterViewInit {
     
     //   complete:()=> this.getProducts()
     // })   
+    this._productService.getProducts().subscribe({
+      next:response=>{console.log(response, 'vell')}
+    })
+      //   complete:()=> this.getProducts()
+      // })
 }
 
   getProducts(){  
 
-   console.log(this._productService.getProducts())
+   //console.log(this._productService.getProducts())
     // this._productService.getProducts().subscribe({
     //   next:response=>{
     //     console.log(response, 'original')

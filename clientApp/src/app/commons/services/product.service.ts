@@ -7,6 +7,7 @@ import { CategoryService } from './category.service';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CardDashboard } from '../components/card-dashboard/card-dashboard';
+import { of } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
@@ -63,9 +64,11 @@ getProds():Observable<IProductClass[]>{
   return collectionData(productsRef,{idField:'id'}).pipe(first()) as Observable<IProductClass[]>
 }
 
-getProducts():IProductClass[] {
+getProducts():Observable<IProductClass[]> {
   let products:IProductClass[]=[]
-  this._categoryService.getCategory().subscribe({
+  const data=this._categoryService.getCategory()
+  .pipe().
+  subscribe({
     next: (data) => {
       this.categories = data;
       console.log(this.categories)
@@ -81,13 +84,12 @@ getProducts():IProductClass[] {
             const dataCategory=this.categories.find(category=>category.id==product.category)
            product.nameCategory=dataCategory?.name
          })
-         console.log(products)
         }
-      })
-
-    }
+      }
+      )
+    },
   })
-  return products 
+  return of(products)
 }
 
 }

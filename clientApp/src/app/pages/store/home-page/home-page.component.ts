@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Product } from 'src/app/commons/components/card-product';
+import { IProductClass } from 'src/app/commons/interfaces/front.interface';
+import { ProductService } from 'src/app/commons/services/product.service';
 import { TinySliderInstance, TinySliderSettings } from 'tiny-slider';
 
 @Component({
@@ -8,7 +10,11 @@ import { TinySliderInstance, TinySliderSettings } from 'tiny-slider';
 	styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-	constructor() {}
+
+	topNewProducts:IProductClass[]=[];
+	cardsMasVendidos: Product[] = [];
+
+	constructor(private _productService:ProductService,) {}
 
 	@ViewChild('tinySlider', { static: false }) tinySlider: TinySliderInstance;
 	public tinySliderConfig: TinySliderSettings = {
@@ -37,9 +43,9 @@ export class HomePageComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.cardsMasVendidos=this.cards
+		
 	}
 
-	cardsMasVendidos: Product[] = [];
 
 	cards: Product[] = [
 		{
