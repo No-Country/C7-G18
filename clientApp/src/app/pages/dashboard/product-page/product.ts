@@ -8,5 +8,5 @@ export interface ProductTable{
     category:string,
     subcategory?:string,
     created?:string,
-    datacategory?:CardDashboard
+    stock?:number
 }

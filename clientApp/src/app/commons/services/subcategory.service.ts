@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Firestore , collection, collectionData, addDoc, deleteDoc, doc, updateDoc, arrayUnion, arrayRemove} from '@angular/fire/firestore';
+import { Firestore , collection, collectionData, addDoc, deleteDoc, doc, updateDoc} from '@angular/fire/firestore';
+import { first, Observable } from 'rxjs';
+import { CardDashboard } from '../components/card-dashboard/card-dashboard';
 
 
 @Injectable({
@@ -9,25 +11,26 @@ export class SubcategoryService {
 
   constructor(public firestore:Firestore) { }
 
-
-  addSubcategory(id:string, data: string){
-    const categoryDocRef = doc(this.firestore, 'category', id);
-    return updateDoc(categoryDocRef, {
-        subcategories:arrayUnion(data)
-    });
+  
+  getSubcategory(idCategory:string):Observable<CardDashboard[]>{
+    const subcategoryRef=collection(this.firestore,'category', idCategory, 'subcategory')
+    return collectionData(subcategoryRef,{idField:'id'}).pipe(first()) as Observable<CardDashboard[]>
   }
 
-  deleteSubcategory(id:string, data: string){
-    const categoryDocRef = doc(this.firestore, 'category', id);
-    return updateDoc(categoryDocRef, {
-        subcategories:arrayRemove(data)
-    });
+  addSubcategory(subcategory: CardDashboard,idCategory:string) {
+    const subcategoryRef=collection(this.firestore,'category', idCategory, 'subcategory')
+    return addDoc(subcategoryRef, subcategory);
   }
 
-  editSubcategory(id:string, data1: string, data2:string){
-    const categoryDocRef = doc(this.firestore, 'category', id);
-    updateDoc(categoryDocRef,{subcategories:arrayRemove(data1)})
-    return updateDoc(categoryDocRef,{subcategories:arrayUnion(data2)});
+  deleteSubcategory(idCategory:string,idSub:string) {
+    const subcategoryDocRef = doc(this.firestore,'category',idCategory, `subcategory/${idSub}`);
+    return deleteDoc(subcategoryDocRef);
+  }
+
+  updateSubcategory(idCategory:string,idSub:string, data: CardDashboard){
+    const subcategoryDocRef = doc(this.firestore, 'category', idCategory,'subcategory',idSub);
+    const edit={name:data.name}
+    return updateDoc(subcategoryDocRef,edit)
   }
 
 
