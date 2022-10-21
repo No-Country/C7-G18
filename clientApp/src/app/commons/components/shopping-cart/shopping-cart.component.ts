@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { IProductClass } from '../../interfaces/front.interface';
 import { CartService } from '../../services/cart.service';
 
@@ -12,7 +13,8 @@ export class ShoppingCartComponent implements OnInit {
 	contador: number = 0;
 
 	constructor(
-		public _cartService:CartService
+		public _cartService:CartService,
+		private router: Router
 	) {}
 	
 	itemsCart = this._cartService.getItems();
@@ -43,5 +45,9 @@ export class ShoppingCartComponent implements OnInit {
 
 	delete(product:IProductClass){
 		this._cartService.deleteItem(product)
+	}
+
+	goBuy(){
+		this.router.navigate(['/buy']);
 	}
 }

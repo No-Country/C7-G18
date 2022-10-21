@@ -23,11 +23,8 @@
                 </div>  
             </div>
                 
-            <div class="flex margin">
-                <button class="btn" (click)="cartNumber=cartNumber + 1">+</button>
-                <h4 class="cont">{{cartNumber}}</h4>
-                <button class="btn" (click)="cartNumber=cartNumber - 1">-</button>            
-                <button mat-raised-button color="accent" class="btnm">
+            <div class="flex margin">          
+                <button mat-raised-button color="accent" class="btnm" (click)="modifyProducts(product)">
                     <img src="assets/icons/cart.svg" alt="">
                 </button>
             </div>
