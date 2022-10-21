@@ -14,6 +14,7 @@ export interface IProductClass{
     name?:string,
     created?:string,
     price?:number,
+    discount?:number,
     description?:string,
     category?:string,
     nameCategory?:string,
@@ -25,5 +26,6 @@ export interface IProductClass{
     namePet?:string,
     default?:boolean,
     img?:string,
-    stock?:number
+    stock?:number,
+    like?:boolean
 }

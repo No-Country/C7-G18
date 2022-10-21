@@ -29,6 +29,7 @@
   .detail{
     display: grid;
     grid-template-columns: 250px 1fr;
+    width: 600px;
   }
 
   .img{
@@ -48,6 +49,7 @@
 
   .detail{
     grid-template-columns: 350px 1fr;
+    width: 850px;
   }
 
   .img{

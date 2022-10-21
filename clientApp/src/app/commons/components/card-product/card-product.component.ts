@@ -2,6 +2,7 @@ import { Component, OnInit, Input  } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Product } from '../card-product';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
+import { IProductClass } from '../../interfaces/front.interface';
 
 @Component({
   selector: 'app-card-product',
@@ -10,7 +11,7 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
 })
 export class CardProductComponent implements OnInit {
   
-  @Input() card!:Product
+  @Input() card!:IProductClass
 
   constructor(private _matDialog: MatDialog) {  }
 
@@ -19,7 +20,7 @@ export class CardProductComponent implements OnInit {
 
 
   like(){
-    this.card.meGusta=!this.card.meGusta
+    this.card.like=!this.card.like
   }
 
   openModalDetail() {

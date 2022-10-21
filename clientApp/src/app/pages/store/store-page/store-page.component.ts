@@ -1,8 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
+import { CardDashboard } from 'src/app/commons/components/card-dashboard/card-dashboard';
 import { Product } from 'src/app/commons/components/card-product';
+import { IProductClass } from 'src/app/commons/interfaces/front.interface';
+import { BrandService } from 'src/app/commons/services/brand.service';
+import { CategoryService } from 'src/app/commons/services/category.service';
+import { PetService } from 'src/app/commons/services/pet.service';
+import { ProductService } from 'src/app/commons/services/product.service';
 
 
 const cards:Product[]=[
@@ -138,8 +145,6 @@ const cards:Product[]=[
   },
 ]
 
-
-
 @Component({
   selector: 'app-store-page',
   templateUrl: './store-page.component.html',
@@ -147,24 +152,47 @@ const cards:Product[]=[
 })
 export class StorePageComponent implements OnInit {
 
-  cards:Product[]=cards
+  //cards:Product[]=cards
 
-  constructor() { }
+  constructor(
+    private _matDialog: MatDialog,
+    private _productService:ProductService,
+    private _categoryService:CategoryService,
+    private _brandService:BrandService,
+    private _petService:PetService,
+  ) { }
+
+  pets:CardDashboard[]=[]
+  brands:CardDashboard[]=[]
+  categories:CardDashboard[]=[]
+  products:IProductClass[]=[]
 
   ngOnInit(): void {
-    
+    this._categoryService.getCategory().subscribe(data=>this.categories=data)
+    this._brandService.getBrand().subscribe(data=>this.brands=data)
+    this._petService.getPet().subscribe(data=>this.pets=data)
+    this._productService.getProds().subscribe({
+       next:data=>this.products=data,
+       complete:()=>this.getProducts()
+     })   
   }
 
-  pet:string='Conejos'
-  category:string|null='Alimentación'
-  subcategory:string|null=null
+ getProducts(){       
+   this.products.forEach(product=> {
+        const dataCategory=this.categories.find(category=>category.id==product.category)
+        const dataBrand= this.brands.find(brand=>brand.id==product.brand)
+        const dataPet= this.pets.find(pet=>pet.id==product.pet)
+        
+       product.nameCategory=dataCategory?.name;
+       product.nameBrand=dataBrand?.name;
+       product.namePet=dataPet?.name
+
+     });
+ } 
 
 
-  pets:string[]=['Gatos','Peros', 'Aves', 'Peces','Conejos']
-  categories:string[]=['Todos', 'Alimentación', 'Accesorios', 'Higiene', 'Farmacia', 'Caniles', 'Juguetes', 'Ropa']
-  subcategories:string[]=[]
-  marcas:string[]=['Todos','Brefar','Brit Care','Dog Chow','Mirrapel','Pro Plan','Vet Life']
 
+  
 
   //slider
   max = 1000;
@@ -176,7 +204,7 @@ export class StorePageComponent implements OnInit {
 
 
  //paginador cards
-  dataSource:MatTableDataSource<Product> = new MatTableDataSource<Product>(this.cards);
+  dataSource:MatTableDataSource<IProductClass> = new MatTableDataSource<IProductClass>(this.products);
   obs: Observable<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

@@ -3,13 +3,29 @@
 
 table {
     width: 100%;
+    min-width: 900px;
   }
 
   .img{
     height: 80px;
   }
 
-  .flex{
+.flex{
+    justify-content: center;
+    button{
+        margin: 10px auto;
+        width: 150px;
+    }
+}
+
+h1{
+    font-size: 15px;
+    font-weight: 500;
+    margin:0 auto;
+}
+
+@media(min-width:700px){
+.flex{
     display: flex;
     justify-content: space-between;
     height: 45px;
@@ -17,14 +33,16 @@ table {
     button{
         margin: auto 0;
         width: 200px;
+    }    
+}
+    h1{
+        font-size: 30px;
+        margin: auto 0;
     }
+  
 }
 
-h1{
-    font-size: 30px;
-    font-weight: 500;
-    margin:auto 0;
-}
+
 
 th{
     background: colors.$ligth-bg2;
