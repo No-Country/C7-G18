@@ -29,7 +29,7 @@
 
 	<div class="cart" (click)="openModalShoppingCart()">
 		<img src="assets/icons/cart2.svg" alt="" />
-		<div class="contador"><p>10</p></div>
+		<div class="contador"><p>{{_cartService.getItems().length}}</p></div>
 	</div>
 </div>
 

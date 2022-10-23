@@ -1,6 +1,9 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { Product } from 'src/app/commons/components/card-product';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CardDashboard } from 'src/app/commons/components/card-dashboard/card-dashboard';
 import { IProductClass } from 'src/app/commons/interfaces/front.interface';
+import { BrandService } from 'src/app/commons/services/brand.service';
+import { CategoryService } from 'src/app/commons/services/category.service';
+import { PetService } from 'src/app/commons/services/pet.service';
 import { ProductService } from 'src/app/commons/services/product.service';
 import { TinySliderInstance, TinySliderSettings } from 'tiny-slider';
 
@@ -11,10 +14,52 @@ import { TinySliderInstance, TinySliderSettings } from 'tiny-slider';
 })
 export class HomePageComponent implements OnInit {
 
-	topNewProducts:IProductClass[]=[];
-	cardsMasVendidos: Product[] = [];
+	
+	constructor(
+		private _productService:ProductService,
+    	private _categoryService:CategoryService,
+    	private _brandService:BrandService,
+    	private _petService:PetService,
+	) {}
 
-	constructor(private _productService:ProductService,) {}
+	pets:CardDashboard[]=[]
+  brands:CardDashboard[]=[]
+  categories:CardDashboard[]=[]
+  products:IProductClass[]=[]
+  last8prods:IProductClass[]=[]
+  first8prods:IProductClass[]=[]
+
+
+
+
+	
+
+	ngOnInit(): void {
+	this._categoryService.getCategory().subscribe(data=>this.categories=data)
+    this._brandService.getBrand().subscribe(data=>this.brands=data)
+    this._petService.getPet().subscribe(data=>this.pets=data)
+    this._productService.getProds().subscribe({
+       next:data=>this.products=data,
+       complete:()=>this.getProducts()
+     })  
+	}
+
+
+	getProducts(){       
+		this.products.forEach(product=> {
+			 const dataCategory=this.categories.find(category=>category.id==product.category)
+			 const dataBrand= this.brands.find(brand=>brand.id==product.brand)
+			 const dataPet= this.pets.find(pet=>pet.id==product.pet)
+			 
+			product.nameCategory=dataCategory?.name;
+			product.nameBrand=dataBrand?.name;
+			product.namePet=dataPet?.name	 
+		  });
+		 this.last8prods=this.products.slice(this.products.length-8,this.products.length)
+		 this.first8prods=this.products.slice(1,8)
+	}
+
+
 
 	@ViewChild('tinySlider', { static: false }) tinySlider: TinySliderInstance;
 	public tinySliderConfig: TinySliderSettings = {
@@ -41,87 +86,6 @@ export class HomePageComponent implements OnInit {
 		  },
 	};
 
-	ngOnInit(): void {
-		this.cardsMasVendidos=this.cards
-		
-	}
 
-
-	cards: Product[] = [
-		{
-			img: 'assets/images/image 17.svg',
-			name: 'prueba',
-			price: 19.99,
-			meGusta: false,
-			sold: 35,
-			description:
-				'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum ipsum perspiciatis atque laudantium sint nobis laboriosam pariatur eaque facilis saepe nemo quam, placeat optio temporibus ex odio eligendi! Eaque, nisi.',
-			brand: 'DogChow',
-			category: 'Alimentación',
-			subcategory: 'Croquetas',
-			pet: 'Gatos'
-		},
-		{
-			img: 'assets/images/image 65.svg',
-			name: 'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-			price: 15.99,
-			meGusta: true,
-			sold: 5,
-			description:
-				'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum ipsum perspiciatis atque laudantium sint nobis laboriosam pariatur eaque facilis saepe nemo quam, placeat optio temporibus ex odio eligendi! Eaque, nisi.',
-			brand: 'CatChow',
-			category: 'Alimentación',
-			subcategory: 'Balanceado',
-			pet: 'Gatos'
-		},
-		{
-			img: 'assets/images/image 17.svg',
-			name: 'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-			price: 9.99,
-			meGusta: false,
-			discount: 5.99,
-			nuevo: true,
-			sold: 40
-		},
-		{
-			img: 'assets/images/image 17.svg',
-			name: 'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-			price: 19.99,
-			meGusta: false,
-			nuevo: true,
-			sold: 10
-		},
-		{
-			img: 'assets/images/image 65.svg',
-			name: 'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-			price: 15.99,
-			meGusta: false,
-			discount: 12.99,
-			nuevo: true,
-			sold: 1
-		},
-		{
-			img: 'assets/images/image 17.svg',
-			name: 'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-			price: 9.99,
-			meGusta: false,
-			sold: 15
-		},
-		{
-			img: 'assets/images/image 17.svg',
-			name: 'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-			price: 9.99,
-			meGusta: false,
-			discount: 5.99,
-			nuevo: true,
-			sold: 48
-		},
-		{
-			img: 'assets/images/image 17.svg',
-			name: 'MIMASKOT Gato Adulto - Pollo y Carne - 9Kg',
-			price: 19.99,
-			meGusta: false,
-			sold: 4
-		},
-	];
+	
 }

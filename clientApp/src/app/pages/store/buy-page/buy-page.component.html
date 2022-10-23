@@ -34,22 +34,14 @@
 			<h2 class="texPurple"><strong>Resumen del Pedido</strong></h2>
 		</div>
 		<div class="resuPedidos">
-			<div class="pedido">
-				<h3>esto es un pedido solo como ejemplo</h3>
-				<h3>S/.30</h3>
-			</div>
-			<div class="pedido">
-				<h3>esto es un pedido solo como ejemplo</h3>
-				<h3>S/.30</h3>
-			</div>
-			<div class="pedido">
-				<h3>esto es un pedido solo como ejemplo</h3>
-				<h3 color="primary">S/.30</h3>
+			<div class="pedido" *ngFor="let product of itemsCart">
+				<h3>{{ product.name }}</h3>
+				<h3>{{ product.subtotal | currency: 'symbol':'$ ' }}</h3>
 			</div>
 		</div>
 		<div class="total texPurple">
 			<h2>Total</h2>
-			<h2 class=""><strong>S/.60</strong></h2>
+			<h2 class=""><strong>{{ _cartService.getTotal() | currency: 'symbol':'$ ' }}</strong></h2>
 		</div>
 	</div>
 </div>

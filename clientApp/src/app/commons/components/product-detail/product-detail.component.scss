@@ -5,7 +5,7 @@
     // display: grid;
     // grid-template-columns: 35% 65%;
     max-width: 800px;
-    height: 550px;
+    max-height: 700px;
     position: relative;
 }
 
@@ -29,6 +29,7 @@
   .detail{
     display: grid;
     grid-template-columns: 250px 1fr;
+    width: 600px;
   }
 
   .img{
@@ -48,6 +49,7 @@
 
   .detail{
     grid-template-columns: 350px 1fr;
+    width: 850px;
   }
 
   .img{
@@ -152,7 +154,7 @@ h3 a:last-of-type{
   }
 
   .margin{
-    margin: 10px;
+    margin: 10px -15px;
   }
 
   p{

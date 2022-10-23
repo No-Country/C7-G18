@@ -11,7 +11,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="expand" *ngFor="let pet of pets">
-                    <p class="sub">{{pet}}</p>
+                    <p class="sub">{{pet.name}}</p>
                 </div>
             </mat-expansion-panel>  
         </mat-accordion>
@@ -43,7 +43,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <div class="expand" *ngFor="let cat of categories">
-                <p class="sub">{{cat}}</p>
+                <p class="sub">{{cat.name}}</p>
             </div>
         </mat-expansion-panel>  
     </mat-accordion>
@@ -56,8 +56,8 @@
                    <h3>Subcategorías</h3> 
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="expand" *ngFor="let sub of subcategories">
-                <p class="sub">{{sub}}</p>
+            <div class="expand" >
+                <p class="sub"></p>
             </div>
         </mat-expansion-panel>  
     </mat-accordion>
@@ -70,8 +70,8 @@
                    <h3>Marcas</h3> 
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="expand" *ngFor="let marca of marcas">
-                <p class="sub">{{marca}}</p>
+            <div class="expand" *ngFor="let brand of brands">
+                <p class="sub">{{brand.name}}</p>
             </div>
         </mat-expansion-panel>  
     </mat-accordion>
@@ -81,7 +81,7 @@
     <div class="main">
         <button (click)="openNav()" class="open"><< Filtrar</button>
         <div class="headm">
-            <h3><a href="/">Inicio </a><a href="" *ngIf="pet"><span class="slash">/</span> {{pet}} </a> <a href="" *ngIf="category"><span class="slash">/</span> {{category}} </a><a href="" *ngIf="subcategory"><span class="slash">/</span> {{subcategory}}</a></h3>
+            <h3><a href="/">Inicio </a><!-- <a href="" *ngIf="pet"><span class="slash">/</span> {{pet}} </a> <a href="" *ngIf="category"><span class="slash">/</span> {{category}} </a><a href="" *ngIf="subcategory"><span class="slash">/</span> {{subcategory}}</a> --></h3>
 
             
             <form class="example-form">                
@@ -91,7 +91,7 @@
                         matInput
                         [matAutocomplete]="auto">
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let card of cards, let i=index" [value]="card.id">
+                    <mat-option *ngFor="let card of products, let i=index" [value]="card.id">
                         <div class="option">
                             <img src="{{card.img}}" alt=""> 
                             <div>
@@ -109,13 +109,15 @@
                 </mat-autocomplete>
             </form>
         </div>
+        <mat-spinner  *ngIf="products.length==0"></mat-spinner>  
+        <ng-container *ngIf="products.length!==0">
         <div class="grid-card">
-            <div *ngFor="let card of obs | async">
+            <div *ngFor="let card of obs|async">
                 <app-card-product [card]="card"></app-card-product>
             </div>
         </div>
-        
-        <mat-paginator [length]="cards.length"
+        </ng-container>
+        <mat-paginator [length]="products.length"
               [pageSize]="6"
               [pageSizeOptions]="[6, 9, 12]"
               aria-label="Select page">

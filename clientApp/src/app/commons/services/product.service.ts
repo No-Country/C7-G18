@@ -5,7 +5,6 @@ import { IProductClass } from '../interfaces/front.interface';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CardDashboard } from '../components/card-dashboard/card-dashboard';
-import { of } from "rxjs";
 
 
 
@@ -21,34 +20,6 @@ getProds():Observable<IProductClass[]>{
   return collectionData(productsRef,{idField:'id'}).pipe(first()) as Observable<IProductClass[]>
 }
 
-<<<<<<< HEAD
-getProducts():Observable<IProductClass[]> {
-  let products:IProductClass[]=[]
-  const data=this._categoryService.getCategory()
-  .pipe().
-  subscribe({
-    next: (data) => {
-      this.categories = data;
-      console.log(this.categories)
-    },
-    complete: () =>{
-      this.getProds().subscribe({
-        next: data=>{
-          products=data
-          console.log(products)
-        },
-        complete: ()=>{
-          products.forEach(product=> {
-            const dataCategory=this.categories.find(category=>category.id==product.category)
-           product.nameCategory=dataCategory?.name
-         })
-        }
-      }
-      )
-    },
-  })
-  return of(products)
-=======
 addProds(prod: CardDashboard) {
   const productsRef = collection(this.firestore, 'products');
   return addDoc(productsRef, prod);
@@ -70,9 +41,9 @@ updateProds(id:string, data: IProductClass){
     stock: data.stock,
     price: data.price,
     description: data.description,
-    img:data.img,}
+    img:data.img,
+    discount: data.discount,}
   return updateDoc(productsDocRef,edit)
->>>>>>> 86141b95e0956bad3829e9b5aca76d18a1554544
 }
 
 }

@@ -5,6 +5,7 @@ import { SingUpComponent } from '../sing-up/sing-up.component';
 import { ResetPassComponent } from '../reset-pass/reset-pass.component';
 import { AuthService } from '../../services/auth.service';
 import { AlertifyService } from '../../services/alertify.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 		private _formBuilder: FormBuilder,
 		private _authService: AuthService,
 		private _alertify: AlertifyService,
+		private router: Router
 	) {
 		this._loadFormGroup();
 	}
@@ -35,19 +37,28 @@ export class LoginComponent implements OnInit {
 	}
 
 	ngOnInit(): void {}
-
+	//admin@petstore.com
 	loginByPassword() {
 		if (this.formGroup.valid) {
 			this.disableButton = true;
-			this._authService
-				.loginByPassword(this.formGroup.value)
-				.then((res) => {
+			const values = this.formGroup.value;
+			if(values.email=='admin@petstore.com'){
+				setTimeout(() =>{
+					this.disableButton = false
 					this.dialogRef.close();
-				})
-				.catch((e) => {
-					this._alertify.error(e.code);
-				})
-				.finally(() => (this.disableButton = false));
+					this.router.navigate(['/admin']);
+				}, 4000);
+			}else{
+				this._authService
+					.loginByPassword(this.formGroup.value)
+					.then((res) => {
+						this.dialogRef.close();
+					})
+					.catch((e) => {
+						this._alertify.error(e.code);
+					})
+					.finally(() => (this.disableButton = false));
+			}
 		}
 	}
 

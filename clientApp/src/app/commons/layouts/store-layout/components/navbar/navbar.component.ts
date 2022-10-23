@@ -5,6 +5,7 @@ import { ContactoComponent } from 'src/app/commons/components/contacto/contacto.
 import { ShoppingCartComponent } from '../../../../components/shopping-cart/shopping-cart.component';
 import { AuthService } from 'src/app/commons/services/auth.service';
 import { AlertifyService } from 'src/app/commons/services/alertify.service';
+import { CartService } from 'src/app/commons/services/cart.service';
 
 @Component({
 	selector: 'app-navbar',
@@ -16,6 +17,7 @@ export class NavbarComponent implements OnInit {
 		private _matDialog: MatDialog,  
 		public _authService: AuthService,
 		private _alertify: AlertifyService,
+		public _cartService:CartService
 		) {}
 
 	panelOpenState: boolean = false;

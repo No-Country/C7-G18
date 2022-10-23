@@ -9,11 +9,14 @@
     <h3>Nuevos productos</h3>
 
     <div class="navigation-wrapper">
+        <mat-spinner  *ngIf="last8prods.length==0"></mat-spinner>
+        <ng-container *ngIf="last8prods.length!==0">
         <ngx-wrapper-tiny-slider #tinySlider [config]="tinySliderConfig" class="items">
-            <div class="item" *ngFor="let card of cards">
+            <div class="item" *ngFor="let card of last8prods">
                 <app-card-product [card]="card"></app-card-product>
              </div>
        </ngx-wrapper-tiny-slider>
+    </ng-container>
     </div>
 
     <div class="banner">
@@ -27,12 +30,15 @@
 
     <h3>Lo más vendido</h3>
 
+    <mat-spinner  *ngIf="first8prods.length==0"></mat-spinner>
     <div class="navigation-wrapper">
-        <ngx-wrapper-tiny-slider #tinySlider2 [config]="tinySliderConfig" class="items">
-            <div class="item" *ngFor="let card of cards">
-                <app-card-product [card]="card"></app-card-product>
-             </div>
-       </ngx-wrapper-tiny-slider>
+        <ng-container *ngIf="first8prods.length!==0">
+            <ngx-wrapper-tiny-slider #tinySlider2 [config]="tinySliderConfig" class="items">
+                <div class="item" *ngFor="let card of first8prods">
+                    <app-card-product [card]="card"></app-card-product>
+                 </div>
+           </ngx-wrapper-tiny-slider>
+        </ng-container>
     </div>
 
     <app-marcas></app-marcas>
