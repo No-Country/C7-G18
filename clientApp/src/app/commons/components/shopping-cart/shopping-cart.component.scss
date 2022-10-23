@@ -10,8 +10,9 @@
     section .item-product{
         display:grid;
         grid-template-columns: 1fr 5fr;
+        column-gap: 10px;
         border-bottom: 1px solid colors.$gray-color-4;
-        padding-bottom: 15px;
+        padding: 15px 0px;
         img{
            width: 80px; 
         }
@@ -37,7 +38,6 @@
         .count{
             display: flex;
             flex-direction: row;
-            gap:8px;
             .plus, .minus{
                 color:#a1a1a1;
                 cursor: pointer;
@@ -47,10 +47,39 @@
                 color:colors.$secondary-color;
             }
             .number-count{
-                color:colors.$primary-color;
+                color:#484A54;
                 font-size: 15px;
+                padding-right: 10px;
             }
         }
 
+        .cancel{
+            color:rgb(233, 92, 92);
+            cursor: pointer;
+        }
     }
+}
+
+.total{
+    margin-top: 20px;
+    display:flex;
+    justify-content: space-between;
+    color:colors.$secondary-color;
+    font-size: 20px;
+}
+
+.bill{
+    color:gray;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer_pay{
+    margin-top:10%;
+}
+
+.btn-pay{
+    margin-top: 20px;
 }
