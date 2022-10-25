@@ -25,6 +25,8 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "alertifyjs": "^1.13.1",
+    "ngx-paypal": "^10.1.0",
+    "ngx-toastr": "^13.2.1",
     "ngx-wrapper-tiny-slider": "^13.1.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

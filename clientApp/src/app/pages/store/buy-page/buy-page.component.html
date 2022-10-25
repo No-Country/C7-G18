@@ -1,33 +1,41 @@
 <div class="container">
-	<div class="envioFacturacion">
-		<h2 class="texPurple"><strong>Detalles de Envio y Facturacion</strong></h2>
+	<ngx-paypal [config]="payPalConfig"></ngx-paypal>
 
-		<mat-form-field appearance="outline">
-			<mat-label>NUMERO DE DNI</mat-label>
-			<input type="number" matInput placeholder="Ingresa tu DNI" />
-		</mat-form-field>
-		<mat-form-field appearance="outline">
-			<mat-label>CELULAR</mat-label>
-			<input type="number" matInput placeholder="Ingresa tu celular" />
-		</mat-form-field>
-		<mat-form-field appearance="outline">
-			<mat-label>DIRECCIÓN</mat-label>
-			<input matInput placeholder="Ingresa tu dirección" />
-		</mat-form-field>
-		<mat-form-field appearance="outline">
-			<mat-label>REFERENCIA</mat-label>
-			<input matInput placeholder="Ingresa referencia de tu direccion" />
-		</mat-form-field>
-		<mat-form-field appearance="outline">
-			<mat-label>NOTA</mat-label>
-			<textarea matInput placeholder="Escribe aqui tu mensaje." cols="1" rows="4"></textarea>
-		</mat-form-field>
-		<button mat-raised-button color="primary" class="btn-large pagar">PAGAR CON TARJETA</button>
-		<button mat-stroked-button color="accent" class="btn-large pagar" pagar>
-			<img class="imgPaypal" src="../../../../assets/icons/paypal.png" alt="PAYPAL" />
-			<strong>PAGAR CON PAYPAL</strong>
-		</button>
-	</div>
+	<!--<form [formGroup]="formGroup" autocomplete="off">
+		<div class="envioFacturacion">
+			<h2 class="texPurple"><strong>Detalles de Envio y Facturacion</strong></h2>
+
+			<mat-form-field appearance="outline">
+				<mat-label>NUMERO DE DNI</mat-label>
+				<input type="text" matInput placeholder="Ingresa tu DNI" required formControlName="dni"/>
+				<mat-error *ngIf="formGroup.get('dni')!.hasError('required')">Dni es requerido </mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>CELULAR</mat-label>
+				<input type="number" matInput placeholder="Ingresa tu celular" required formControlName="phone"/>
+				<mat-error *ngIf="formGroup.get('phone')!.hasError('required')">Celular es requerido </mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>DIRECCIÓN ENTREGA</mat-label>
+				<input matInput placeholder="Ingresa tu dirección" required formControlName="adress"/>
+				<mat-error *ngIf="formGroup.get('adress')!.hasError('required')">Direccion es requerido </mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>REFERENCIA</mat-label>
+				<input matInput placeholder="Ingresa referencia de tu direccion"  required formControlName="reference"/>
+				<mat-error *ngIf="formGroup.get('reference')!.hasError('required')">Referencia es requerido </mat-error>
+			</mat-form-field>
+			<mat-form-field appearance="outline">
+				<mat-label>NOTA</mat-label>
+				<textarea matInput placeholder="Escribe aqui tu mensaje." cols="1" rows="4" formControlName="note"></textarea>
+			</mat-form-field>
+			<button mat-raised-button color="primary" class="btn-large pagar">PAGAR CON TARJETA</button>
+			<button mat-stroked-button color="accent" class="btn-large pagar" pagar>
+				<img class="imgPaypal" src="../../../../assets/icons/paypal.png" alt="PAYPAL" (click)="payPaypal()" />
+				<strong>PAGAR CON PAYPAL</strong>
+			</button>
+		</div>
+	</form>-->
 
 	<div class="resumenPedido">
 		<div class="tituloPedido">
@@ -41,8 +49,9 @@
 		</div>
 		<div class="total texPurple">
 			<h2>Total</h2>
-			<h2 class=""><strong>{{ _cartService.getTotal() | currency: 'symbol':'$ ' }}</strong></h2>
+			<h2 class="">
+				<strong>{{ _cartService.getTotal() | currency: 'symbol':'$ ' }}</strong>
+			</h2>
 		</div>
 	</div>
 </div>
-

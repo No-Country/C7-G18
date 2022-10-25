@@ -7,7 +7,9 @@ import { IProductClass } from '../interfaces/front.interface';
 export class CartService {
   itemsCart: any[] = []; //para carrito
 
-  constructor() { }
+  constructor() { 
+    this.getItems(); 
+  }
 
   /****************Funciones*************** */
 
@@ -16,6 +18,7 @@ export class CartService {
     product.quantity = 1;
     product.subtotal = product.price;
     this.itemsCart.push(product);
+    this.saveDataLocal();
   }
 
   // actualiza contenido del carrito
@@ -37,13 +40,16 @@ export class CartService {
         break;
       }
     }
+    this.saveDataLocal();
   }
 
   // elimina contenido del carrito
   deleteItem(product: any) {
-    const index = this.itemsCart.indexOf(product);
-    if(index !== -1) {
-      this.itemsCart.splice(index,1);
+    const index = this.itemsCart.findIndex((x: any) => x.id === product.id);
+    console.log(index)
+    if(index > -1) {
+      this.itemsCart.splice(index, 1);
+      this.saveDataLocal()
     }
   }
 
@@ -58,13 +64,19 @@ export class CartService {
 
   //obtener items de carrito
   getItems() {
+    this.itemsCart = JSON.parse(localStorage.getItem('cart_items') as any) || [];
     return this.itemsCart;
   }
 
   //limpiar el carrito
   clearCart() {
     this.itemsCart = [];
+    this.saveDataLocal();
     return this.itemsCart;
+  }
+
+  saveDataLocal(){
+    localStorage.setItem('cart_items', JSON.stringify(this.itemsCart));
   }
 
 }

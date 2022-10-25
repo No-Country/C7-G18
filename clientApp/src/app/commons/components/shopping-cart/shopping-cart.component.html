@@ -1,15 +1,15 @@
 <div class="container">
 	<h4 class="title">Carrito de Compras</h4>
 	<section>
-		<div *ngIf="itemsCart.length == 0">
+		<div *ngIf="_cartService.getItems().length == 0">
 			<div class="bill">
 				<h4>Aun no tienes productos 😓</h4>
 			</div>
 		</div>
-		<div class="item-product" *ngFor="let product of itemsCart">
+		<div class="item-product" *ngFor="let product of _cartService.getItems()">
 			<img src="{{ product.img }}" alt="gt" />
 			<div class="info-product">
-				<p class="name-product">{{ product.name }}</p>
+				<p class="name-product">{{ product.name }} <span class="punit">({{ product.price | currency: 'symbol':'$ ' }})</span></p>
 				<div class="actions">
 					<span class="price">
 						{{ product.subtotal | currency: 'symbol':'$ ' }}
@@ -25,7 +25,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer_pay" *ngIf="itemsCart.length !== 0">
+		<div class="footer_pay" *ngIf=" _cartService.getItems().length !== 0">
             <div class="total">
                 <span>Total</span>
                 <span>{{ _cartService.getTotal() | currency: 'symbol':'$ ' }}</span>
