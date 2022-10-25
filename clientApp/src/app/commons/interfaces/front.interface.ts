@@ -31,5 +31,6 @@ export interface IProductClass{
     quantity?:number,
     subtotal?:number,
     meGusta?:boolean,
-    nuevo?:boolean
+    nuevo?:boolean,
+    percent?:number
 }

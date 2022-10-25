@@ -9,10 +9,14 @@
         <img class="img" src={{card.img}} style="width:100%">
         <h3>{{card.name}}</h3>
     </div>
-    <div class="actions" [ngClass]="!card.discount ? 'grid-2' : 'grid-1'">
-       <span class="price">{{card.price | currency:'symbol': '$ '}}</span>
-      
-        <span class="oferta" *ngIf="card.discount">{{card.price | currency:'symbol': '$ '}}</span>
+    <div class="actions" >
+        <div class="flex" *ngIf="!card.discount">
+            <h4 class="price">${{card.price}}</h4>
+        </div> 
+        <div class="flex" *ngIf="card.discount">
+            <h4 class="price">${{card.discount}}</h4>
+            <h4 class="oferta">${{card.price}}</h4>
+        </div> 
 
         <button mat-raised-button color="accent" (click)="modifyProducts(card)">
             <img src="assets/icons/cart.svg" alt="">
