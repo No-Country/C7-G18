@@ -55,6 +55,7 @@ export class ShoppingCartComponent implements OnInit {
 		if (this.authService.isLoggedIn !== true) {
 			this._alertify.error('Para pagar es necesario, iniciar sesion');
 		}else{
+			localStorage.setItem('cart_total', JSON.stringify(this._cartService.getTotal()));
 			this.router.navigate(['/buy']);
 		}
 	}

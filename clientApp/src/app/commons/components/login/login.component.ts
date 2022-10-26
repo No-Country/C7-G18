@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { SingUpComponent } from '../sing-up/sing-up.component';
 import { ResetPassComponent } from '../reset-pass/reset-pass.component';
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 	constructor(
 		public dialogRef: MatDialogRef<LoginComponent>,
 		private _matDialog: MatDialog,
-		private _formBuilder: FormBuilder,
+		private _formBuilder: UntypedFormBuilder,
 		private _authService: AuthService,
 		private _alertify: AlertifyService,
 		private router: Router
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 		this._loadFormGroup();
 	}
 
-	formGroup!: FormGroup;
+	formGroup!: UntypedFormGroup;
 	disableButton = false;
 	hide = true;
 

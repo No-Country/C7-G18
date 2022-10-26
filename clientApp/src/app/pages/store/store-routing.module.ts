@@ -23,6 +23,11 @@ const routes: Routes = [
 				path: 'buy',
 				canActivate: [AuthGuard],
 				loadChildren: () => import('./buy-page/buy-page.module').then((m) => m.BuyModule)
+			},
+			{
+				path: 'buy-success',
+				canActivate: [AuthGuard],
+				loadChildren: () => import('./buy-success/buy-success.module').then((m) => m.BuySuccessModule)
 			}
 		]
 	}

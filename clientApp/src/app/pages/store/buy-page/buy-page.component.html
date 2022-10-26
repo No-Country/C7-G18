@@ -1,7 +1,6 @@
 <div class="container">
-	<ngx-paypal [config]="payPalConfig"></ngx-paypal>
 
-	<!--<form [formGroup]="formGroup" autocomplete="off">
+	<form [formGroup]="formGroup" autocomplete="off">
 		<div class="envioFacturacion">
 			<h2 class="texPurple"><strong>Detalles de Envio y Facturacion</strong></h2>
 
@@ -29,13 +28,11 @@
 				<mat-label>NOTA</mat-label>
 				<textarea matInput placeholder="Escribe aqui tu mensaje." cols="1" rows="4" formControlName="note"></textarea>
 			</mat-form-field>
-			<button mat-raised-button color="primary" class="btn-large pagar">PAGAR CON TARJETA</button>
-			<button mat-stroked-button color="accent" class="btn-large pagar" pagar>
-				<img class="imgPaypal" src="../../../../assets/icons/paypal.png" alt="PAYPAL" (click)="payPaypal()" />
-				<strong>PAGAR CON PAYPAL</strong>
-			</button>
+			<ng-container *ngIf="cartTotal!==0">
+				<ngx-paypal [config]="payPalConfig"></ngx-paypal>
+			</ng-container>
 		</div>
-	</form>-->
+	</form>
 
 	<div class="resumenPedido">
 		<div class="tituloPedido">

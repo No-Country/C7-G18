@@ -1,0 +1,22 @@
+@use '../../../commons/styles/colors.scss';
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    .title{
+        font-size: 25px;
+        font-weight: 500;
+        color:colors.$secondary-color;
+    }
+    .message{
+        color:colors.$gray-color;
+        margin-bottom: 20px;
+    }
+    img{
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+    
+}

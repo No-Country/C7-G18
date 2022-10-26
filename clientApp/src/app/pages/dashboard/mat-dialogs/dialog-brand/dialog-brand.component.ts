@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 
 import { BrandService } from '../../../../commons/services/brand.service';
@@ -17,7 +17,7 @@ export class DialogBrandComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public dialog:Dialog,
     public dialogRef: MatDialogRef<DialogBrandComponent>,
     private _brandService:BrandService,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private _storage: Storage,
     private _alertify: AlertifyService,
    ) { }
@@ -30,7 +30,7 @@ export class DialogBrandComponent implements OnInit {
   url:string
   
 
-  formGroup: FormGroup= this._formBuilder.group({
+  formGroup: UntypedFormGroup= this._formBuilder.group({
     name: [this.dialog.nombre, Validators.required]
   });
 

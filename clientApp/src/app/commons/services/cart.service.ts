@@ -72,7 +72,6 @@ export class CartService {
   clearCart() {
     this.itemsCart = [];
     this.saveDataLocal();
-    return this.itemsCart;
   }
 
   saveDataLocal(){

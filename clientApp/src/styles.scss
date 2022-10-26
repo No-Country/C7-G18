@@ -159,5 +159,13 @@ select:focus {
 
 
 mat-spinner{
-  margin: 20px auto;
+  margin: 15px auto;
+}
+
+.paypal-button-tagline .paypal-button-text{
+  color:white;
+}
+
+.paypal-button-tagline{
+  display: none;
 }

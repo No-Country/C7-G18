@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AlertifyService } from 'src/app/commons/services/alertify.service';
 import { CardDashboard } from '../../../../commons/components/card-dashboard/card-dashboard';
@@ -16,7 +16,7 @@ export class SubcategoryPageComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public product: CardDashboard,
     private _subcategoryService:SubcategoryService,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private _alertify: AlertifyService,
     public dialogRef: MatDialogRef<SubcategoryPageComponent>
   ) { }
@@ -34,7 +34,7 @@ export class SubcategoryPageComponent implements OnInit {
   sub:CardDashboard|null
 
 
-  formGroup: FormGroup= this._formBuilder.group({
+  formGroup: UntypedFormGroup= this._formBuilder.group({
     name: ['', Validators.required]
   });
 

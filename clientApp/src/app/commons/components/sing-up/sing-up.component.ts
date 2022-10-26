@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { NewUSer } from '../modelos/newUser';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
@@ -15,21 +15,21 @@ import { AlertifyService } from '../../services/alertify.service';
 })
 export class SingUpComponent implements OnInit {
 	
-	usurio:FormGroup;
+	usurio:UntypedFormGroup;
 
 	constructor(
 		public dialogRef: MatDialogRef<SingUpComponent>, 
 		private _matDialog: MatDialog, 
-		private _formBuilder: FormBuilder,
+		private _formBuilder: UntypedFormBuilder,
 		private _authService: AuthService,
 		private _alertify: AlertifyService,
 		) {
 		this._loadFormGroup();
 
-		this.usurio = new FormGroup({
-			nombre: new FormControl(),
-			email:new FormControl(),
-			password:new FormControl()
+		this.usurio = new UntypedFormGroup({
+			nombre: new UntypedFormControl(),
+			email:new UntypedFormControl(),
+			password:new UntypedFormControl()
 		})
 
 	}
@@ -37,7 +37,7 @@ export class SingUpComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	formGroup!: FormGroup;
+	formGroup!: UntypedFormGroup;
 	hide = true;
 
 	private _loadFormGroup(): void {
