@@ -1,27 +1,27 @@
 export const pets = [
     {
         title:"GATOS",
-        url:"assets/pets/cat.svg",
+        url:"https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/pets%2Fcat.svg?alt=media&token=53f7d3ec-87d6-41f9-98db-71235aedb61a",
         cl:'f1'
     },
     {
         title:"PERROS",
-        url:"assets/pets/dogs.svg",
+        url:"https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/pets%2Fdogs.svg?alt=media&token=191f37c1-f2c9-4181-ae81-cf846abba4fc",
         cl:'f2'
     },
     {
         title:"AVES",
-        url:"assets/pets/birds.svg",
+        url:"https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/pets%2Fbirds.svg?alt=media&token=fcbf988e-ed03-4dec-b5fa-b6bd86688d14",
         cl:'f3'
     },
     {
         title:'PECES',
-        url:'assets/pets/fish.svg',
+        url:'https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/pets%2Ffish.svg?alt=media&token=9399a083-91cf-4f80-b7a1-ba99f5876595',
         cl:'f4'
     },
     {
         title:'CONEJOS',
-        url:'assets/pets/conejo.svg',
+        url:'https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/pets%2Fconejo.svg?alt=media&token=304e433c-1b01-479d-b977-da6972555ba3',
         cl:'f5'
     }
 ]
