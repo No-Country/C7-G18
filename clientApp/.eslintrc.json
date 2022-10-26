@@ -5,8 +5,7 @@
     {
       "files": ["*.ts"],
       "parserOptions": {
-        "project": ["clientApp/tsconfig.json"],
-        "tsconfigRootDir": "__dirname",
+        "project": ["tsconfig.json"],
         "sourceType": "module"
       },
       "extends": [

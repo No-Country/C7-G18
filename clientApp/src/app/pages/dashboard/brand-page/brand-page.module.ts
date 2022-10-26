@@ -4,6 +4,7 @@ import { FormSharedModule } from '../../../commons/shared/form-shared.module';
 import { BrandPageComponent } from './brand-page.component';
 import { CardDashboardModule } from '../../../commons/components/card-dashboard/card-dashboard.module';
 import { DialogBrandModule } from '../mat-dialogs/dialog-brand/dialog-brand.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 export const routes: Routes = [{ path: '', component: BrandPageComponent }];
 
@@ -13,7 +14,8 @@ export const routes: Routes = [{ path: '', component: BrandPageComponent }];
         RouterModule.forChild(routes), 
         FormSharedModule, 
         CardDashboardModule, 
-        DialogBrandModule
+        DialogBrandModule,
+        MatPaginatorModule
     ],
     exports:[BrandPageComponent]
 })

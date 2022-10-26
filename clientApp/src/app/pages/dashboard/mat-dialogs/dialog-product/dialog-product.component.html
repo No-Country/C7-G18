@@ -35,18 +35,19 @@
     <div class="flex2">
         <mat-form-field appearance="outline">
             <mat-label>Precio unitario</mat-label>
-            <input  matInput required formControlName="price"/>					
+            <input type="number" matInput required formControlName="price"/>					
             <mat-error *ngIf="formGroup.invalid">precio requerido </mat-error>
         </mat-form-field> 
         <div class="sep"></div> 
         <mat-form-field appearance="outline">
-            <mat-label>Precio oferta</mat-label>
-            <input  matInput formControlName="discount"/>	            
+            <mat-label>Descuento en % </mat-label>
+            <input type="number" matInput formControlName="percent"/>	
+             <mat-hint>Precio final: ${{formGroup.value.price * (100 - formGroup.value.percent) /100}}</mat-hint>
         </mat-form-field> 
     </div>
         <mat-form-field appearance="outline">
             <mat-label>Stock del producto</mat-label>
-            <input  matInput required formControlName="stock"/>					
+            <input type="number" matInput required formControlName="stock"/>					
             <mat-error *ngIf="formGroup.invalid">stock requerido </mat-error>
         </mat-form-field>  
     <mat-form-field appearance="outline">
@@ -96,13 +97,21 @@
         <mat-option *ngFor="let brand of dialog.brands" value={{brand.id}}  >{{brand.name}}</mat-option>
     </mat-select>	
 </mat-form-field> 
-    <mat-form-field appearance="outline">
+        
+    <div class="flex2">
+         <mat-form-field appearance="outline">
         <mat-label>Precio unitario del producto</mat-label>
         <input  matInput required formControlName="price" [(ngModel)]=dialog.product!.price/>					
         <mat-error *ngIf="formGroup.invalid">precio requerido </mat-error>
-    </mat-form-field>    
-<br>
-<br>
+    </mat-form-field>
+        <div class="sep"></div> 
+        <mat-form-field appearance="outline">
+            <mat-label>Descuento en %</mat-label>
+            <input type="number"  matInput formControlName="percent"  [(ngModel)]=dialog.product!.percent/>	   
+            <mat-hint>Precio final: ${{formGroup.value.price * (100 - formGroup.value.percent) /100}}</mat-hint>         
+        </mat-form-field> 
+    </div>
+
 <mat-form-field appearance="outline">
     <mat-label>Descripción del producto</mat-label>				
     <textarea matInput formControlName="description" [(ngModel)]=dialog.product!.description></textarea>

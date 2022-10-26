@@ -11,7 +11,8 @@ import { CardDashboard } from '../components/card-dashboard/card-dashboard';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-	constructor(public firestore2: AngularFirestore, public firestore: Firestore) {}
+	constructor(public firestore2: AngularFirestore, 
+              public firestore: Firestore) {}
 
 
 

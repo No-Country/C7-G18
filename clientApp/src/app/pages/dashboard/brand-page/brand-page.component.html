@@ -5,8 +5,14 @@
 <div class="cards">    
     <mat-spinner  *ngIf="brands.length==0"></mat-spinner>  
         <ng-container *ngIf="brands.length!==0">
-    <div *ngFor="let brand of brands" class="card1">
+    <div *ngFor="let brand of obs|async" class="card1">
         <app-card-dashboard [cardDashboard]="brand" [clase]="clase" (onEdit)="openModalNew('edit',brand)" (onDelete)="openModalNew('delete',brand)"></app-card-dashboard>
     </div>
         </ng-container>
-</div>
+
+    </div>
+         <mat-paginator 
+            [length]="brands.length"
+            [pageSize]="6"
+            aria-label="Select page">              
+        </mat-paginator> 

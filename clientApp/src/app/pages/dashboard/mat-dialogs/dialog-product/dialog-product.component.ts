@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Dialog } from '../dialog';
 import { CardDashboard } from '../../../../commons/components/card-dashboard/card-dashboard';
@@ -18,7 +18,7 @@ export class DialogProductComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public dialog:Dialog,    
     public dialogRef: MatDialogRef<DialogProductComponent>,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private _subcategoryService:SubcategoryService,
     private _productService:ProductService,
     private _storage: Storage,
@@ -32,7 +32,7 @@ export class DialogProductComponent implements OnInit {
     if(this.dialog.product!.img){this.url=this.dialog.product!.img}
   }
 
-  formGroup: FormGroup= this._formBuilder.group({
+  formGroup: UntypedFormGroup= this._formBuilder.group({
     name: ['', Validators.required],
     category:['', Validators.required],
     subcategory: '',
@@ -41,7 +41,7 @@ export class DialogProductComponent implements OnInit {
     stock:'',
     price: ['', Validators.required],
     description:['', Validators.required],
-    discount:''
+    percent:0
   });
 
   subs:CardDashboard[]
@@ -64,7 +64,8 @@ export class DialogProductComponent implements OnInit {
         stock: this.formGroup.value.stock,
         price: this.formGroup.value.price,
         description: this.formGroup.value.description,
-        discount: this.formGroup.value.discount,
+        discount: (this.formGroup.value.price * (100 - this.formGroup.value.percent) /100),
+        percent:this.formGroup.value.percent,
         img:this.url,
         created:this.date.toLocaleString("en-GB",{day: "numeric",month: "2-digit",year: "numeric"})
       }
@@ -85,7 +86,8 @@ export class DialogProductComponent implements OnInit {
         brand: this.formGroup.value.brand,
         price: this.formGroup.value.price,
         description: this.formGroup.value.description,        
-        discount: this.formGroup.value.discount,
+        discount: (this.formGroup.value.price * (100 - this.formGroup.value.percent) /100),
+        percent:this.formGroup.value.percent,
         img:this.url,
         stock:this.dialog.product?.stock
       }      

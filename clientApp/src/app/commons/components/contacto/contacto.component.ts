@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {UntypedFormControl, Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-contacto',
@@ -8,11 +8,11 @@ import {FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ContactoComponent implements OnInit {
 
-  constructor(private _formBuilder: FormBuilder) {
+  constructor(private _formBuilder: UntypedFormBuilder) {
     this._loadFormGroup();
    }
 
-   formGroup!: FormGroup;
+   formGroup!: UntypedFormGroup;
 
    private _loadFormGroup(): void {
 		this.formGroup = this._formBuilder.group({
@@ -24,7 +24,7 @@ export class ContactoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new UntypedFormControl('', [Validators.required, Validators.email]);
   hide = true;
 
   getErrorMessage() {

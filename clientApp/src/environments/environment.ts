@@ -1,4 +1,3 @@
-
 export const environment = {
   production: false,
   firebase: {
@@ -8,7 +7,8 @@ export const environment = {
     apiKey: 'AIzaSyAUm2RnUGuJimV0EcjdWqOy-T-B-baEHAw',
     authDomain: 'petstore-75ed1.firebaseapp.com',
     messagingSenderId: '962856161797',
-  }
+  },
+  Client_ID:'Aa-gx0UXC6bF7qdN-6jY5oc2e-UzcvQvpILkrP0FtZsdqlt-A2HscavAZT-5TfA-SlLMalpqCcxqF5ru'
 };
 
 /*

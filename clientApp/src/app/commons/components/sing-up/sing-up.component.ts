@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { NewUSer } from '../modelos/newUser';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../../services/auth.service';
 import { AlertifyService } from '../../services/alertify.service';
+import { customPasswordValidator } from '../../validators/password.validators';
+import { UserService } from '../../services/user.service';
+import { Iuser } from '../account/user.interface';
 
 
 
@@ -15,21 +18,22 @@ import { AlertifyService } from '../../services/alertify.service';
 })
 export class SingUpComponent implements OnInit {
 	
-	usurio:FormGroup;
+	usurio:UntypedFormGroup;
 
 	constructor(
 		public dialogRef: MatDialogRef<SingUpComponent>, 
 		private _matDialog: MatDialog, 
-		private _formBuilder: FormBuilder,
+		private _formBuilder: UntypedFormBuilder,
 		private _authService: AuthService,
 		private _alertify: AlertifyService,
+		private _userService:UserService,
 		) {
 		this._loadFormGroup();
 
-		this.usurio = new FormGroup({
-			nombre: new FormControl(),
-			email:new FormControl(),
-			password:new FormControl()
+		this.usurio = new UntypedFormGroup({
+			nombre: new UntypedFormControl(),
+			email:new UntypedFormControl(),
+			password:new UntypedFormControl()
 		})
 
 	}
@@ -37,20 +41,28 @@ export class SingUpComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	formGroup!: FormGroup;
+	formGroup!: UntypedFormGroup;
 	hide = true;
+	disableButton = false;
 
 	private _loadFormGroup(): void {
 		this.formGroup = this._formBuilder.group({
+			name:['', Validators.required],
 			email: ['', [Validators.email, Validators.required]],
-			password: ['', Validators.required]
+			password: ['', [Validators.required,customPasswordValidator]]
 		});
 	}
 
 	createUser() {
 		if (this.formGroup.valid) {
-			
-			console.log(this.usurio.value)
+			this.disableButton = true;
+			const data=this.formGroup.value
+			this._authService.registerWithEmail(data)
+			.then(()=>{this.setPerfilUser(data.name,false)})
+			.catch((e) => {
+				this._alertify.error(e.code);
+				this.disableButton = false;
+			});
 
 		}
 		
@@ -59,21 +71,35 @@ export class SingUpComponent implements OnInit {
 	registerWithGoogle(){
 		this._authService
 			.googleAuth()
-			.then((res) => this.dialogRef.close({ isLogin: true }))
-			.catch((e) => this._alertify.error(e.code));
+			.then((res) =>this.setPerfilUser(res.user?.displayName!,true))
+			.catch((e) => {	
+				this.disableButton = false;
+				this._alertify.error(e.code);
+			});
 	}
 
-	/*setPerfilUser(fullName: string): void {
+	setPerfilUser(fullName: string,google:boolean): void {
 		this._authService
 			.getCurrentUser()
 			.then((res) => {
-				res?.updateProfile({ displayName: fullName });
-				res?.sendEmailVerification();
+				let data= {
+					name:fullName,
+					email:res?.email!,
+					photo: google ? res?.photoURL!:'',
+					phone:'',
+					address:'',
+					reference:'',
+					dni:''
+				}
+				this.addUser(res?.uid!,data)
 			})
-			.then(() => this.openDialogVerificationEmail())
-			.catch((e) => this._toast.error({ detail: 'Error', summary: e.code, duration: 5000 }))
-			.finally(() => (this.disableButton = false));
-	}*/
+			.then((res) => console.log(res,'registrado'))
+			.catch((e) => this._alertify.error(e.code))
+			.finally(() => {
+				this.disableButton = false
+				this._alertify.success('¡Cuenta creada!')
+				this.dialogRef.close();});
+	}
 
 	loginUser() {
 		this.dialogRef.close();
@@ -98,6 +124,11 @@ export class SingUpComponent implements OnInit {
 
 	onSubmit(){
 		console.log(this.usurio.value)
+	}
+
+async addUser(id:string, data:Iuser){
+		await this._userService.addUser(id,data)
+		.then((res)=>console.log(res))
 	}
 
 }

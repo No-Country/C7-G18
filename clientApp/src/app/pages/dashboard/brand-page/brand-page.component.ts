@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
 import { CardDashboard } from 'src/app/commons/components/card-dashboard/card-dashboard';
 import { BrandService } from '../../../commons/services/brand.service';
 import { DialogBrandComponent } from '../mat-dialogs/dialog-brand/dialog-brand.component';
@@ -25,7 +28,15 @@ export class BrandPageComponent implements OnInit {
     this.listBrands()
   }
 
-  listBrands(){this.brandService.getBrand().subscribe(brands=>this.brands=brands)}
+  listBrands(){this.brandService.getBrand().subscribe({
+    next:brands=>this.brands=brands,
+    complete:()=>{
+      this.dataSource = new MatTableDataSource<CardDashboard>(this.brands);
+      this.dataSource.paginator = this.paginator;
+      this.paginator._intl.itemsPerPageLabel="Productos por página";
+      this.obs = this.dataSource.connect();
+    }
+  })}
 
 
   openModalNew(modo:string, brand?:CardDashboard) {
@@ -51,8 +62,11 @@ export class BrandPageComponent implements OnInit {
 		}
     dialog.afterClosed().subscribe(()=>this.listBrands())
 	}
-
   
   
+  @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
+  dataSource:MatTableDataSource<CardDashboard>
+  obs: Observable<any>;
 
+  
 }

@@ -6,6 +6,9 @@ import { ShoppingCartComponent } from '../../../../components/shopping-cart/shop
 import { AuthService } from 'src/app/commons/services/auth.service';
 import { AlertifyService } from 'src/app/commons/services/alertify.service';
 import { CartService } from 'src/app/commons/services/cart.service';
+import { Router } from '@angular/router';
+import { AccountComponent } from 'src/app/commons/components/account/account.component';
+
 
 @Component({
 	selector: 'app-navbar',
@@ -17,7 +20,8 @@ export class NavbarComponent implements OnInit {
 		private _matDialog: MatDialog,  
 		public _authService: AuthService,
 		private _alertify: AlertifyService,
-		public _cartService:CartService
+		public _cartService:CartService,
+		private _router:Router
 		) {}
 
 	panelOpenState: boolean = false;
@@ -89,5 +93,24 @@ export class NavbarComponent implements OnInit {
 			);
 	}
 
+	navigatePage(link:string){
+		this._router.navigateByUrl(link)
+	}
+
 	esMas850: boolean = false;
+
+	openModalAc(){
+		if (screen.width < 500) {
+			this._matDialog.open(AccountComponent, {
+				maxWidth: '100vw',
+				width: '95%',
+				maxHeight: '670px'
+			});
+		} else {
+			this._matDialog.open(AccountComponent, {
+				width: '500px',
+				maxHeight: '670px'
+			});
+		}
+	}
 }
