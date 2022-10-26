@@ -35,7 +35,7 @@ h3 {
 
 .price {
   color: colors.$primary-color900;
-  font-size: 22px;
+  font-size: 18px;
   margin: auto 0;
 }
 
@@ -78,9 +78,13 @@ h3 {
 }
 
 .actions {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  display: flex;
   vertical-align: middle;
   align-content: center;
   align-items: center;
+  justify-content: space-between;
+}
+
+.flex{
+  display: flex;
 }

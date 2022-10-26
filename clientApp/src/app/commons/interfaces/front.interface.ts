@@ -27,5 +27,10 @@ export interface IProductClass{
     default?:boolean,
     img?:string,
     stock?:number,
-    like?:boolean
+    like?:boolean,
+    quantity?:number,
+    subtotal?:number,
+    meGusta?:boolean,
+    nuevo?:boolean,
+    percent?:number
 }

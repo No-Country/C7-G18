@@ -3,15 +3,20 @@
 	<button mat-flat-button color="primary" (click)="openModalNew('add')">Agregar Mascota</button>
 </div>
 <div class="cards">
-	<mat-spinner  *ngIf="mascotas.length==0"></mat-spinner>  
-        <ng-container *ngIf="mascotas.length!==0">
-	<div *ngFor="let mascota of mascotas" class="card1">
+	<mat-spinner  *ngIf="pets.length==0"></mat-spinner>  
+        <ng-container *ngIf="pets.length!==0">
+	<div *ngFor="let pet of pets" class="card1">
 		<app-card-dashboard
-			[cardDashboard]="mascota"
+			[cardDashboard]="pet"
 			[clase]="clase"
-			(onEdit)="openModalNew('edit', mascota)"
-			(onDelete)="openModalNew('delete', mascota)"
+			(onEdit)="openModalNew('edit', pet)"
+			(onDelete)="openModalNew('delete', pet)"
 		></app-card-dashboard>
 	</div>
 		</ng-container>
 </div>
+
+<mat-paginator [length]="pets.length"
+              [pageSize]="6"
+              aria-label="Select page">              
+        </mat-paginator> 

@@ -12,11 +12,23 @@ import { LoginModule } from '../../components/login/login.module';
 import { ResetPassModule } from '../../components/reset-pass/reset-pass.module';
 import { ContactoModule } from '../../components/contacto/contacto.module'; 
 import { ShoppingCartModule } from '../../components/shopping-cart/shopping-cart.module';
+import { AccountModule } from '../../components/account/account.module';
 
 
 @NgModule({
     declarations: [StoreLayoutComponent, NavbarComponent, FooterComponent],
-    imports: [CommonModule,  RouterModule, MatButtonModule, MatMenuModule, MatExpansionModule, SingUpModule, LoginModule, ResetPassModule, ContactoModule,ShoppingCartModule],
+    imports: [
+        CommonModule,  
+        RouterModule, 
+        MatButtonModule,
+         MatMenuModule, 
+         MatExpansionModule, 
+         SingUpModule, 
+         LoginModule, 
+         ResetPassModule, 
+         ContactoModule,
+         ShoppingCartModule,
+        AccountModule],
     exports: [StoreLayoutComponent],
 })
 export class StoreLayoutModule { }

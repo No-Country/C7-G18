@@ -1,0 +1,56 @@
+<div class="subs">
+	<h1 class="flex">Mi Cuenta</h1>
+
+	<mat-tab-group animationDuration="0ms" color="accent">
+		<mat-tab label="DATOS"
+			><br />
+			<form [formGroup]="formGroup" autocomplete="off">
+				<mat-form-field appearance="outline">
+					<mat-label>Nombre Completo</mat-label>
+					<input matInput formControlName="name" />
+				</mat-form-field>
+				<mat-form-field appearance="outline">
+					<mat-label>DNI</mat-label>
+					<input matInput formControlName="dni" />
+				</mat-form-field>
+				<mat-form-field appearance="outline">
+					<mat-label>Celular</mat-label>
+					<input matInput formControlName="phone" />
+				</mat-form-field>
+				<mat-form-field appearance="outline">
+					<mat-label>Dirección</mat-label>
+					<input matInput formControlName="address" />
+				</mat-form-field>
+				<mat-form-field appearance="outline">
+					<mat-label>Referencia</mat-label>
+					<input matInput formControlName="reference" />
+				</mat-form-field>
+				<input class="inputf" type="file" (change)="uploadImage($event)" />
+				<img class="imgBrand" *ngIf="url" [src]="url" alt="" />
+				<div class="buttons">
+					<button mat-flat-button color="primary" (click)="update()">Guardar</button>
+					<button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
+				</div>
+			</form>
+		</mat-tab>
+
+		<mat-tab label="MIS ÓRDENES"
+			><br />
+			<div class="flex2">
+				<h4>12/10/2022</h4>
+				<h4 class="pend">PENDIENTE</h4>
+				<button mat-flat-button color="accent">Ver pedido</button>
+			</div>
+			<div class="flex2">
+				<h4>21/09/2022</h4>
+				<h4 class="entr">ENTREGADO</h4>
+				<button mat-flat-button color="accent">Ver pedido</button>
+			</div>
+			<div class="flex2">
+				<h4>05/09/2022</h4>
+				<h4 class="entr">ENTREGADO</h4>
+				<button mat-flat-button color="accent">Ver pedido</button>
+			</div>
+		</mat-tab>
+	</mat-tab-group>
+</div>

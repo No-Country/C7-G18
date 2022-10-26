@@ -37,7 +37,9 @@ export interface Product{
     sold:number,
 
     meGusta?:boolean,
-    nuevo?:boolean
+    nuevo?:boolean,
+    quantity?:number,
+    subTotal?:number
 }
 
 export interface newPoducts{

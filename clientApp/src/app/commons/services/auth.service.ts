@@ -10,7 +10,7 @@ export class AuthService {
     userPhotoUrl:any; //puede ser null o string
 	isLogin:boolean;
 
-    constructor(private _auth:AngularFireAuth) {
+    constructor(private _auth:AngularFireAuth) { 
         this._auth.authState.subscribe((user) => {
 			if (user) {
 				this.userLogin = user; 

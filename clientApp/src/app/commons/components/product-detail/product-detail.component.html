@@ -1,4 +1,5 @@
 <div class="detail">
+    <p *ngIf="product.percent!==(0 || undefined)" class="esOferta">{{product.percent}}% de Descuento!</p>
     <button class="close-icon btn" [mat-dialog-close]="true">
         <mat-icon>close</mat-icon>
     </button>
@@ -23,11 +24,8 @@
                 </div>  
             </div>
                 
-            <div class="flex margin">
-                <button class="btn" (click)="cartNumber=cartNumber + 1">+</button>
-                <h4 class="cont">{{cartNumber}}</h4>
-                <button class="btn" (click)="cartNumber=cartNumber - 1">-</button>            
-                <button mat-raised-button color="accent" class="btnm">
+            <div class="flex margin">          
+                <button mat-raised-button color="accent" class="btnm" (click)="modifyProducts(product)">
                     <img src="assets/icons/cart.svg" alt="">
                 </button>
             </div>
@@ -38,12 +36,12 @@
         <h5>Descripción:</h5>
         <p>{{product.description}}</p>
         
-        <div class="flex margin">
+        <div class="flex">
             <button class="btn" (click)="like()">
                 <img *ngIf=!product.like src="assets/icons/heartE.svg" alt=""> 
                 <img *ngIf="product.like" src="assets/icons/heartF.svg" alt="">
             </button>
-            <p class="margin">Agregar a mi lista deseos</p>
+            <p class="margin2">Agregar a mi lista deseos</p>
         </div>    
     </div>
 </div>

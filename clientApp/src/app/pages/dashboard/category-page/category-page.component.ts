@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CardDashboard } from '../../../commons/components/card-dashboard/card-dashboard';
 import { DialogCategoryComponent } from '../mat-dialogs/dialog-category/dialog-category.component';
 import { CategoryService } from '../../../commons/services/category.service';
 import { SubcategoryPageComponent } from '../mat-dialogs/dialog-subcategory/subcategory-page.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -25,7 +28,15 @@ export class CategoryPageComponent implements OnInit {
     this.listarCategorias()
   }
 
-  listarCategorias(){this._categoryService.getCategory().subscribe(categories=>this.categories=categories)}
+  listarCategorias(){this._categoryService.getCategory().subscribe({
+    next:categories=>this.categories=categories,
+    complete:()=>{
+      this.dataSource = new MatTableDataSource<CardDashboard>(this.categories);
+      this.dataSource.paginator = this.paginator;
+      this.paginator._intl.itemsPerPageLabel="Productos por página";
+      this.obs = this.dataSource.connect();
+    }
+  })}
 
   openModalNew(modo:string, category?:CardDashboard) {
 		let dialog;
@@ -70,5 +81,10 @@ export class CategoryPageComponent implements OnInit {
 		}
     dialog.afterClosed().subscribe(()=>this.listarCategorias())
 	}
+
+
+	@ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
+	dataSource:MatTableDataSource<CardDashboard>
+	obs: Observable<any>;
 
 }

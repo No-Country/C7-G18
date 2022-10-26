@@ -5,14 +5,14 @@ import { IProductClass } from '../interfaces/front.interface';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { CardDashboard } from '../components/card-dashboard/card-dashboard';
-import { of } from "rxjs";
 
 
 
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-	constructor(public firestore2: AngularFirestore, public firestore: Firestore) {}
+	constructor(public firestore2: AngularFirestore, 
+              public firestore: Firestore) {}
 
 
 
@@ -20,7 +20,6 @@ getProds():Observable<IProductClass[]>{
   const productsRef = collection(this.firestore, 'products');
   return collectionData(productsRef,{idField:'id'}).pipe(first()) as Observable<IProductClass[]>
 }
-
 
 addProds(prod: CardDashboard) {
   const productsRef = collection(this.firestore, 'products');

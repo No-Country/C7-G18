@@ -5,6 +5,9 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../../services/auth.service';
 import { AlertifyService } from '../../services/alertify.service';
+import { customPasswordValidator } from '../../validators/password.validators';
+import { UserService } from '../../services/user.service';
+import { Iuser } from '../account/user.interface';
 
 
 
@@ -23,6 +26,7 @@ export class SingUpComponent implements OnInit {
 		private _formBuilder: FormBuilder,
 		private _authService: AuthService,
 		private _alertify: AlertifyService,
+		private _userService:UserService,
 		) {
 		this._loadFormGroup();
 
@@ -39,18 +43,23 @@ export class SingUpComponent implements OnInit {
 
 	formGroup!: FormGroup;
 	hide = true;
+	disableButton = false;
 
 	private _loadFormGroup(): void {
 		this.formGroup = this._formBuilder.group({
+			name:['', Validators.required],
 			email: ['', [Validators.email, Validators.required]],
-			password: ['', Validators.required]
+			password: ['', [Validators.required,customPasswordValidator]]
 		});
 	}
 
 	createUser() {
 		if (this.formGroup.valid) {
-			
-			console.log(this.usurio.value)
+			this.disableButton = true;
+			const data=this.formGroup.value
+			this._authService.registerWithEmail(data)
+			.then(()=>{this.setPerfilUser(data.name)})
+			.catch((e) => this._alertify.error(e.code));
 
 		}
 		
@@ -63,17 +72,25 @@ export class SingUpComponent implements OnInit {
 			.catch((e) => this._alertify.error(e.code));
 	}
 
-	/*setPerfilUser(fullName: string): void {
+	setPerfilUser(fullName: string): void {
 		this._authService
 			.getCurrentUser()
 			.then((res) => {
 				res?.updateProfile({ displayName: fullName });
-				res?.sendEmailVerification();
+				let data= {
+					name:res?.displayName!,
+					email:res?.email!,
+					photo:res?.photoURL!
+				}
+				this.addUser(res?.uid!,data)
 			})
-			.then(() => this.openDialogVerificationEmail())
-			.catch((e) => this._toast.error({ detail: 'Error', summary: e.code, duration: 5000 }))
-			.finally(() => (this.disableButton = false));
-	}*/
+			.then((res) => console.log(res,'registrado'))
+			.catch((e) => this._alertify.error(e.code))
+			.finally(() => {
+				this.disableButton = false
+				this._alertify.success('¡Cuenta creada!')
+				this.dialogRef.close();});
+	}
 
 	loginUser() {
 		this.dialogRef.close();
@@ -98,6 +115,11 @@ export class SingUpComponent implements OnInit {
 
 	onSubmit(){
 		console.log(this.usurio.value)
+	}
+
+async addUser(id:string, data:Iuser){
+		await this._userService.addUser(id,data)
+		.then((res)=>console.log(res))
 	}
 
 }
