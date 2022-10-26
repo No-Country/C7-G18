@@ -6,6 +6,8 @@ import { ResetPassComponent } from '../reset-pass/reset-pass.component';
 import { AuthService } from '../../services/auth.service';
 import { AlertifyService } from '../../services/alertify.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { Iuser } from '../account/user.interface';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class LoginComponent implements OnInit {
 		private _formBuilder: UntypedFormBuilder,
 		private _authService: AuthService,
 		private _alertify: AlertifyService,
-		private router: Router
+		private router: Router,
+		private _userService:UserService,
 	) {
 		this._loadFormGroup();
 	}
@@ -65,9 +68,41 @@ export class LoginComponent implements OnInit {
 	loginWithGoogle(){
 		this._authService
 			.googleAuth()
-			.then((res) => this.dialogRef.close())
-			.catch((e) => this._alertify.error(e.code));
+			.then((res) =>this.setPerfilUser(res.user?.displayName!,true))
+			.catch((e) => {	
+				this._alertify.error(e.code);
+			});
 	}
+	
+	setPerfilUser(fullName: string,google:boolean): void {
+		this._authService
+			.getCurrentUser()
+			.then((res) => {
+				let data= {
+					name:fullName,
+					email:res?.email!,
+					photo: google ? res?.photoURL!:'',
+					phone:'',
+					address:'',
+					reference:'',
+					dni:''
+				}
+				this.addUser(res?.uid!,data)
+			})
+			.then((res) => console.log(res,'registrado'))
+			.catch((e) => this._alertify.error(e.code))
+			.finally(() => {
+				this.disableButton = false;
+				this.dialogRef.close();});
+	}
+
+	
+	async addUser(id:string, data:Iuser){
+		await this._userService.addUser(id,data)
+		.then((res)=>console.log(res))
+	}
+
+
 
 	openModalRegister() {
 		this.dialogRef.close({ isLogin: false });
