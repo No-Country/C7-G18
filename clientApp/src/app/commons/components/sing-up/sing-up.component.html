@@ -5,7 +5,7 @@
 				<h1 class="texPurple"><strong>Registro</strong></h1>
 				<p>Ingresa tus datos para date de alta</p>
 
-				<button class="buttonGoogle btn-large" mat-stroked-button color="accent">
+				<button type="button" class="buttonGoogle btn-large" mat-stroked-button color="accent" (click)="registerWithGoogle()">
 					<img class="logoGoogle" src="assets/images/googleLogin.png" />
 					Ingresa con Google
 				</button>
@@ -16,7 +16,7 @@
 
 				<mat-form-field appearance="outline">
 					<mat-label>Ingresa tu nombre</mat-label>
-					<input matInput placeholder="nombre" required formControlName="nombre" />
+					<input matInput placeholder="nombre" required formControlName="name" />
 					<mat-error *ngIf="formGroup.get('email')!.hasError('email')">Nombre invalido </mat-error>
 					<mat-error *ngIf="formGroup.get('email')!.hasError('required')">Mombre requerido </mat-error>
 				</mat-form-field>
@@ -34,12 +34,15 @@
 					<mat-label>Ingresa tu contraseña</mat-label>
 					<input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
 					<mat-icon matSuffix (click)="hide=!hide">{{ hide! ? 'visibility' : 'visibility_off' }}</mat-icon>
-					<mat-error *ngIf="formGroup.get('password')!.hasError('required')">contraseña requerida </mat-error>
+					<mat-error *ngIf="formGroup.get('password')!.hasError('customPasswordValidator')">
+						Debe tener una mayúscula, un símbolo, un número y ser mayor a 8 caracteres
+					</mat-error>
 				</mat-form-field> 
 
 				<br />
 
-				<button mat-raised-button color="primary" class="btn-large" (click)="createUser()">CREAR CUENTA</button>
+				<button mat-raised-button color="primary" class="btn-large" (click)="createUser()" [disabled]="disableButton"
+				[class.spinner]="disableButton">CREAR CUENTA</button>
 
 				<br />
 				<br />

@@ -11,7 +11,7 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="expand" *ngFor="let pet of pets">
-                    <p class="sub">{{pet.name}}</p>
+                    <p class="sub" (click)="petFilter(pet.id)">{{pet.name}}</p>
                 </div>
             </mat-expansion-panel>  
         </mat-accordion>
@@ -25,6 +25,7 @@
       <label>${{value}}</label>
     </div>
     <mat-slider
+        (input)="slider($event)"
         class="slider"
         [max]="max"
         [min]="min"
@@ -36,14 +37,14 @@
     <hr>
 
     <mat-accordion>
-        <mat-expansion-panel expanded class="mat-elevation-z0">
+        <mat-expansion-panel  class="mat-elevation-z0">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                    <h3>Categorías</h3> 
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <div class="expand" *ngFor="let cat of categories">
-                <p class="sub">{{cat.name}}</p>
+                <p class="sub" (click)="categFilter(cat.id)">{{cat.name}}</p>
             </div>
         </mat-expansion-panel>  
     </mat-accordion>
@@ -56,8 +57,8 @@
                    <h3>Subcategorías</h3> 
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="expand" >
-                <p class="sub"></p>
+            <div class="expand" *ngFor="let sub of subcategories$|async">
+                <p class="sub" (click)="subFilter(sub.id)">{{sub.name}}</p>
             </div>
         </mat-expansion-panel>  
     </mat-accordion>
@@ -71,7 +72,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <div class="expand" *ngFor="let brand of brands">
-                <p class="sub">{{brand.name}}</p>
+                <p class="sub" (click)="brandFilter(brand.id)">{{brand.name}}</p>
             </div>
         </mat-expansion-panel>  
     </mat-accordion>
@@ -81,7 +82,7 @@
     <div class="main">
         <button (click)="openNav()" class="open"><< Filtrar</button>
         <div class="headm">
-            <h3><a href="/">Inicio </a><!-- <a href="" *ngIf="pet"><span class="slash">/</span> {{pet}} </a> <a href="" *ngIf="category"><span class="slash">/</span> {{category}} </a><a href="" *ngIf="subcategory"><span class="slash">/</span> {{subcategory}}</a> --></h3>
+            <h3><a class="point" (click)="prods()">Inicio </a> <a *ngIf="isPet"><span class="slash">/</span> {{pet}} </a> <a *ngIf="isCategory"><span class="slash">/</span> {{category}} </a><a *ngIf="isBrand"><span class="slash">/</span> {{brand}}</a></h3>
 
             
             <form class="example-form">                
@@ -91,7 +92,7 @@
                         matInput
                         [matAutocomplete]="auto">
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let card of products, let i=index" [value]="card.id">
+                    <mat-option *ngFor="let card of products$|async, let i=index" [value]="card.id">
                         <div class="option">
                             <img src="{{card.img}}" alt=""> 
                             <div>
@@ -109,20 +110,19 @@
                 </mat-autocomplete>
             </form>
         </div>
-        <mat-spinner  *ngIf="products.length==0"></mat-spinner>  
-        <ng-container *ngIf="products.length!==0">
+        <mat-spinner  *ngIf="!products$"></mat-spinner>  
+        <ng-container *ngIf="products$">
         <div class="grid-card">
-            <div *ngFor="let card of obs|async">
+            <div *ngFor="let card of products$ | async">
                 <app-card-product [card]="card"></app-card-product>
             </div>
         </div>
         </ng-container>
-        <mat-paginator [length]="products.length"
+        <!-- <mat-paginator [length]="products.length"
               [pageSize]="6"
               [pageSizeOptions]="[6, 9, 12]"
               aria-label="Select page">
               
-        </mat-paginator>
+        </mat-paginator> -->
     </div>
 </div>
-

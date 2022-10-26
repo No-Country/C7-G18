@@ -1,0 +1,75 @@
+@use '../../../commons/styles/colors.scss';
+
+
+.subs{
+    padding: 15px;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.flex2{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    h4{
+        margin:auto 0
+    }
+    button{
+        height: 35px;
+
+    }
+}
+
+.pend{
+    color: colors.$red-color;
+}
+
+.entr{
+    color: colors.$secondary-color;
+}
+
+
+h1{
+    font-size: 30px;
+    font-weight: 500;
+    margin:auto 0;
+    color: colors.$secondary-color;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    button{
+        width: 150px;
+    }
+}
+
+.inputf{
+    width: 380px;
+    height: 50px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid colors.$primary-color;
+    padding: 0 15px;
+}
+
+input::file-selector-button{    
+    height: 50px;
+    margin-left: -15px;
+    border-radius: 5px 0 0;
+    border: none;
+    border-right: 1px solid colors.$gray-color-3;
+    cursor: pointer;
+    color: colors.$gray-color;
+}
+
+.imgBrand{
+    display: block;
+    margin: 15px auto;
+    width: 150px;
+}
+

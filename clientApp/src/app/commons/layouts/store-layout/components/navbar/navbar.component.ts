@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/commons/services/auth.service';
 import { AlertifyService } from 'src/app/commons/services/alertify.service';
 import { CartService } from 'src/app/commons/services/cart.service';
 import { Router } from '@angular/router';
+import { AccountComponent } from 'src/app/commons/components/account/account.component';
+
 
 @Component({
 	selector: 'app-navbar',
@@ -96,4 +98,19 @@ export class NavbarComponent implements OnInit {
 	}
 
 	esMas850: boolean = false;
+
+	openModalAc(){
+		if (screen.width < 500) {
+			this._matDialog.open(AccountComponent, {
+				maxWidth: '100vw',
+				width: '95%',
+				maxHeight: '670px'
+			});
+		} else {
+			this._matDialog.open(AccountComponent, {
+				width: '500px',
+				maxHeight: '670px'
+			});
+		}
+	}
 }
