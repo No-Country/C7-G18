@@ -58,8 +58,11 @@ export class SingUpComponent implements OnInit {
 			this.disableButton = true;
 			const data=this.formGroup.value
 			this._authService.registerWithEmail(data)
-			.then(()=>{this.setPerfilUser(data.name)})
-			.catch((e) => this._alertify.error(e.code));
+			.then(()=>{this.setPerfilUser(data.name,false)})
+			.catch((e) => {
+				this._alertify.error(e.code);
+				this.disableButton = false;
+			});
 
 		}
 		
@@ -68,19 +71,25 @@ export class SingUpComponent implements OnInit {
 	registerWithGoogle(){
 		this._authService
 			.googleAuth()
-			.then((res) =>this.setPerfilUser(res.user?.displayName!))
-			.catch((e) => this._alertify.error(e.code));
+			.then((res) =>this.setPerfilUser(res.user?.displayName!,true))
+			.catch((e) => {	
+				this.disableButton = false;
+				this._alertify.error(e.code);
+			});
 	}
 
-	setPerfilUser(fullName: string): void {
+	setPerfilUser(fullName: string,google:boolean): void {
 		this._authService
 			.getCurrentUser()
 			.then((res) => {
-				res?.updateProfile({ displayName: fullName });
 				let data= {
-					name:res?.displayName!,
+					name:fullName,
 					email:res?.email!,
-					photo:res?.photoURL!
+					photo: google ? res?.photoURL!:'',
+					phone:'',
+					address:'',
+					reference:'',
+					dni:''
 				}
 				this.addUser(res?.uid!,data)
 			})

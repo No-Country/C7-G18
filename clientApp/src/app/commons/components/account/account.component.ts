@@ -30,21 +30,8 @@ export class AccountComponent implements OnInit {
 
   url:string
   uid:string
+  disableButton = false;
 
-  // ngOnInit(): void {
-  //   this._loadFormGroup()
-  //   this._auth.authState.subscribe({
-  //     next:user=>{
-  //       this.formGroup.patchValue({
-  //       name:user?.displayName,
-  //       photo:user?.photoURL,
-  //       phone:user?.phoneNumber
-  //     })
-  //     this.uid= user?.uid!
-  //     },
-  //     complete:()=>{}
-  //   })        
-  // }
 
   ngOnInit(): void {
     this._loadFormGroup()
@@ -79,19 +66,23 @@ export class AccountComponent implements OnInit {
 
 
   async update(){
+    this.disableButton=true;
+    console.log(this.formGroup.value,'data a enviar')
     let userData={
       name: this.formGroup.value.name,
-    dni:this.formGroup.value.dni,
-    phone:this.formGroup.value.phone,
-    address:this.formGroup.value.address,
-    reference:this.formGroup.value.reference,
-    photo:this.url
+      dni:this.formGroup.value.dni,
+      phone:this.formGroup.value.phone,
+      address:this.formGroup.value.address,
+      reference:this.formGroup.value.reference,
+      photo:this.url
     }
    await this._userService.updateUser(this.uid,userData)
    .then(()=>this._alertify.success(`!Usuario editado!`))
+   .catch((e)=>this._alertify.error('error '+ e.code))
    .finally(()=>{
-    this._authService.changePhotoUrl(this.url)
-    this.dialogRef.close()
+    this._authService.changePhotoUrl(this.url);
+    this.disableButton=true;
+    this.dialogRef.close();
   });
   }
 
