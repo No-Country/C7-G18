@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { getDownloadURL, ref, uploadBytes, Storage } from '@angular/fire/storage';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AlertifyService } from '../../services/alertify.service';
+import { UserService } from '../../services/user.service';
+import { Iuser } from './user.interface';
 
 @Component({
   selector: 'app-account',
@@ -13,14 +17,15 @@ export class AccountComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _storage: Storage,
-    private _auth:AngularFireAuth
-  ) { 
-    
-
-  }
+    private _auth:AngularFireAuth,
+    private _userService:UserService,
+    private _alertify: AlertifyService,
+    public dialogRef: MatDialogRef<AccountComponent>,
+   
+  ) { }
 
   url:string
-  userName:any=''
+  uid:string
 
   ngOnInit(): void {
     this._loadFormGroup()
@@ -31,7 +36,7 @@ export class AccountComponent implements OnInit {
         photo:user?.photoURL,
         phone:user?.phoneNumber
       })
-      console.log(user?.uid)
+      this.uid= user?.uid!
       },
       complete:()=>{}
     })
@@ -52,9 +57,21 @@ export class AccountComponent implements OnInit {
   });}
 
 
-  add(){
-    console.log(this.formGroup.value.name)
+  async update(){
+    let userData={
+      name: this.formGroup.value.name,
+    dni:this.formGroup.value.dni,
+    phone:this.formGroup.value.phone,
+    address:this.formGroup.value.address,
+    reference:this.formGroup.value.reference,
+    photo:this.url
+    }
+   await this._userService.updateUser(this.uid,userData)
+   .then(()=>this._alertify.success(`!Usuario editado!`))
+   .finally(()=>this.dialogRef.close());
   }
+
+ 
 
 
 

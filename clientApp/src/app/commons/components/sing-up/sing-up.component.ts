@@ -6,6 +6,8 @@ import { LoginComponent } from '../login/login.component';
 import { AuthService } from '../../services/auth.service';
 import { AlertifyService } from '../../services/alertify.service';
 import { customPasswordValidator } from '../../validators/password.validators';
+import { UserService } from '../../services/user.service';
+import { Iuser } from '../account/user.interface';
 
 
 
@@ -24,6 +26,7 @@ export class SingUpComponent implements OnInit {
 		private _formBuilder: FormBuilder,
 		private _authService: AuthService,
 		private _alertify: AlertifyService,
+		private _userService:UserService,
 		) {
 		this._loadFormGroup();
 
@@ -55,7 +58,7 @@ export class SingUpComponent implements OnInit {
 			this.disableButton = true;
 			const data=this.formGroup.value
 			this._authService.registerWithEmail(data)
-			.then(()=>this.setPerfilUser(data.name))
+			.then(()=>{this.setPerfilUser(data.name)})
 			.catch((e) => this._alertify.error(e.code));
 
 		}
@@ -74,6 +77,12 @@ export class SingUpComponent implements OnInit {
 			.getCurrentUser()
 			.then((res) => {
 				res?.updateProfile({ displayName: fullName });
+				let data= {
+					name:res?.displayName!,
+					email:res?.email!,
+					photo:res?.photoURL!
+				}
+				this.addUser(res?.uid!,data)
 			})
 			.then((res) => console.log(res,'registrado'))
 			.catch((e) => this._alertify.error(e.code))
@@ -106,6 +115,11 @@ export class SingUpComponent implements OnInit {
 
 	onSubmit(){
 		console.log(this.usurio.value)
+	}
+
+async addUser(id:string, data:Iuser){
+		await this._userService.addUser(id,data)
+		.then((res)=>console.log(res))
 	}
 
 }

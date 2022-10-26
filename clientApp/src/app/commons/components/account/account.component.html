@@ -28,7 +28,7 @@
 				<input class="inputf" type="file" (change)="uploadImage($event)" />
 				<img class="imgBrand" *ngIf="url" [src]="url" alt="" />
 				<div class="buttons">
-					<button mat-flat-button color="primary" (click)="add()">Guardar</button>
+					<button mat-flat-button color="primary" (click)="update()">Guardar</button>
 					<button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
 				</div>
 			</form>
