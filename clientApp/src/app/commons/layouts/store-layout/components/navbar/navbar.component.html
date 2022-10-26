@@ -34,8 +34,8 @@
 </div>
 
 <mat-expansion-panel [expanded]="panelOpenState" class="expand menu">
-	<p class="p1"><a class="lh" href=""> Home</a></p>
-	<p class="p1"><a class="lh" href="/store"> Tienda</a></p>
+	<p class="p1"><a class="lh" (click)="navigatePage('/')"> Home</a></p>
+	<p class="p1"><a class="lh" (click)="navigatePage('/store')"> Tienda</a></p>
 	<p class="p1"><a class="lh" (click)="escribenos()"> Contacto</a></p>
 	<p class="p1" *ngIf="!_authService.isLogin" ><button mat-raised-button color="accent" (click)="openModalLogin()">Ingresar</button></p>
 </mat-expansion-panel>

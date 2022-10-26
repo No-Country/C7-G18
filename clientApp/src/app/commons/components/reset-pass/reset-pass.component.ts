@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {UntypedFormControl, Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { LoginComponent } from '../login/login.component'; 
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
@@ -10,11 +10,11 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 })
 export class ResetPassComponent implements OnInit {
 
-  constructor(private _formBuilder: FormBuilder, public dialogRef: MatDialogRef<ResetPassComponent>, private _matDialog: MatDialog,) {
+  constructor(private _formBuilder: UntypedFormBuilder, public dialogRef: MatDialogRef<ResetPassComponent>, private _matDialog: MatDialog,) {
     this._loadFormGroup();
    }
 
-   formGroup!: FormGroup;
+   formGroup!: UntypedFormGroup;
    
    private _loadFormGroup(): void {
 		this.formGroup = this._formBuilder.group({
@@ -26,7 +26,7 @@ export class ResetPassComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  email = new UntypedFormControl('', [Validators.required, Validators.email]);
   hide = true;
 
 

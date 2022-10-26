@@ -45,7 +45,7 @@ export class MarcasComponent implements OnInit {
 	ngOnInit(): void {
 		this.brandService.getBrand().subscribe({
 			next: (brands) => {
-				(this.brands = brands), console.log('next', brands);
+				(this.brands = brands);
 			},
 			error: (e) => {
 				console.log('err');

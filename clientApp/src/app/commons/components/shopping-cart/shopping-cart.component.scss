@@ -12,7 +12,9 @@
         grid-template-columns: 1fr 5fr;
         column-gap: 10px;
         border-bottom: 1px solid colors.$gray-color-4;
-        padding: 15px 0px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-right: 15px;
         img{
            width: 80px; 
         }
@@ -78,8 +80,14 @@
 
 .footer_pay{
     margin-top:10%;
+    padding-right: 15px;
 }
 
 .btn-pay{
     margin-top: 20px;
+}
+
+.punit{
+    font-size: 13px;
+    color:gray;
 }

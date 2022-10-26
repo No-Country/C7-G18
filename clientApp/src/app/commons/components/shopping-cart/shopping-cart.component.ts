@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { IProductClass } from '../../interfaces/front.interface';
+import { AlertifyService } from '../../services/alertify.service';
+import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -14,25 +16,27 @@ export class ShoppingCartComponent implements OnInit {
 
 	constructor(
 		public _cartService:CartService,
-		private router: Router
+		private router: Router,
+		public authService: AuthService,
+		private _alertify: AlertifyService,
 	) {}
 	
-	itemsCart = this._cartService.getItems();
 	ngOnInit(): void {}
 
 	modifyProducts(dataProduct:IProductClass){
-		if(this.itemsCart.length === 0) {
+		const itemsCart = this._cartService.getItems();
+		if(itemsCart.length === 0) {
 			this._cartService.addToCart(dataProduct);
 		  } else {
 			  // agrega el producto si el id es diferente a los agregados
-			if(!this.itemsCart.find( (item: any) => item.id === dataProduct.id)) {
+			if(!itemsCart.find( (item: any) => item.id === dataProduct.id)) {
 			  this._cartService.addToCart(dataProduct);
 			  // si encuentra al id actualiza su cantidad
 			} else {
 			  this._cartService.updateCart(dataProduct,'+');
 			}
 		}
-	  }
+	}
 	 
 
 	add(product:IProductClass){
@@ -48,6 +52,11 @@ export class ShoppingCartComponent implements OnInit {
 	}
 
 	goBuy(){
-		this.router.navigate(['/buy']);
+		if (this.authService.isLoggedIn !== true) {
+			this._alertify.error('Para pagar es necesario, iniciar sesion');
+		}else{
+			localStorage.setItem('cart_total', JSON.stringify(this._cartService.getTotal()));
+			this.router.navigate(['/buy']);
+		}
 	}
 }

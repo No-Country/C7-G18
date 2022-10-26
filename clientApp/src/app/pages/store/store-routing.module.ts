@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from 'src/app/commons/guards/auth.guard';
 import { StoreLayoutComponent } from '../../commons/layouts/store-layout/store-layout.component';
 
 //import { PATHS_STORE_PAGES } from './../../commons/config/path-pages';
@@ -20,7 +21,13 @@ const routes: Routes = [
 			},
 			{
 				path: 'buy',
+				canActivate: [AuthGuard],
 				loadChildren: () => import('./buy-page/buy-page.module').then((m) => m.BuyModule)
+			},
+			{
+				path: 'buy-success',
+				canActivate: [AuthGuard],
+				loadChildren: () => import('./buy-success/buy-success.module').then((m) => m.BuySuccessModule)
 			}
 		]
 	}

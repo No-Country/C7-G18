@@ -1,6 +1,6 @@
 export interface Iuser{
     name?:string,
-    dni?:number,
+    dni?:string,
     phone?:string,
     address?:string,
     photo?:string,

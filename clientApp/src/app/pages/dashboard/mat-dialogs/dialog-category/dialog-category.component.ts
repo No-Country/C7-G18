@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AlertifyService } from 'src/app/commons/services/alertify.service';
 import { CategoryService } from 'src/app/commons/services/category.service';
@@ -15,7 +15,7 @@ export class DialogCategoryComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public dialog:Dialog,
     public dialogRef: MatDialogRef<DialogCategoryComponent>,
     private _categoryService:CategoryService,
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private _alertify: AlertifyService,
    ) { }
 
@@ -24,7 +24,7 @@ export class DialogCategoryComponent implements OnInit {
   date:Date= new Date
   
 
-  formGroup: FormGroup= this._formBuilder.group({
+  formGroup: UntypedFormGroup= this._formBuilder.group({
     name: [this.dialog.nombre, Validators.required]
   });
 
