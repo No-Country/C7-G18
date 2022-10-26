@@ -3,22 +3,29 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 
 import { ILogin, IRegister } from '../interfaces/auth.interface';
+import { UserService } from './user.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
     userLogin: any;
     userPhotoUrl:any; //puede ser null o string
 	isLogin:boolean;
+	uidUser:string=''
 
-    constructor(private _auth:AngularFireAuth) { 
+    constructor(
+		private _auth:AngularFireAuth,
+		private _userService:UserService
+		) { 
         this._auth.authState.subscribe((user) => {
 			if (user) {
 				this.userLogin = user; 
-                this.userPhotoUrl = user.photoURL; //para el navbar
 				this.isLogin = true; //para el navbar
+				this.uidUser=user.uid
+				this._userService.getUser(user.uid).subscribe(data=>this.userPhotoUrl=data.photo)
 				localStorage.setItem('userLogin', JSON.stringify(this.userLogin));
 			} else {
 				this.isLogin = false;
+				this.uidUser=''
 				localStorage.setItem('userLogin', 'null');
 			}
 		});
@@ -52,5 +59,7 @@ export class AuthService {
 		return this._auth.signInWithPopup(provider);
 	}
 
-
+	changePhotoUrl(url:string){
+		this.userPhotoUrl=url
+	}
 }

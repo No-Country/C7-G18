@@ -68,7 +68,7 @@ export class SingUpComponent implements OnInit {
 	registerWithGoogle(){
 		this._authService
 			.googleAuth()
-			.then((res) => this.dialogRef.close({ isLogin: true }))
+			.then((res) =>this.setPerfilUser(res.user?.displayName!))
 			.catch((e) => this._alertify.error(e.code));
 	}
 

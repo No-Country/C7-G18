@@ -19,7 +19,9 @@ export class NavbarComponent implements OnInit {
 		public _authService: AuthService,
 		private _alertify: AlertifyService,
 		public _cartService:CartService
-		) {}
+		) {
+			
+		}
 
 	panelOpenState: boolean = false;
 	
