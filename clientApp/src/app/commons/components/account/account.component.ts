@@ -6,6 +6,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { AlertifyService } from '../../services/alertify.service';
 import { UserService } from '../../services/user.service';
 import { Iuser } from './user.interface';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-account',
@@ -20,27 +21,47 @@ export class AccountComponent implements OnInit {
     private _auth:AngularFireAuth,
     private _userService:UserService,
     private _alertify: AlertifyService,
+    private _authService:AuthService,
     public dialogRef: MatDialogRef<AccountComponent>,
    
-  ) { }
+  ) { 
+    this.url=_authService.userPhotoUrl
+  }
 
   url:string
   uid:string
 
+  // ngOnInit(): void {
+  //   this._loadFormGroup()
+  //   this._auth.authState.subscribe({
+  //     next:user=>{
+  //       this.formGroup.patchValue({
+  //       name:user?.displayName,
+  //       photo:user?.photoURL,
+  //       phone:user?.phoneNumber
+  //     })
+  //     this.uid= user?.uid!
+  //     },
+  //     complete:()=>{}
+  //   })        
+  // }
+
   ngOnInit(): void {
     this._loadFormGroup()
-    this._auth.authState.subscribe({
-      next:user=>{
+    this.uid= this._authService.uidUser
+    let userData:Iuser
+    this._userService.getUser(this.uid).subscribe({
+      next:data=>{userData=data
+      console.log(userData,'la data')},
+      complete:()=>{
         this.formGroup.patchValue({
-        name:user?.displayName,
-        photo:user?.photoURL,
-        phone:user?.phoneNumber
-      })
-      this.uid= user?.uid!
-      },
-      complete:()=>{}
-    })
-        
+      name: userData.name,
+      dni:userData.dni,
+      phone:userData.phone,
+      address:userData.address,
+      reference:userData.reference,
+      photo:userData.photo 
+    })}})   
   }
 
   formGroup!: FormGroup;
@@ -68,7 +89,10 @@ export class AccountComponent implements OnInit {
     }
    await this._userService.updateUser(this.uid,userData)
    .then(()=>this._alertify.success(`!Usuario editado!`))
-   .finally(()=>this.dialogRef.close());
+   .finally(()=>{
+    this._authService.changePhotoUrl(this.url)
+    this.dialogRef.close()
+  });
   }
 
  

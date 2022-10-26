@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Firestore , collection, addDoc, updateDoc, doc} from '@angular/fire/firestore';
+import { Firestore , collection, addDoc, updateDoc, doc, docData} from '@angular/fire/firestore';
 import { Iuser } from '../components/account/user.interface';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable, first } from 'rxjs';
 
 
 @Injectable({
@@ -14,6 +15,10 @@ export class UserService {
     public afs: AngularFirestore
     ) { }
 
+  getUser(id:string):Observable<Iuser>{
+    const userRef=doc(this.firestore,'usuarios',id)
+    return docData(userRef,{idField: 'id'}).pipe(first())
+  }
 
   addUser(id:string,user: Iuser) {
     return this.afs.collection('usuarios').doc(id).set(user)
