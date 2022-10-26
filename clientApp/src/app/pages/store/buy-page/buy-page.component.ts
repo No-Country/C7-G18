@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './buy-page.component.html',
   styleUrls: ['./buy-page.component.scss']
 })
-export class BuyPageComponent implements OnInit,  AfterViewInit {
+export class BuyPageComponent implements OnInit{
   
   formGroup!: UntypedFormGroup;
 	disableButton = false;
@@ -38,11 +38,8 @@ export class BuyPageComponent implements OnInit,  AfterViewInit {
   cartTotal=0;
   ngOnInit(): void {
     this.cartTotal = JSON.parse(localStorage.getItem('cart_total') as any) || [];
-    this._loadFormGroup();
-  }
-
-  ngAfterViewInit() {
     this.initConfig();
+    this._loadFormGroup();
   }
 
   private initConfig(): void {
