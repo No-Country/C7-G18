@@ -1,13 +1,13 @@
-# C7-G18 - Proyecto:     PetStore 🐶 🐱
+# C7-G18 - Proyecto:     PetStore 🐶 🐱 🐹 🐰 🐠
 
 ![](https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/readme%2F1.png?alt=media&token=ee9565eb-10d5-49ff-b402-dba9bf042456)
 
 ## Realizado por:
-#### [Yovana Velasquez](https://github.com/yovana888)  [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pierina-montalva-fatur/)](https://www.linkedin.com/in/yovana-velasquez-cruz-a788bb142/) 
+#### [Yovana Velasquez](https://github.com/yovana888) [![GitHub](https://imgs.search.brave.com/ojt2zADYb9mHxXGgZq6AdlwWK5tZRwX6M_3MJ6UVTVU/rs:fit:36:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5C/TDBoZEVuTnVOLXkw/Y29DdjRnTVRRQUFB/QSZwaWQ9QXBp)](https://github.com/yovana888) [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pierina-montalva-fatur/)](https://www.linkedin.com/in/yovana-velasquez-cruz-a788bb142/)  
 
-#### [Emanuel Capo](https://github.com/Emanuel-Capo) [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pierina-montalva-fatur/)](https://www.linkedin.com/in/yovana-velasquez-cruz-a788bb142/) 
+#### [Emanuel Capo](https://github.com/Emanuel-Capo) [![GitHub](https://imgs.search.brave.com/ojt2zADYb9mHxXGgZq6AdlwWK5tZRwX6M_3MJ6UVTVU/rs:fit:36:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5C/TDBoZEVuTnVOLXkw/Y29DdjRnTVRRQUFB/QSZwaWQ9QXBp)](https://github.com/Emanuel-Capo) [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pierina-montalva-fatur/)](https://www.linkedin.com/in/yovana-velasquez-cruz-a788bb142/) 
 
-#### [Alexander Figueredo](https://github.com/Alexander2378) [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pierina-montalva-fatur/)](www.linkedin.com/in/alexander-figueredo-48b89a132) 
+#### [Alexander Figueredo](https://github.com/Alexander2378) [![GitHub](https://imgs.search.brave.com/ojt2zADYb9mHxXGgZq6AdlwWK5tZRwX6M_3MJ6UVTVU/rs:fit:36:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5C/TDBoZEVuTnVOLXkw/Y29DdjRnTVRRQUFB/QSZwaWQ9QXBp)](https://github.com/Alexander2378) [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pierina-montalva-fatur/)](www.linkedin.com/in/alexander-figueredo-48b89a132) 
 
 
 # Tecnologias usadas. 
