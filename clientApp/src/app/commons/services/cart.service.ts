@@ -18,7 +18,7 @@ export class CartService {
     product.quantity = 1;
     product.subtotal = product.price;
     this.itemsCart.push(product);
-    this.saveDataLocal();
+    //this.saveDataLocal();
   }
 
   // actualiza contenido del carrito
@@ -40,7 +40,7 @@ export class CartService {
         break;
       }
     }
-    this.saveDataLocal();
+    //this.saveDataLocal();
   }
 
   // elimina contenido del carrito
@@ -49,7 +49,7 @@ export class CartService {
     console.log(index)
     if(index > -1) {
       this.itemsCart.splice(index, 1);
-      this.saveDataLocal()
+      //this.saveDataLocal()
     }
   }
 
@@ -64,14 +64,14 @@ export class CartService {
 
   //obtener items de carrito
   getItems() {
-    this.itemsCart = JSON.parse(localStorage.getItem('cart_items') as any) || [];
+    //this.itemsCart = JSON.parse(localStorage.getItem('cart_items') as any) || [];
     return this.itemsCart;
   }
 
   //limpiar el carrito
   clearCart() {
     this.itemsCart = [];
-    this.saveDataLocal();
+    //this.saveDataLocal();
   }
 
   saveDataLocal(){

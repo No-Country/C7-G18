@@ -37,7 +37,8 @@ export class BuyPageComponent implements OnInit{
   }
   cartTotal=0;
   ngOnInit(): void {
-    this.cartTotal = JSON.parse(localStorage.getItem('cart_total') as any) || [];
+    //this.cartTotal = JSON.parse(localStorage.getItem('cart_total') as any) || [];
+    this.cartTotal= this._cartService.getTotal();
     this.initConfig();
     this._loadFormGroup();
   }
@@ -150,7 +151,7 @@ export class BuyPageComponent implements OnInit{
               quantity: '1',
               category: 'DIGITAL_GOODS',
               unit_amount: {
-                  currency_code: 'EUR',
+                  currency_code: 'USD',
                   value: '220',
               },
           }]
@@ -166,6 +167,7 @@ export class BuyPageComponent implements OnInit{
       },
       onApprove: (data, actions) => {
         console.log(data.orderID,'este es el id de orden')
+        this.router.navigateByUrl('/buy');
         actions.order.get().then((details: any) => {
           console.log(
             'onApprove - you can get full order details inside onApprove: ',
