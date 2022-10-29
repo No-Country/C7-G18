@@ -41,7 +41,8 @@
  
 ### Resumen del proyecto.
  PetStore es una E-commerce  desarrollada con Angular en el front-end + angular Materia en los estilos y firebase en el back-end,
- tambien es responsive por lo que se adapta a los direfectes tipos y tamaños de pantallas.
+ tambien es responsive por lo que se adapta a los direntes tipos y tamaños de pantallas.
+ 
  
  
  
