@@ -1,6 +1,9 @@
 # C7-G18 - Proyecto:     PetStore 🐶 🐱 🐹 🐰 🐠
 
-![](https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/banner.png?alt=media&token=71222ea9-a415-4328-8344-409247917b4e)
+<p>
+ <img src="https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/banner.png?alt=media&token=71222ea9-a415-4328-8344-409247917b4e" width="100%" />
+</p>
+
 
 ## Realizado por:
 #### [Yovana Velasquez](https://github.com/yovana888) [![GitHub](https://imgs.search.brave.com/ojt2zADYb9mHxXGgZq6AdlwWK5tZRwX6M_3MJ6UVTVU/rs:fit:36:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5C/TDBoZEVuTnVOLXkw/Y29DdjRnTVRRQUFB/QSZwaWQ9QXBp)](https://github.com/yovana888) [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/pierina-montalva-fatur/)](https://www.linkedin.com/in/yovana-velasquez-cruz-a788bb142/)  
@@ -17,7 +20,7 @@
 #### ![Firebase](https://imgs.search.brave.com/vYIxRwKn61ZnnD8QW3tb8mHI3mpMgdGHXDfHUQAnEms/rs:fit:48:48:1/g:ce/aHR0cHM6Ly93d3cu/c2hhcmVpY29uLm5l/dC9kYXRhLzQ4eDQ4/LzIwMTYvMDcvMDgv/MTE3NTQ4X2dvb2ds/ZV81MTJ4NTEyLnBu/Zw)  Firebase. 
 
 ----
- ## 📌 Lista de contedido
+ ## 📌 Lista de contedido.
 * Diseño.
 * Accesos.
 * Resumen del proyecto.
@@ -38,7 +41,7 @@
  
  ----
  
-### Accesos
+### Accesos.
  
 *admin: admin@petstore.com  / password: Admin123#
  
@@ -56,8 +59,14 @@
   tambien podemos agregar produtos al carrito el cual calculara el precio y la sumatoria de los mismos para
   luego poder proceder con el pago.
   
-  ![Cliente](https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/readme%2Fcliente.png?alt=media&token=21571a4a-002d-4727-a1f7-5b3a188ec8b4)
+<!--   ![Cliente](https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/readme%2Fcliente.png?alt=media&token=21571a4a-002d-4727-a1f7-5b3a188ec8b4) -->
  
+ <p align="center">
+        <img src="https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/readme%2Fcliente.png?alt=media&token=21571a4a-002d-4727-a1f7-5b3a188ec8b4" />
+    
+</p>
+
+
  ----
  
  ###  Dashboard Admin.
