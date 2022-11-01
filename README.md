@@ -16,6 +16,9 @@
 #### ![Firebase](https://imgs.search.brave.com/vYIxRwKn61ZnnD8QW3tb8mHI3mpMgdGHXDfHUQAnEms/rs:fit:48:48:1/g:ce/aHR0cHM6Ly93d3cu/c2hhcmVpY29uLm5l/dC9kYXRhLzQ4eDQ4/LzIwMTYvMDcvMDgv/MTE3NTQ4X2dvb2ds/ZV81MTJ4NTEyLnBu/Zw)  Firebase. 
 
  ## 📌 Lista de contedido
+* Accesos.
+* Resumen del proyecto.
+* Cliente.
 * Resumen del proyecto.
 * Resumen del proyecto.
 * Resumen del proyecto.
@@ -42,8 +45,18 @@
 ### Resumen del proyecto.
  PetStore es una E-commerce  desarrollada con Angular en el front-end + angular Materia en los estilos y firebase en el back-end,
  tambien es responsive por lo que se adapta a los direntes tipos y tamaños de pantallas.
+ Cuenta con capacidad de tomar pedidos  como clientes agragdando productos a un carrito de compras, con la opcion de pagar con tarjeta de credito - debito y paypay.
+ Tambien posee un dashboard-admin en el cual podemos editar, agregar, actualizar o borrar algunas opciones o caracteristicas.
  
+ ----
+ # Cliente.
+  En la sección de cliente podemos aplicar filtros por mascotas, marcas o productos,
+  tambien podemos agregar produtos al carrito el cual calculara el precio y la sumatoria de los mismos para
+  luego poder proceder con el pago.
+  
+  ![Cliente](https://firebasestorage.googleapis.com/v0/b/petstore-75ed1.appspot.com/o/readme%2Fcliente.png?alt=media&token=21571a4a-002d-4727-a1f7-5b3a188ec8b4)
  
+ ----
  
  
  
