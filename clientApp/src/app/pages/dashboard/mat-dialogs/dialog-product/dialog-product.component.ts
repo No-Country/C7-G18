@@ -47,6 +47,7 @@ export class DialogProductComponent implements OnInit {
   subs:CardDashboard[]
   url:string
   date:Date= new Date
+  disableButton = false;
 
   subsC(id:string){
     console.log(id)
@@ -55,17 +56,20 @@ export class DialogProductComponent implements OnInit {
 
   async add(){
     if(this.formGroup.valid){
+      this.disableButton = true;
+      const {name, category, subcategory, pet, brand, stock, price, description,
+        percent } = this.formGroup.value
       const response={
-        name: this.formGroup.value.name,
-        category: this.formGroup.value.category,
-        subcategory: this.formGroup.value.subcategory,
-        pet: this.formGroup.value.pet,
-        brand: this.formGroup.value.brand,
-        stock: this.formGroup.value.stock,
-        price: this.formGroup.value.price,
-        description: this.formGroup.value.description,
-        discount: (this.formGroup.value.price * (100 - this.formGroup.value.percent) /100),
-        percent:this.formGroup.value.percent,
+        name,
+        category,
+        subcategory,
+        pet,
+        brand,
+        stock,
+        price,
+        description,
+        discount: (price * (100 - percent) /100),
+        percent,
         img:this.url,
         created:this.date.toLocaleString("en-GB",{day: "numeric",month: "2-digit",year: "numeric"})
       }
@@ -77,7 +81,8 @@ export class DialogProductComponent implements OnInit {
     }
   }
 
-  async edit(){    
+  async edit(){ 
+    this.disableButton = true;   
       const response={
         name: this.formGroup.value.name,
         category: this.formGroup.value.category,
@@ -96,7 +101,8 @@ export class DialogProductComponent implements OnInit {
       .finally(()=>this.dialogRef.close());
   }
 
-  async editStock(){    
+  async editStock(){  
+    this.disableButton = true;  
     const response={
       name: this.dialog.product?.name,
       category: this.dialog.product?.category,
@@ -115,6 +121,7 @@ export class DialogProductComponent implements OnInit {
 }
 
   async delete(){
+    this.disableButton = true;
     await this._productService.deleteProds(this.dialog.product?.id!)
     .then(()=>this._alertify.success(`¡Producto ${this.dialog.nombre} eliminado!`))
     .finally(()=>this.dialogRef.close())

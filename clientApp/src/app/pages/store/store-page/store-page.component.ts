@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -74,64 +74,37 @@ category:string|undefined
   ngOnInit(): void {
     this._categoryService.getCategory().subscribe(data=>this.categories=data)
     this._brandService.getBrand().subscribe(data=>this.brands=data)
-    this._petService.getPet().subscribe({
-      next:data=>this.pets=data,
-      complete:()=>{this.prods()}
-    })
-
-    
-    
-    // this.dataSource = new MatTableDataSource<IProductClass>(this.products$);
-    //   this.dataSource.paginator = this.paginator;
-    //   this.paginator._intl.itemsPerPageLabel="Productos por página";
-    //   this.obs = this.dataSource.connect();
-
-    
-
-
-    // this._afs.collection('products').valueChanges().subscribe(data=>console.log(data, 'productos'))
-    // this._afs.collection('category').valueChanges().subscribe(data=>console.log(data, 'categorias'))
-
-    // this._categoryService.getCategory().subscribe(data=>this.categories=data)
-    // this._brandService.getBrand().subscribe(data=>this.brands=data)
-    // this._petService.getPet().subscribe(data=>this.pets=data)
-       
+    this._petService.getPet().subscribe(data=>this.pets=data)    
+    this.prods()
   }
 
   prods(){
-    this._productsCollection = this._afs.collection<IProductClass>('products')
-    this.products$ = this._productsCollection.valueChanges().pipe(map(prod=>
-     prod.map(element => {
-       element.nameCategory=this.categoryName(element.category);
-       element.namePet=this.petName(element.pet);
-       element.nameBrand=this.brandName(element.brand);
-       this.products.push(element)
-
-       return element
-     })
-     ))
+    this._afs.collection<IProductClass>('products').valueChanges().subscribe(prods=>{
+      this.products=prods
+      this.paginat();         
+    })
 
     this.isPet=false
     this.isBrand=false
-    this.isCategory=false    
-     
+    this.isCategory=false  
+
   }
 
 
+paginat(){      
+      this.dataSource = new MatTableDataSource<IProductClass>(this.products);
+      this.dataSource.paginator = this.paginator;
+      this.paginator._intl.itemsPerPageLabel="Productos por página";
+      this.obs = this.dataSource.connect();
+      console.log(this.obs,'hola');
+      
+    }
 
+  @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
+  dataSource:MatTableDataSource<IProductClass>
+  obs: Observable<any>;
 
-
-
-  // @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
-  // dataSource:MatTableDataSource<IProductClass>
-  // obs: Observable<any>;
-
-  //  getProducts(){      
-  //      this.dataSource = new MatTableDataSource<IProductClass>(this.products);
-  //      this.dataSource.paginator = this.paginator;
-  //      this.paginator._intl.itemsPerPageLabel="Productos por página";
-  //      this.obs = this.dataSource.connect();
-  // }
+  
 
 
 
@@ -140,18 +113,23 @@ category:string|undefined
 
 
 categFilter(id:any){
-  this._productsCollection = this._afs.collection('products',ref=>ref.where('category','==',id))
-  this.products$ = this._productsCollection.valueChanges().pipe(map(prod=>
-    prod.map(element => {
-      element.nameCategory=this.categoryName(element.category);
-      element.namePet=this.petName(element.pet);
-      element.nameBrand=this.brandName(element.brand);
-      return element
-    })))
+  this._afs.collection<IProductClass>('products',ref=>ref.where('category','==',id)).valueChanges().subscribe(prods=>{
+    this.products=prods
+    this.paginat();         
+  })
 
-    this._subcategoriesCollection = this._afs.collection<IProductClass>(`category/${id}/subcategory`)
-    this.subcategories$=this._subcategoriesCollection.valueChanges({idField:'id'})
-   // this.subcategories$.subscribe(a=>console.log(a))
+  // this._productsCollection = this._afs.collection('products',ref=>ref.where('category','==',id))
+  // this.products$ = this._productsCollection.valueChanges().pipe(map(prod=>
+  //   prod.map(element => {
+  //     element.nameCategory=this.categoryName(element.category);
+  //     element.namePet=this.petName(element.pet);
+  //     element.nameBrand=this.brandName(element.brand);
+  //     return element
+  //   })))
+
+  //   this._subcategoriesCollection = this._afs.collection<IProductClass>(`category/${id}/subcategory`)
+  //   this.subcategories$=this._subcategoriesCollection.valueChanges({idField:'id'})
+   
 
    this.isPet=false
     this.isBrand=false
@@ -161,14 +139,19 @@ categFilter(id:any){
 }
 
 petFilter(id:any){
-  this._productsCollection = this._afs.collection('products',ref=>ref.where('pet','==',id))
-  this.products$ = this._productsCollection.valueChanges().pipe(map(prod=>
-    prod.map(element => {
-      element.nameCategory=this.categoryName(element.category);
-      element.namePet=this.petName(element.pet);
-      element.nameBrand=this.brandName(element.brand);
-      return element
-    })))
+  this._afs.collection<IProductClass>('products',ref=>ref.where('pet','==',id)).valueChanges().subscribe(prods=>{
+    this.products=prods
+    this.paginat();         
+  })
+
+  // this._productsCollection = this._afs.collection('products',ref=>ref.where('pet','==',id))
+  // this.products$ = this._productsCollection.valueChanges().pipe(map(prod=>
+  //   prod.map(element => {
+  //     element.nameCategory=this.categoryName(element.category);
+  //     element.namePet=this.petName(element.pet);
+  //     element.nameBrand=this.brandName(element.brand);
+  //     return element
+  //   })))
 
     this.isPet=true
     this.isBrand=false
@@ -178,14 +161,16 @@ petFilter(id:any){
 }
 
 brandFilter(id:any){
-  this._productsCollection = this._afs.collection('products',ref=>ref.where('brand','==',id))
-  this.products$ = this._productsCollection.valueChanges().pipe(map(prod=>
-    prod.map(element => {
-      element.nameCategory=this.categoryName(element.category);
-      element.namePet=this.petName(element.pet);
-      element.nameBrand=this.brandName(element.brand);
-      return element
-    })))
+  this._afs.collection<IProductClass>('products',ref=>ref.where('brand','==',id)).valueChanges().subscribe(prods=>{this.products=prods})
+
+  // this._productsCollection = this._afs.collection('products',ref=>ref.where('brand','==',id))
+  // this.products$ = this._productsCollection.valueChanges().pipe(map(prod=>
+  //   prod.map(element => {
+  //     element.nameCategory=this.categoryName(element.category);
+  //     element.namePet=this.petName(element.pet);
+  //     element.nameBrand=this.brandName(element.brand);
+  //     return element
+  //   })))
 
     this.isPet=false
     this.isBrand=true

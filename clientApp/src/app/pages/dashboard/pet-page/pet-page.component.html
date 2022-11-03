@@ -5,7 +5,7 @@
 <div class="cards">
 	<mat-spinner  *ngIf="pets.length==0"></mat-spinner>  
         <ng-container *ngIf="pets.length!==0">
-	<div *ngFor="let pet of pets" class="card1">
+	<div *ngFor="let pet of obs|async" class="card1">
 		<app-card-dashboard
 			[cardDashboard]="pet"
 			[clase]="clase"

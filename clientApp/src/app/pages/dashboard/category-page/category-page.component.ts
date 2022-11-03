@@ -17,7 +17,7 @@ import { Observable } from 'rxjs';
 export class CategoryPageComponent implements OnInit {
 
   clase='Categoría'
-  categories:CardDashboard[]
+  categories:CardDashboard[]=[]
 
   constructor(
         private _matDialog: MatDialog,
@@ -28,13 +28,16 @@ export class CategoryPageComponent implements OnInit {
     this.listarCategorias()
   }
 
-  listarCategorias(){this._categoryService.getCategory().subscribe({
+  listarCategorias(){
+    this._categoryService.getCategory().subscribe({
     next:categories=>this.categories=categories,
     complete:()=>{
       this.dataSource = new MatTableDataSource<CardDashboard>(this.categories);
       this.dataSource.paginator = this.paginator;
       this.paginator._intl.itemsPerPageLabel="Productos por página";
       this.obs = this.dataSource.connect();
+      console.log(this.categories);
+      
     }
   })}
 

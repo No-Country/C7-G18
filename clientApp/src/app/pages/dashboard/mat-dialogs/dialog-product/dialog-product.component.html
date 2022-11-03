@@ -58,7 +58,11 @@
     <input class="inputf" type="file" (change)="uploadImage($event)">      
       <img class="imgBrand" *ngIf="url" [src]="url" alt="">
       <div class="buttons">
-        <button mat-flat-button color="primary" (click)="add()">Guardar</button>
+        <button mat-flat-button 
+                color="primary" 
+                (click)="add()"
+                [disabled]="disableButton"
+    		    [class.spinner]="disableButton">Guardar</button>
         <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
       </div>
     </form>
@@ -120,7 +124,11 @@
 <input class="inputf" type="file" (change)="uploadImage($event)">      
   <img class="imgBrand" *ngIf="url" [src]="url" alt="">
   <div class="buttons">
-    <button mat-flat-button color="primary" (click)="edit()">Guardar</button>
+    <button mat-flat-button 
+            color="primary" 
+            (click)="edit()"
+            [disabled]="disableButton"
+		    [class.spinner]="disableButton">Guardar</button>
     <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
   </div>
 </form>
@@ -128,10 +136,14 @@
 
 
 <div class="subs" *ngIf="dialog.modo=='delete'">
-    <h1 class="flex">Eliminar Marca</h1>
+    <h1 class="flex">Eliminar Producto</h1>
     <h3>¿Está seguro de eliminar el producto <span class="span">{{dialog.product!.name}}</span>? Esta puede ser una acción irreversible.</h3>
     <div class="buttons">
-        <button mat-flat-button color="primary" (click)="delete()">Eliminar</button>
+        <button mat-flat-button 
+                color="primary" 
+                (click)="delete()"
+                [disabled]="disableButton"
+				[class.spinner]="disableButton">Eliminar</button>
         <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
       </div>
   </div>
@@ -146,7 +158,11 @@
         <mat-error *ngIf="formGroup.invalid">stock requerido </mat-error>
     </mat-form-field>  
   <div class="buttons">
-    <button mat-flat-button color="primary" (click)="editStock()">Guardar</button>
+    <button mat-flat-button 
+            color="primary"
+            (click)="editStock()"
+            [disabled]="disableButton"
+		    [class.spinner]="disableButton">Guardar</button>
     <button mat-stroked-button color="primary" [mat-dialog-close]="true">Cancelar</button>
   </div>
 </form>

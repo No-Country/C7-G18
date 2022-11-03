@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { addDoc, collection, collectionData, deleteDoc, doc, Firestore, updateDoc } from '@angular/fire/firestore';
-import { first, Observable} from 'rxjs';
+import { first, map, Observable, of, tap} from 'rxjs';
 import { IProductClass } from '../interfaces/front.interface';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -11,8 +11,32 @@ import { CardDashboard } from '../components/card-dashboard/card-dashboard';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-	constructor(public firestore2: AngularFirestore, 
-              public firestore: Firestore) {}
+	constructor(public afs: AngularFirestore, 
+              public firestore: Firestore) { }
+
+
+
+  // getCat(id:string):Observable<string>{
+  //   let catname:Observable<string>
+  //   this.afs.collection<IProductClass>('category')
+  //   .doc(`category/${id}`)
+  //   .valueChanges()
+  //   .pipe(tap(categ=> {catname= of(categ?.name!)}))
+  //   .subscribe({next:()=>{},complete:()=>{return catname}})
+    
+  // }
+
+
+  // get(){
+  //   let prod = this.afs.collection<IProductClass>('products')
+  //   prod.valueChanges().pipe(
+  //     map(resp=>{
+  //       resp.map(prod=>{
+  //         prod.nameCategory = categ.valueChanges().pipe(map(cat=>{}))
+  //       })
+  //     })
+  //   )
+  // }
 
 
 

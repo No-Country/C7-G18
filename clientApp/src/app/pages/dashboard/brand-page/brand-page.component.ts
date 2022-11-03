@@ -14,7 +14,7 @@ import { DialogBrandComponent } from '../mat-dialogs/dialog-brand/dialog-brand.c
 })
 export class BrandPageComponent implements OnInit {
 
-  brands:CardDashboard[]
+  brands:CardDashboard[]=[]
   clase='Marca'
 
   databrand:CardDashboard[]
