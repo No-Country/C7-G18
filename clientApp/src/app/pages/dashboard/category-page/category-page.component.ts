@@ -18,6 +18,7 @@ export class CategoryPageComponent implements OnInit {
 
   clase='Categoría'
   categories:CardDashboard[]=[]
+  disabledButton=true
 
   constructor(
         private _matDialog: MatDialog,
@@ -32,12 +33,11 @@ export class CategoryPageComponent implements OnInit {
     this._categoryService.getCategory().subscribe({
     next:categories=>this.categories=categories,
     complete:()=>{
+      this.disabledButton=false
       this.dataSource = new MatTableDataSource<CardDashboard>(this.categories);
       this.dataSource.paginator = this.paginator;
       this.paginator._intl.itemsPerPageLabel="Productos por página";
-      this.obs = this.dataSource.connect();
-      console.log(this.categories);
-      
+      this.obs = this.dataSource.connect();      
     }
   })}
 

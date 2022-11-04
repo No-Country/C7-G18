@@ -154,7 +154,7 @@
 <form [formGroup]="formGroup" autocomplete="off"> 
     <mat-form-field appearance="outline">
         <mat-label>Stock del producto</mat-label>
-        <input  matInput required formControlName="stock" [(ngModel)]=dialog.product!.stock/>					
+        <input  matInput required formControlName="stock"/>					
         <mat-error *ngIf="formGroup.invalid">stock requerido </mat-error>
     </mat-form-field>  
   <div class="buttons">

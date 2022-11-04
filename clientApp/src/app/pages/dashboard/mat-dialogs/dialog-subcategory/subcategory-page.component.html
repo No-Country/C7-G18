@@ -26,7 +26,11 @@
 				<mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
 			</mat-form-field>
 			<div class="buttons">
-				<button mat-flat-button color="primary" (click)="addSub()">Guardar</button>
+				<button mat-flat-button 
+						color="primary" 
+						(click)="addSub()"
+						[disabled]="disableButton"
+				    	[class.spinner]="disableButton">Guardar</button>
 				<button mat-stroked-button color="primary" (click)="add()">Cancelar</button>
 			</div>
 		</form>
@@ -42,7 +46,11 @@
 				<mat-error *ngIf="formGroup.invalid">nombre requerido </mat-error>
 			</mat-form-field>
 			<div class="buttons">
-				<button mat-flat-button color="primary" (click)="editSub()">Editar</button>
+				<button mat-flat-button 
+						color="primary" 
+						(click)="editSub()"
+						[disabled]="disableButton"
+				    	[class.spinner]="disableButton">Editar</button>
 				<button mat-stroked-button color="primary" (click)="edit(null)">Cancelar</button>
 			</div>
 		</form>
@@ -50,12 +58,15 @@
 
 	<div *ngIf="modeDelete">
 		<h1 class="flex">{{ product.name }}</h1>
-		<h3>
-			¿Está seguro de eliminar la subcategoría <span class="span">{{ sub!.name }}</span
-			>? Esta puede ser una acción irreversible.
-		</h3>
+		<h3 *ngIf="deleteButton">¿Está seguro de eliminar la subcategoría <span class="span">{{ sub!.name }}</span>?</h3>
+		<h3 *ngIf="!deleteButton">No se puede eliminar la subcategoría <span class="span">{{sub!.name}}</span> mientras contenga productos</h3>
 		<div class="buttons">
-			<button mat-flat-button color="primary" (click)="deleteSub()">Eliminar</button>
+			<button mat-flat-button
+					*ngIf="deleteButton" 
+					color="primary" 
+					(click)="deleteSub()"
+					[disabled]="disableButton"
+				    [class.spinner]="disableButton">Eliminar</button>
 			<button mat-stroked-button color="primary" (click)="delete(null)">Cancelar</button>
 		</div>
 	</div>

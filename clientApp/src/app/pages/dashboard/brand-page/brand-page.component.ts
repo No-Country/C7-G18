@@ -18,6 +18,7 @@ export class BrandPageComponent implements OnInit {
   clase='Marca'
 
   databrand:CardDashboard[]
+  disabledButton=true
 
   constructor(
         private _matDialog: MatDialog,
@@ -31,6 +32,7 @@ export class BrandPageComponent implements OnInit {
   listBrands(){this.brandService.getBrand().subscribe({
     next:brands=>this.brands=brands,
     complete:()=>{
+      this.disabledButton=false
       this.dataSource = new MatTableDataSource<CardDashboard>(this.brands);
       this.dataSource.paginator = this.paginator;
       this.paginator._intl.itemsPerPageLabel="Productos por página";

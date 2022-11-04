@@ -23,15 +23,13 @@ export class DialogPetComponent implements OnInit {
 		private _afs: AngularFirestore
 	) {
 		if(this.dialog.id){
-		 this._afs.collection<IProductClass>('products',ref=>ref.where('pet','==', this.dialog.id!)).get().forEach(prod=>this.deleteButton=(prod.size==0))} 
-		  
+		 this._afs.collection<IProductClass>('products',ref=>ref.where('pet','==', this.dialog.id!)).get().forEach(prod=>this.deleteButton=(prod.size==0))} 		  
 	}
 
 	ngOnInit(): void {
 		if (this.dialog.url) {
 			this.url = this.dialog.url;
-		}
-				
+		}				
 	}
 
 	date: Date = new Date();

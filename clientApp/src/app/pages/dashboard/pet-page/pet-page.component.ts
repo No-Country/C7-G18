@@ -15,6 +15,7 @@ import { PetService } from '../../../commons/services/pet.service';
 export class PetPageComponent implements OnInit {
 	pets: CardDashboard[]=[]
 	clase = 'Mascota';
+	disabledButton=true
 
 	constructor(private _matDialog: MatDialog,
 				private _petService: PetService) {}
@@ -27,6 +28,7 @@ export class PetPageComponent implements OnInit {
 		this._petService.getPet().subscribe({
 			next:pets=>this.pets=pets,
 			complete:()=>{
+				this.disabledButton=false
 			  this.dataSource = new MatTableDataSource<CardDashboard>(this.pets);
 			  this.dataSource.paginator = this.paginator;
 			  this.paginator._intl.itemsPerPageLabel="Productos por página";
