@@ -1,5 +1,5 @@
 <div class="detail">
-    <p *ngIf="product.percent!==(0 || undefined)" class="esOferta">{{product.percent}}% de Descuento!</p>
+    <p *ngIf="product.percent!==0" class="esOferta">{{product.percent}}% de Descuento!</p>
     <button class="close-icon btn" [mat-dialog-close]="true">
         <mat-icon>close</mat-icon>
     </button>
@@ -15,10 +15,10 @@
 
             <div class="flex">
 
-                <div class="flex" *ngIf="!product.discount">
+                <div class="flex" *ngIf="product.percent==0">
                     <h4 class="price">${{product.price}}</h4>
                 </div> 
-                <div class="flex" *ngIf="product.discount">
+                <div class="flex" *ngIf="product.percent!==0">
                     <h4 class="price">${{product.discount}}</h4>
                     <h4 class="oferta">${{product.price}}</h4>
                 </div>  

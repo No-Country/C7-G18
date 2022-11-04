@@ -10,7 +10,7 @@ export class AuthService {
     userLogin: any;
     userPhotoUrl:any; //puede ser null o string
 	isLogin:boolean;
-	uidUser:string=''
+	uidUser:string='' 
 
     constructor(
 		private _auth:AngularFireAuth,

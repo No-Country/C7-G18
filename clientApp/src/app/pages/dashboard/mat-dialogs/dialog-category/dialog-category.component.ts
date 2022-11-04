@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { IProductClass } from 'src/app/commons/interfaces/front.interface';
 import { AlertifyService } from 'src/app/commons/services/alertify.service';
 import { CategoryService } from 'src/app/commons/services/category.service';
 import { Dialog } from '../dialog';
@@ -17,12 +19,17 @@ export class DialogCategoryComponent implements OnInit {
     private _categoryService:CategoryService,
     private _formBuilder: UntypedFormBuilder,
     private _alertify: AlertifyService,
-   ) { }
+		private _afs: AngularFirestore		
+   ) { 
+    if(this.dialog.id){
+      this._afs.collection<IProductClass>('products',ref=>ref.where('category','==', this.dialog.id!)).get().forEach(prod=>this.deleteButton=(prod.size==0))} 
+   }
 
   ngOnInit(): void {  }
 
   date:Date= new Date
-  
+  disableButton = false;
+  deleteButton:boolean
 
   formGroup: UntypedFormGroup= this._formBuilder.group({
     name: [this.dialog.nombre, Validators.required]
@@ -30,6 +37,7 @@ export class DialogCategoryComponent implements OnInit {
 
   async add(){
     if(this.formGroup.valid){
+      this.disableButton = true;
 
       const response={
         name: this.formGroup.value.name,
@@ -45,12 +53,14 @@ export class DialogCategoryComponent implements OnInit {
   }
 
   async delete(){
+    this.disableButton = true;
     await this._categoryService.deleteCategory(this.dialog.id!)
     .then(()=>this._alertify.success(`Categoría ${this.dialog.nombre} eliminada!`))
     .finally(()=>this.dialogRef.close())
   }
 
   async edit(){
+    this.disableButton = true;
     
     const response={
       name: this.formGroup.value.name

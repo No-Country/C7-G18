@@ -57,7 +57,7 @@
                    <h3>Subcategorías</h3> 
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <div class="expand" *ngFor="let sub of subcategories$|async">
+            <div class="expand" *ngFor="let sub of subcategories">
                 <p class="sub" (click)="subFilter(sub.id)">{{sub.name}}</p>
             </div>
         </mat-expansion-panel>  
@@ -82,7 +82,7 @@
     <div class="main">
         <button (click)="openNav()" class="open"><< Filtrar</button>
         <div class="headm">
-            <h3><a class="point" (click)="prods()">Inicio </a> <a *ngIf="isPet"><span class="slash">/</span> {{pet}} </a> <a *ngIf="isCategory"><span class="slash">/</span> {{category}} </a><a *ngIf="isBrand"><span class="slash">/</span> {{brand}}</a></h3>
+            <h3><a class="point" (click)="prods()">Inicio </a> <a *ngIf="isPet"><span class="slash">/</span> {{pet}} </a> <a *ngIf="isCategory"><span class="slash">/</span> {{category}} </a><a *ngIf="isSubcategory"><span class="slash">/</span> {{subcategory}} </a><a *ngIf="isBrand"><span class="slash">/</span> {{brand}}</a></h3>
 
             
             <form class="example-form">                
@@ -92,7 +92,7 @@
                         matInput
                         [matAutocomplete]="auto">
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let card of products$|async, let i=index" [value]="card.id">
+                    <mat-option *ngFor="let card of products, let i=index" [value]="card.id">
                         <div class="option">
                             <img src="{{card.img}}" alt=""> 
                             <div>
@@ -110,19 +110,19 @@
                 </mat-autocomplete>
             </form>
         </div>
-        <mat-spinner  *ngIf="!products$"></mat-spinner>  
-        <ng-container *ngIf="products$">
+        <mat-spinner  *ngIf="products.length==0"></mat-spinner>  
+        <ng-container *ngIf="products.length!==0">
         <div class="grid-card">
-            <div *ngFor="let card of products$ | async">
+            <div *ngFor="let card of obs|async">
                 <app-card-product [card]="card"></app-card-product>
             </div>
         </div>
         </ng-container>
-        <!-- <mat-paginator [length]="products.length"
+        <mat-paginator [length]="products.length"
               [pageSize]="6"
               [pageSizeOptions]="[6, 9, 12]"
               aria-label="Select page">
               
-        </mat-paginator> -->
+        </mat-paginator>
     </div>
 </div>

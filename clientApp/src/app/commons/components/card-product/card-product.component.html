@@ -1,6 +1,6 @@
 
 <div class="card">  
-    <p *ngIf="card.discount" class="esOferta">OFERTA</p>  
+    <p *ngIf="card.percent!==0 " class="esOferta">OFERTA</p>  
     <button class="btn" (click)="like()">
         <img *ngIf=!card.like src="assets/icons/heartE.svg" alt="">
         <img *ngIf="card.like" src="assets/icons/heartF.svg" alt="">
@@ -10,10 +10,10 @@
         <h3>{{card.name}}</h3>
     </div>
     <div class="actions" >
-        <div class="flex" *ngIf="!card.discount">
+        <div class="flex" *ngIf="card.percent==0 ">
             <h4 class="price">${{card.price}}</h4>
         </div> 
-        <div class="flex" *ngIf="card.discount">
+        <div class="flex" *ngIf="card.percent!==0 ">
             <h4 class="price">${{card.discount}}</h4>
             <h4 class="oferta">${{card.price}}</h4>
         </div> 

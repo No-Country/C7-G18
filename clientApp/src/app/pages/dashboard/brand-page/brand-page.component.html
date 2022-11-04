@@ -1,9 +1,12 @@
 <div class="flex">
     <h1>Listado de Marcas</h1>
-    <button mat-flat-button color="primary" (click)="openModalNew('add')">Agregar Marca</button>
+    <button mat-flat-button 
+            color="primary" 
+            (click)="openModalNew('add')"
+            [disabled]="disabledButton">Agregar Marca</button>
 </div>
+<mat-spinner  *ngIf="brands.length==0"></mat-spinner>  
 <div class="cards">    
-    <mat-spinner  *ngIf="brands.length==0"></mat-spinner>  
         <ng-container *ngIf="brands.length!==0">
     <div *ngFor="let brand of obs|async" class="card1">
         <app-card-dashboard [cardDashboard]="brand" [clase]="clase" (onEdit)="openModalNew('edit',brand)" (onDelete)="openModalNew('delete',brand)"></app-card-dashboard>

@@ -1,6 +1,9 @@
 <div class="flex">
     <h1>Listado de Productos</h1>
-    <button mat-flat-button color="primary" (click)="openModal('add')">Agregar Producto</button>
+    <button mat-flat-button 
+            color="primary" 
+            (click)="openModal('add')"
+            [disabled]="disabledButton">Agregar Producto</button>
 </div>
 <div>
   <table mat-table [dataSource]="dataSource">

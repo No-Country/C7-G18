@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
 	formGroup!: UntypedFormGroup;
 	disableButton = false;
-	hide = true;
+	hide = true; 
 
 	private _loadFormGroup(): void {
 		this.formGroup = this._formBuilder.group({

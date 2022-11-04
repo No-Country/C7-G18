@@ -6,6 +6,8 @@ import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage
 import { BrandService } from '../../../../commons/services/brand.service';
 import { AlertifyService } from 'src/app/commons/services/alertify.service';
 import { Dialog } from '../dialog';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { IProductClass } from 'src/app/commons/interfaces/front.interface';
 
 @Component({
   selector: 'app-dialog-brand',
@@ -20,7 +22,11 @@ export class DialogBrandComponent implements OnInit {
     private _formBuilder: UntypedFormBuilder,
     private _storage: Storage,
     private _alertify: AlertifyService,
-   ) { }
+		private _afs: AngularFirestore
+   ) { 
+    if(this.dialog.id){
+      this._afs.collection<IProductClass>('products',ref=>ref.where('brand','==', this.dialog.id!)).get().forEach(prod=>this.deleteButton=(prod.size==0))}
+   }
 
   ngOnInit(): void {
     if(this.dialog.url){this.url=this.dialog.url}
@@ -28,7 +34,8 @@ export class DialogBrandComponent implements OnInit {
 
   date:Date= new Date
   url:string
-  
+  disableButton = false;  
+	deleteButton:boolean
 
   formGroup: UntypedFormGroup= this._formBuilder.group({
     name: [this.dialog.nombre, Validators.required]
@@ -36,7 +43,7 @@ export class DialogBrandComponent implements OnInit {
 
   async add(){
     if(this.formGroup.valid){
-
+      this.disableButton = true;
       const response={
         name: this.formGroup.value.name,
         url:this.url,
@@ -52,13 +59,14 @@ export class DialogBrandComponent implements OnInit {
   }
 
   async delete(){
+    this.disableButton = true;
     await this._brandService.deleteBrand(this.dialog.id!)
     .then(()=>this._alertify.success(`¡Marca ${this.dialog.nombre} eliminada!`))
     .finally(()=>this.dialogRef.close())
   }
 
   async edit(){
-    
+    this.disableButton = true;
     const response={
       name: this.formGroup.value.name,
       url:this.url
